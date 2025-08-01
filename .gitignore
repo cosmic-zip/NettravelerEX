@@ -1,0 +1,70 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# VSCode and JetBrains IDEs
+.vscode/
+.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Pip metadata
+*.egg-info/
+dist/
+build/
+
+# pytest and coverage
+.cache/
+*.cover
+coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# MyPy and static analysis
+.mypy_cache/
+.pyre/
+.pytype/
+
+# Logs and temp
+*.log
+*.tmp
+*.bak
+
+# Local settings
+*.env
+.env.*
+secrets.yaml
+config.local.*
+
+# Docker artifacts
+*.pid
+*.sock
+
+# PyInstaller
+*.spec
+
+# Wheels
+*.whl
+
+# Test results
+test-results/
+
+#DATA
+
+geoloc.csv
+malwaredb.csv
+*.gguf
+temp/*

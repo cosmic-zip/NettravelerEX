@@ -1,0 +1,610 @@
+{
+    "index": [
+        {
+            "id": 1,
+            "name": "Binary Planting",
+            "description": "Atacante insere um arquivo binário malicioso que é executado pela aplicação.",
+            "mitigation": "Validar todos os caminhos de arquivo, usar permissões estritas, implementar assinatura de código para executáveis. Restringir acesso de escrita a diretórios.",
+            "severity_score": 8,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 2,
+            "name": "Blind SQL Injection",
+            "description": "Injeção SQL onde os resultados não são visíveis, mas inferências são possíveis pelo comportamento.",
+            "mitigation": "Usar consultas parametrizadas, procedimentos armazenados e validação de entrada. Implementar regras de WAF para detectar padrões de Blind SQLi.",
+            "severity_score": 9,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 3,
+            "name": "Blind XPath Injection",
+            "description": "Semelhante à injeção SQL, mas direcionada a repositórios de dados XML por meio de consultas XPath.",
+            "mitigation": "Usar consultas XPath parametrizadas, validação de entrada e limitar privilégios do processador XML.",
+            "severity_score": 8,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 4,
+            "name": "Brute Force Attack",
+            "description": "Tentativas sistemáticas de adivinhar credenciais ou chaves de criptografia por repetição.",
+            "mitigation": "Implementar bloqueio de contas, limitação de taxa, CAPTCHAs e autenticação multifator.",
+            "severity_score": 7,
+            "severity_level": "Média"
+        },
+        {
+            "id": 5,
+            "name": "Buffer Overflow via Environment Variables",
+            "description": "Exploração de manipulação de variáveis de ambiente para causar estouro de buffer.",
+            "mitigation": "Sanitizar variáveis de ambiente, usar linguagens seguras para memória, habilitar proteções de pilha (ASLR, DEP).",
+            "severity_score": 9,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 6,
+            "name": "Buffer Overflow Attack",
+            "description": "Escrita de dados além dos limites alocados do buffer para corromper memória ou executar código arbitrário.",
+            "mitigation": "Usar linguagens seguras para memória, habilitar proteções de pilha (ASLR, DEP) e realizar verificação de limites.",
+            "severity_score": 10,
+            "severity_level": "Crítica"
+        },
+        {
+            "id": 7,
+            "name": "CORS OriginHeaderScrutiny",
+            "description": "Configuração inadequada de CORS permitindo requisições de origem cruzada não autorizadas.",
+            "mitigation": "Validar estritamente cabeçalhos Origin, limitar métodos/cabeçalhos permitidos e evitar curingas (*) para recursos sensíveis.",
+            "severity_score": 7,
+            "severity_level": "Média"
+        },
+        {
+            "id": 8,
+            "name": "CORS RequestPreflightScrutiny",
+            "description": "Burla de verificações de preflight CORS para realizar requisições não autorizadas.",
+            "mitigation": "Implementar validação adequada de respostas de preflight, limitar métodos HTTP permitidos e auditar políticas CORS.",
+            "severity_score": 7,
+            "severity_level": "Média",
+            "author": "Dominique RIGHETTO"
+        },
+        {
+            "id": 9,
+            "name": "CSV Injection",
+            "description": "Injeção de fórmulas ou comandos em arquivos CSV exportados.",
+            "mitigation": "Sanitizar a saída CSV, prefixar fórmulas com aspas simples, usar bibliotecas CSV que gerenciem escapamento.",
+            "severity_score": 6,
+            "severity_level": "Média",
+            "author": "Timo Goosen, Albinowax"
+        },
+        {
+            "id": 10,
+            "name": "Cache Poisoning",
+            "description": "Manipulação do cache web para servir conteúdo malicioso aos usuários.",
+            "mitigation": "Validar chaves de cache, implementar cabeçalhos cache-control adequados e segregar conteúdo em cache por papéis de usuário.",
+            "severity_score": 8,
+            "severity_level": "Alta",
+            "author": "Weilin Zhong, Rezos"
+        },
+        {
+            "id": 11,
+            "name": "Cash Overflow",
+            "description": "Manipulação de transações financeiras por meio de estouros de inteiros ou erros de arredondamento.",
+            "mitigation": "Usar tipos de dados decimais para cálculos financeiros, implementar verificações de validação de transações, auditar lógica de arredondamento.",
+            "severity_score": 9,
+            "severity_level": "Alta",
+            "author": "psiinon"
+        },
+        {
+            "id": 12,
+            "name": "Clickjacking",
+            "description": "Enganar usuários para clicar em elementos de interface ocultos.",
+            "mitigation": "Implementar cabeçalho X-Frame-Options, diretiva frame-ancestors do Content Security Policy e scripts de quebra de frames.",
+            "severity_score": 7,
+            "severity_level": "Média",
+            "author": "Gustav Rydstedt"
+        },
+        {
+            "id": 13,
+            "name": "Code Injection",
+            "description": "Injeção e execução de código arbitrário no servidor.",
+            "mitigation": "Validar todas as entradas, usar APIs seguras que evitem invocação de interpretadores, implementar menor privilégio para ambientes de execução.",
+            "severity_score": 10,
+            "severity_level": "Crítica",
+            "author": "Weilin Zhong, Rezos"
+        },
+        {
+            "id": 14,
+            "name": "Command Injection",
+            "description": "Execução de comandos arbitrários do sistema operacional por meio de entradas vulneráveis da aplicação.",
+            "mitigation": "Usar APIs parametrizadas, evitar construção de comandos de shell com entrada do usuário, implementar validação de entrada estrita.",
+            "severity_score": 10,
+            "severity_level": "Crítica",
+            "author": "Weilin Zhong"
+        },
+        {
+            "id": 15,
+            "name": "Comment Injection Attack",
+            "description": "Injeção de conteúdo malicioso por meio de campos de comentário.",
+            "mitigation": "Implementar codificação de saída, moderação de conteúdo e validação de entrada estrita para conteúdo gerado pelo usuário.",
+            "severity_score": 5,
+            "severity_level": "Média",
+            "author": "Weilin Zhong, Rezos"
+        },
+        {
+            "id": 16,
+            "name": "Content Spoofing",
+            "description": "Exibição de conteúdo forjado que parece originar-se da aplicação.",
+            "mitigation": "Implementar cabeçalhos de tipo de conteúdo estritos, validar todo conteúdo renderizado e usar verificações de integridade criptográfica.",
+            "severity_score": 6,
+            "severity_level": "Média",
+            "author": "Andrew Smith"
+        },
+        {
+            "id": 17,
+            "name": "Credential Stuffing",
+            "description": "Uso de credenciais vazadas para obter acesso não autorizado.",
+            "mitigation": "Implementar autenticação multifator, monitorar vazamentos de credenciais e forçar rotação de senhas após violações.",
+            "severity_score": 8,
+            "severity_levelsey_score": 8,
+            "severity_level": "Alta",
+            "author": "Neal Mueller"
+        },
+        {
+            "id": 18,
+            "name": "Cross-User Defacement",
+            "description": "Modificação de conteúdo que afeta a visualização de outros usuários na aplicação.",
+            "mitigation": "Implementar isolamento adequado de sessões, codificação de saída e controles de acesso estritos para modificação de conteúdo.",
+            "severity_score": 7,
+            "severity_level": "Média"
+        },
+        {
+            "id": 19,
+            "name": "Cross Site Scripting (XSS)",
+            "description": "Injeção de scripts maliciosos em páginas web visualizadas por outros usuários.",
+            "mitigation": "Implementar codificação de saída, Content Security Policy (CSP) e validação de entrada. Usar frameworks que escapem conteúdo automaticamente.",
+            "severity_score": 8,
+            "severity_level": "Alta",
+            "author": "KirstenS"
+        },
+        {
+            "id": 20,
+            "name": "Cross Frame Scripting",
+            "description": "Burla da política de mesma origem por meio de manipulação de frames.",
+            "mitigation": "Implementar cabeçalho X-Frame-Options, scripts de quebra de frames e diretiva frame-ancestors do Content Security Policy.",
+            "severity_score": 7,
+            "severity_level": "Média",
+            "author": "Rezos, Justin Ludwig"
+        },
+        {
+            "id": 21,
+            "name": "Cross Site History Manipulation (XSHM)",
+            "description": "Manipulação do histórico do navegador para ocultar atividades maliciosas.",
+            "mitigation": "Implementar políticas de referência estritas, auditar manipulação de histórico do lado do cliente e usar APIs de navegação modernas com cuidado.",
+            "severity_score": 6,
+            "severity_level": "Média",
+            "author": "Adar Weidman"
+        },
+        {
+            "id": 22,
+            "name": "Cross Site Tracing",
+            "description": "Uso do método HTTP TRACE para roubar informações sensíveis.",
+            "mitigation": "Desabilitar o método TRACE nos servidores web, implementar restrições adequadas de métodos HTTP e filtrar cabeçalhos sensíveis.",
+            "severity_score": 7,
+            "severity_level": "Média"
+        },
+        {
+            "id": 23,
+            "name": "Cryptanalysis",
+            "description": "Quebra de implementações criptográficas por meio de análise matemática.",
+            "mitigation": "Usar bibliotecas criptográficas modernas e auditadas, implementar gerenciamento adequado de chaves e seguir práticas recomendadas de criptografia.",
+            "severity_score": 9,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 24,
+            "name": "Custom Special Character Injection",
+            "description": "Exploração de manipulação de caracteres especiais específicos da aplicação.",
+            "mitigation": "Implementar validação de entrada estrita, codificação de saída adequada e sanitização sensível ao contexto.",
+            "severity_score": 7,
+            "severity_level": "Média",
+            "author": "Rezos"
+        },
+        {
+            "id": 25,
+            "name": "Denial of Service",
+            "description": "Sobrecarga de recursos do sistema para tornar serviços indisponíveis.",
+            "mitigation": "Implementar limitação de taxa, cotas de recursos e degradação graciosa. Usar serviços de proteção contra DDoS.",
+            "severity_score": 8,
+            "severity_level": "Alta",
+            "author": "Nsrav"
+        },
+        {
+            "id": 26,
+            "name": "Direct Dynamic Code Evaluation - Eval Injection",
+            "description": "Execução de código arbitrário por meio de funções de avaliação dinâmica.",
+            "mitigation": "Evitar eval() e funções similares, usar alternativas seguras e implementar validação de entrada estrita se a avaliação dinâmica for inevitável.",
+            "severity_score": 9,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 27,
+            "name": "Embedding Null Code",
+            "description": "Exploração de manipulação de bytes nulos para burlar verificações de segurança.",
+            "mitigation": "Sanitizar todas as entradas para bytes nulos, usar funções modernas de manipulação de strings e implementar validação de caminhos estrita.",
+            "severity_score": 7,
+            "severity_level": "Média",
+            "author": "Nsrav"
+        },
+        {
+            "id": 28,
+            "name": "Execution After Redirect (EAR)",
+            "description": "Continuação da execução de código após o envio de um cabeçalho de redirecionamento.",
+            "mitigation": "Implementar chamadas exit() adequadas após redirecionamentos, auditar lógica de redirecionamento e usar métodos de redirecionamento de frameworks.",
+            "severity_score": 6,
+            "severity_level": "Média",
+            "author": "Robert Gilbert (amroot)"
+        },
+        {
+            "id": 29,
+            "name": "Forced Browsing",
+            "description": "Acesso a recursos não autorizados por adivinhação ou força bruta de URLs.",
+            "mitigation": "Implementar controles de acesso adequados, usar URLs aleatórias/imprevisíveis para recursos sensíveis e auditar padrões de acesso.",
+            "severity_score": 6,
+            "severity_level": "Média"
+        },
+        {
+            "id": 30,
+            "name": "Form Action Hijacking",
+            "description": "Modificação de destinos de submissão de formulários para endpoints maliciosos.",
+            "mitigation": "Usar tokens CSRF, validar destinos de submissão de formulários e implementar Content Security Policies estritas.",
+            "severity_score": 7,
+            "severity_level": "Média",
+            "author": "Robert Gilbert (amroot)"
+        },
+        {
+            "id": 31,
+            "name": "Format String Attack",
+            "description": "Exploração de vulnerabilidades de strings de formato para ler memória ou causar falhas na aplicação.",
+            "mitigation": "Usar strings de formato constantes, validar todas as entradas de strings de formato e habilitar proteções do compilador.",
+            "severity_score": 8,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 32,
+            "name": "Full Path Disclosure",
+            "description": "Revelação de caminhos internos do sistema de arquivos do servidor por meio de mensagens de erro.",
+            "mitigation": "Personalizar páginas de erro, desabilitar erros detalhados em produção e sanitizar toda saída de erro.",
+            "severity_score": 4,
+            "severity_level": "Baixa"
+        },
+        {
+            "id": 33,
+            "name": "Function Injection",
+            "description": "Injeção de chamadas de função maliciosas por meio de entradas da aplicação.",
+            "mitigation": "Validar todos os nomes de funções, usar listas brancas para funções permitidas e implementar sandboxing adequado.",
+            "severity_score": 9,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 34,
+            "name": "HTTP Response Splitting",
+            "description": "Injeção de caracteres CRLF para manipular respostas HTTP.",
+            "mitigation": "Sanitizar sequências CRLF em todos os cabeçalhos, usar métodos de definição de cabeçalhos de frameworks e validar valores de cabeçalhos.",
+            "severity_score": 7,
+            "severity_level": "Média"
+        },
+        {
+            "id": 35,
+            "name": "LDAP Injection",
+            "description": "Injeção de comandos LDAP maliciosos por meio de entradas da aplicação.",
+            "mitigation": "Usar consultas LDAP parametrizadas, implementar validação de entrada e aplicar controles de acesso LDAP adequados.",
+            "severity_score": 8,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 36,
+            "name": "Log Injection",
+            "description": "Injeção de conteúdo malicioso em arquivos de log.",
+            "mitigation": "Sanitizar todas as entradas de log, implementar validação de log e segregar sistemas de processamento de logs.",
+            "severity_score": 5,
+            "severity_level": "Média"
+        },
+        {
+            "id": 37,
+            "name": "Man-in-the-Browser Attack",
+            "description": "Extensão de navegador ou malware interceptando/modificando transações web.",
+            "mitigation": "Implementar verificação de transações, usar canais seguros e educar usuários sobre riscos de extensões.",
+            "severity_score": 9,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 38,
+            "name": "Manipulator-in-the-Middle Attack",
+            "description": "Interceptação e possível alteração de comunicações entre duas partes.",
+            "mitigation": "Usar TLS com pinning de certificado, implementar troca de chaves segura e verificar identidades de endpoints.",
+            "severity_score": 9,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 39,
+            "name": "Mobile Code Invoking Untrusted Mobile Code",
+            "description": "Execução de código não confiável por meio de plataformas de código móvel.",
+            "mitigation": "Implementar assinatura de código, usar sandboxing e aplicar políticas de segurança estritas para execução de código móvel.",
+            "severity_score": 8,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 40,
+            "name": "Mobile Code Non-Final Public Field",
+            "description": "Exploração de campos públicos mutáveis em objetos de código móvel.",
+            "mitigation": "Tornar campos privados/finais, implementar encapsulamento adequado e validar estados de objetos.",
+            "severity_score": 6,
+            "severity_level": "Média"
+        },
+        {
+            "id": 41,
+            "name": "Mobile Code Object Hijack",
+            "description": "Adulteração de objetos de código móvel serializados.",
+            "mitigation": "Usar assinaturas digitais para objetos serializados, validar integridade de objetos e implementar desserialização segura.",
+            "severity_score": 8,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 42,
+            "name": "Parameter Delimiter",
+            "description": "Exploração de inconsistências na análise de parâmetros.",
+            "mitigation": "Usar análise de parâmetros consistente, validar todos os formatos de entrada e implementar manipulação de parâmetros estrita.",
+            "severity_score": 6,
+            "severity_level": "Média"
+        },
+        {
+            "id": 43,
+            "name": "Password Spraying Attack",
+            "description": "Uso de senhas comuns contra várias contas para evitar bloqueios.",
+            "mitigation": "Implementar autenticação multifator, monitorar padrões de pulverização e usar proteção contra senhas vazadas.",
+            "severity_score": 7,
+            "severity_level": "Média",
+            "author": "Rishu Ranjan"
+        },
+        {
+            "id": 44,
+            "name": "Path Traversal",
+            "description": "Acesso a arquivos fora da raiz web por manipulação de caminhos de arquivo.",
+            "mitigation": "Validar todos os caminhos de arquivo, usar jails chroot e implementar permissões adequadas no sistema de arquivos.",
+            "severity_score": 8,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 45,
+            "name": "Qrljacking",
+            "description": "Sequestro de sessões de autenticação por código QR.",
+            "mitigation": "Implementar códigos QR de curta duração, confirmação de sessão e verificação visual das ações de códigos QR.",
+            "severity_score": 7,
+            "severity_level": "Média"
+        },
+        {
+            "id": 46,
+            "name": "RSQL Injection",
+            "description": "Injeção de comandos RSQL (REST Query Language) por meio de entradas de API.",
+            "mitigation": "Validar todos os parâmetros de consulta, usar consultas parametrizadas e limitar a complexidade das consultas.",
+            "severity_score": 8,
+            "severity_level": "Alta",
+            "author": "David Utón (m3n0sd0n4ld)"
+        },
+        {
+            "id": 47,
+            "name": "Reflected DOM Injection",
+            "description": "Injeção de scripts maliciosos no DOM por meio de entradas refletidas.",
+            "mitigation": "Implementar codificação de saída, Content Security Policy e validação de entrada estrita para operações no DOM.",
+            "severity_score": 8,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 48,
+            "name": "Regular Expression Denial of Service - ReDoS",
+            "description": "Causar negação de serviço por meio de expressões regulares maliciosas.",
+            "mitigation": "Auditar padrões regex para retrocesso catastrófico, usar timeouts para avaliação de regex e preferir padrões simples.",
+            "severity_score": 7,
+            "severity_level": "Média",
+            "author": "Adar Weidman"
+        },
+        {
+            "id": 49,
+            "name": "Repudiation Attack",
+            "description": "Negação de ações realizadas no sistema.",
+            "mitigation": "Implementar registros abrangentes, assinaturas digitais para ações críticas e mecanismos de não repúdio.",
+            "severity_score": 6,
+            "severity_level": "Média"
+        },
+        {
+            "id": 50,
+            "name": "Resource Injection",
+            "description": "Manipulação de identificadores de recursos para acessar recursos não autorizados.",
+            "mitigation": "Validar todas as referências de recursos, implementar controles de acesso adequados e usar referências indiretas.",
+            "severity_score": 7,
+            "severity_level": "Média"
+        },
+        {
+            "id": 51,
+            "name": "Reverse Tabnabbing",
+            "description": "Exploração da API window.opener para modificar a página original.",
+            "mitigation": "Usar rel='noopener' para links externos, implementar Content Security Policy e validar cabeçalhos de referência.",
+            "severity_score": 6,
+            "severity_level": "Média"
+        },
+        {
+            "id": 52,
+            "name": "SQL Injection",
+            "description": "Inserção de comandos SQL maliciosos por meio de entradas da aplicação.",
+            "mitigation": "Usar declarações preparadas com consultas parametrizadas, frameworks ORM e validação de entrada. Minimizar privilégios do banco de dados.",
+            "severity_score": 10,
+            "severity_level": "Crítica"
+        },
+        {
+            "id": 53,
+            "name": "Server-Side Includes (SSI) Injection",
+            "description": "Injeção de diretivas de inclusão do lado do servidor maliciosas.",
+            "mitigation": "Desabilitar SSI quando não necessário, validar todas as diretivas SSI e implementar codificação de saída adequada.",
+            "severity_score": 8,
+            "severity_level": "Alta",
+            "author": "Weilin Zhong, Nsrav"
+        },
+        {
+            "id": 54,
+            "name": "Server Side Request Forgery",
+            "description": "Forçar um servidor a realizar requisições internas não autorizadas.",
+            "mitigation": "Validar e sanitizar todas as URLs fornecidas pelo usuário, implementar segmentação de rede e desabilitar esquemas de URL não utilizados.",
+            "severity_score": 9,
+            "severity_level": "Alta",
+            "author": "Eoftedal"
+        },
+        {
+            "id": 55,
+            "name": "Session Prediction",
+            "description": "Adivinhação ou cálculo de identificadores de sessão válidos.",
+            "mitigation": "Usar IDs de sessão criptograficamente fortes, implementar invalidação adequada de sessões e rotacionar IDs de sessão após login.",
+            "severity_score": 7,
+            "severity_level": "Média"
+        },
+        {
+            "id": 56,
+            "name": "Session Fixation",
+            "description": "Forçar um usuário a usar um ID de sessão conhecido.",
+            "mitigation": "Regenerar IDs de sessão após autenticação, implementar tempo limite adequado de sessão e usar cookies de sessão seguros.",
+            "severity_score": 7,
+            "severity_level": "Média",
+            "author": "mwood"
+        },
+        {
+            "id": 57,
+            "name": "Session Hijacking Attack",
+            "description": "Roubo ou tomada de controle de uma sessão autenticada.",
+            "mitigation": "Usar cookies seguros (flags HttpOnly, Secure), implementar vinculação de IP para sessões sensíveis e usar tempos limite curtos de sessão.",
+            "severity_score": 8,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 58,
+            "name": "Setting Manipulation",
+            "description": "Modificação não autorizada da configuração da aplicação.",
+            "mitigation": "Proteger arquivos de configuração com permissões adequadas, validar todas as alterações de configuração e auditar acesso à configuração.",
+            "severity_score": 7,
+            "severity_level": "Média"
+        },
+        {
+            "id": 59,
+            "name": "Special Element Injection",
+            "description": "Injeção de caracteres ou elementos especiais para alterar o comportamento da aplicação.",
+            "mitigation": "Implementar validação de entrada estrita, codificação de saída sensível ao contexto e sanitizar todos os caracteres especiais.",
+            "severity_score": 7,
+            "severity_level": "Média"
+        },
+        {
+            "id": 60,
+            "name": "Spyware",
+            "description": "Software malicioso que coleta informações do usuário sem consentimento.",
+            "mitigation": "Implementar lista branca de aplicações, educar usuários e monitorar exfiltração de dados suspeita.",
+            "severity_score": 8,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 61,
+            "name": "Traffic Flood",
+            "description": "Sobrecarga de recursos de rede com tráfego excessivo.",
+            "mitigation": "Implementar limitação de taxa, modelagem de tráfego e usar serviços de proteção contra DDoS.",
+            "severity_score": 8,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 62,
+            "name": "Trojan Horse",
+            "description": "Código malicioso disfarçado de software legítimo.",
+            "mitigation": "Implementar assinatura de código, verificar integridade de software e educar usuários sobre riscos de instalação.",
+            "severity_score": 8,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 63,
+            "name": "Unicode Encoding",
+            "description": "Exploração de processamento de Unicode para burlar verificações de segurança.",
+            "mitigation": "Normalizar entrada Unicode, implementar codificação de caracteres consistente e validar todas as strings codificadas.",
+            "severity_score": 7,
+            "severity_level": "Média"
+        },
+        {
+            "id": 64,
+            "name": "Web Parameter Tampering",
+            "description": "Manipulação de parâmetros para modificar dados ou comportamento da aplicação.",
+            "mitigation": "Validar todos os parâmetros, implementar verificações do lado do servidor e usar referências indiretas para parâmetros sensíveis.",
+            "severity_score": 7,
+            "severity_level": "Média"
+        },
+        {
+            "id": 65,
+            "name": "Windows ::DATA Alternate Data Stream",
+            "description": "Exploração de fluxos de dados alternativos NTFS para ocultar conteúdo malicioso.",
+            "mitigation": "Verificar fluxos de dados alternativos, restringir acesso de escrita a sistemas de arquivos e usar ferramentas de segurança que inspecionem ADS.",
+            "severity_score": 6,
+            "severity_level": "Média"
+        },
+        {
+            "id": 66,
+            "name": "XPATH Injection",
+            "description": "Injeção de consultas XPath maliciosas para manipular processamento de dados XML.",
+            "mitigation": "Usar consultas XPath parametrizadas, implementar validação de entrada e limitar privilégios do processador XML.",
+            "severity_score": 8,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 67,
+            "name": "XSRF",
+            "description": "Falsificação de Requisição Cross-Site (nome alternativo para CSRF).",
+            "mitigation": "Implementar tokens anti-CSRF, atributos SameSite para cookies e exigir reautenticação para ações sensíveis.",
+            "severity_score": 8,
+            "severity_level": "Alta"
+        },
+        {
+            "id": 68,
+            "name": "XSS in Converting File Content to Text",
+            "description": "Cross-site scripting por meio de processos de conversão de conteúdo de arquivos.",
+            "mitigation": "Sanitizar todo conteúdo convertido, implementar cabeçalhos de tipo de conteúdo estritos e validar conteúdos de arquivos antes da conversão.",
+            "severity_score": 8,
+            "severity_level": "Alta",
+            "author": "Mohammad Reza Omrani"
+        },
+        {
+            "id": 69,
+            "name": "XSS in Subtitle",
+            "description": "Cross-site scripting por meio de arquivos de legenda de mídia.",
+            "mitigation": "Validar conteúdos de arquivos de legenda, implementar codificação de saída adequada e restringir uploads de arquivos de legenda.",
+            "severity_score": 7,
+            "severity_level": "Média",
+            "author": "Mohammad MortazaviZade"
+        },
+        {
+            "id": 70,
+            "name": "Cross Site Request Forgery (CSRF)",
+            "description": "Forçar usuários autenticados a enviar requisições não intencionais.",
+            "mitigation": "Implementar tokens anti-CSRF, atributos SameSite para cookies e exigir reautenticação para ações sensíveis.",
+            "severity_score": 8,
+            "severity_level": "Alta",
+            "author": "KirstenS"
+        },
+        {
+            "id": 71,
+            "name": "IP Spoofing via HTTP Headers",
+            "description": "Falsificação de endereços IP por meio de cabeçalhos HTTP manipulados.",
+            "mitigation": "Não confiar em cabeçalhos IP fornecidos pelo cliente, validar no nível de rede e usar mecanismos de autenticação seguros.",
+            "severity_score": 7,
+            "severity_level": "Média",
+            "author": "Ahmadreza Parsizadeh"
+        },
+        {
+            "id": 72,
+            "name": "Web Service Amplification Attack",
+            "description": "Exploração de serviços web para gerar respostas grandes a partir de requisições pequenas.",
+            "mitigation": "Implementar limites de tamanho de resposta, limitação de taxa e validar todas as requisições de serviço.",
+            "severity_score": 8,
+            "severity_level": "Alta",
+            "author": "Thomas Vissers"
+        }
+    ]
+}

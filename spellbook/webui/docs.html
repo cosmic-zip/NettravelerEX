@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>README</title>
+  <style>
+    /* Basic styles for readability */
+    body {
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 0 1em;
+      line-height: 1.6;
+      background: #0d0a1d;
+      color: white;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    pre {
+      background-color: rgb(52, 52, 52);
+      border-radius: 10px;
+      padding: 1em;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <p><img src="assets/banner.png" alt="'banner'"></p>
+  <h2>NettravelerEX</h2>
+  <p>NettravelerEX is an offensive security toolkit that aggregates tools, serializes functions, and provides a
+    standardized interaction interface for various tasks including Wi-Fi hacking, web scanning, vulnerability scanning,
+    OSINT, forensics, backup management, SQL injection, backdoor and ransomware management, custom malware building,
+    reverse shells, RCE agents, generation of reports (RBR), and playbooks (RBP) based on rules.</p>
+  <p>It also has a WebUI that provides access to all CLI features and includes custom extensions. The WebUI is
+    automatically generated, so all modifications made by the user will be available after executing the
+    <code>build.web</code> sub-command.</p>
+  <p>The system works through a “genesis” file, which registers all commands, aliases, binds, and functions, along with
+    their documentation and super-strings. Each super-string contains information about predefined options for external
+    software or internal functions. With this design, and the fact that documentation and manuals are automatically
+    generated, we have a complete, extensible, and robust system ready for operational use.</p>
+  <p>NettravelerEX features an automated playbook generation system based on vulnerability and attack databases from
+    OWASP and AI support. It supports English and Brazilian Portuguese versions. This system is also used to generate
+    bug bounty reports.</p>
+  <p>From the genesis file, a parser combined with a template engine (built from scratch) generates Web, CLI, and API
+    interfaces. The most commonly used are CLI and Web. The API interface is experimental and may not function
+    correctly.</p>
+  <p><strong>Important: This project has a custom web server implemented from scratch using GO. This server allows code
+      execution and remote command execution, so it must not be exposed to any network. Always run it in localhost or
+      inside a NATed virtual machine.</strong></p>
+  <p>The user (you) interacts only with the interfaces, which provide a standardized way to engage with all submodules,
+    extensions, plugins, and native functions.</p>
+  <p>NettravelerEX does not rely on third-party libraries. It uses only code developed directly in Python, making it
+    highly portable, durable, and easy to install. Wherever a GNU/coreutils or coreutils-compatible system exists,
+    NettravelerEX will run.</p>
+  <h2>How to use:</h2>
+  <pre><code class="language-console">nettraveler [submodule] --arg1 value --arg2 option --arg3 123
+</code></pre>
+  <p>Whenever executing any function in NettravelerEX, you always start by defining which submodule to use, followed by
+    arguments written with <code>--</code>. The argument names are not standardized anymore, but they meaning can be
+    found in the rocketdb.json</p>
+  <p>About the submodule cosmic: Cosmic is my nickname, and I used it to address small and self-contained submodules
+    that would otherwise create unnecessary overhead.</p>
+  <p>Example:</p>
+  <pre><code class="language-console">chmod +x nettraveler.py
+./nettraveler.py version
+</code></pre>
+  <h2>Output modes</h2>
+  <h3>color (default)</h3>
+  <p>Adds <strong>ANSI terminal colors</strong> using UNIX escape codes. Suitable for <strong>interactive
+      terminals</strong>. Not safe for log files or automation.</p>
+  <p>Example:</p>
+  <pre><code class="language-bash">./nettraveler version
+</code></pre>
+  <h3>none</h3>
+  <p>Outputs <strong>plain UTF-8 text</strong>, no colors or formatting. Ideal for <strong>scripts</strong>,
+    <strong>logs</strong>, and <strong>automation</strong>.</p>
+  <p>Example:</p>
+  <pre><code class="language-bash">./nettraveler version --output_mode_none
+</code></pre>
+  <h3>html</h3>
+  <p>Generates <strong>HTML-formatted output</strong> using inline <code>&lt;span&gt;</code> and <code>style</code>.
+    Used for <strong>dashboards</strong>, <strong>reports</strong>, and <strong>web previews</strong>.</p>
+  <p>Example:</p>
+  <pre><code class="language-bash">./nettraveler version --output_mode_html
+</code></pre>
+  <h2>How to read the manual</h2>
+  <pre><code class="language-console">./nettraveler manual
+</code></pre>
+  <h2>How to create plugins</h2>
+  <p>There are three ways to create plugins in NettravelerEX: by using the rocketdb.json, by creating a new domain
+    inside auxiliary/modules, or by modifying the WebUI. In general: external shell commands go to rocketdb as a
+    super-string, python code is separated between logic and implementation. Logic goes to auxiliary/modules/mod_name
+    and the real implementation goes to infra/, such as network functions, headless browsers, or other low-level
+    functions. In the end, everything must be registered in rocketdb, except for extensions, templates, and WebUI
+    components.</p>
+  <p>Each file of your app can export more than one function, but you must return only the final functions. All must
+    accept argsv as a parameter, even if it is not used. In the example above, <code>sample_scan</code> does not use
+    argsv, but it still requires the <code>_</code> (underscore) as a parameter.</p>
+  <p>– auxiliary/settings.lua</p>
+  <pre><code class="language-python">from auxiliary.interface.web.generator import gen_wrapper
+from auxiliary.modules.genreport.reporter import gen_report_wrapper
+from auxiliary.modules.osint.keyword_scanner import keyword_scanner_wrapper
+from auxiliary.modules.scanner.dns import scanner_dns
+from auxiliary.modules.scanner.ip_score import scanner_ip_score_addr
+from auxiliary.modules.scanner.nmapper import nmapper
+from auxiliary.modules.server.server import server_wrapper, server_llama_wrapper, server_default_wrapper
+FN_REGISTRY = {
+    &quot;scanner.keyword&quot;: keyword_scanner_wrapper,
+    &quot;scanner.dns&quot;: scanner_dns,
+    &quot;scanner.ip&quot;: scanner_ip_score_addr,
+    &quot;scanner.nmapper&quot;: nmapper,
+    &quot;server&quot;: server_wrapper,
+    &quot;server.yuri&quot;: server_llama_wrapper,
+    &quot;server.default&quot;: server_default_wrapper,
+    &quot;build.web&quot;: gen_wrapper,
+    &quot;gen.report&quot;: gen_report_wrapper,
+}
+</code></pre>
+  <p>– data/database/rocketdb.json</p>
+  <pre><code class="language-json">{
+  &quot;index&quot;: [
+    {
+      &quot;arguments&quot;: {
+        &quot;value&quot;: {
+          &quot;description&quot;: &quot;Dummy example&quot;
+        }
+      },
+      &quot;command&quot;: &quot;echo @@value&quot;,
+      &quot;description&quot;: &quot;Random summy bind for testing&quot;,
+      &quot;extends&quot;: {},
+      &quot;name&quot;: &quot;test.dummy&quot;,
+      &quot;type&quot;: &quot;shell&quot;
+    }
+  ]
+}
+</code></pre>
+  <p>As you can see, the term <code>native.</code> indicates to the parser that it is a function, not an external
+    software call. Arguments such as <code>address</code> and <code>option</code> are marked with <code>@@</code>,
+    meaning they are magic_docs arguments.</p>
+  <p>To define predefined options:</p>
+  <p>– data/database/rocketdb.json</p>
+  <pre><code class="language-json">{
+  &quot;index&quot;: [
+            {
+            &quot;arguments&quot;: {
+                &quot;scripts&quot;: {
+                    &quot;description&quot;: &quot;Setup one of nmap default scripts&quot;,
+                    &quot;options&quot;: [
+                        &quot;auth&quot;,
+                        &quot;broadcast&quot;,
+                         ...
+  						  ...
+                        &quot;traveler&quot;
+                    ]
+                },
+                &quot;target&quot;: {
+                    &quot;description&quot;: &quot;Refers to an IPv4 or IPv6 or domain name&quot;
+                }
+            },
+            &quot;command&quot;: &quot;scan.nmapper @@target @@scripts&quot;,
+            &quot;description&quot;: &quot;Perform NMAP scanning&quot;,
+            &quot;name&quot;: &quot;native.scanner.nmapper&quot;
+        },
+  ]
+}
+</code></pre>
+  <p>Now, <code>@@optio</code> tells the parser that <code>foo</code> and <code>bar</code> are valid predefined options
+    for the <code>option</code> argument. Execution would look like this:</p>
+  <pre><code class="language-console">nettraveler scanner.myapp --address 172.16.123.123 --option foo
+</code></pre>
+  <h2>How external aliases and binds work</h2>
+  <p>The first example shows a simple alias that does not require any arguments. The second example requires an argument
+    named address.</p>
+  <pre><code class="language-json">{
+  &quot;index&quot;: [
+    {
+      &quot;command&quot;: &quot;ss -tupran&quot;,
+      &quot;description&quot;: &quot;Scan local open connections&quot;,
+      &quot;extends&quot;: {},
+      &quot;name&quot;: &quot;map.local&quot;,
+      &quot;type&quot;: &quot;shell&quot;
+    },
+    {
+      &quot;command&quot;: &quot;curl ip.me&quot;,
+      &quot;description&quot;: &quot;Show the current ip address&quot;,
+      &quot;extends&quot;: {},
+      &quot;name&quot;: &quot;map.myip&quot;,
+      &quot;type&quot;: &quot;shell&quot;
+    }
+  ]
+}
+</code></pre>
+  <p>Execution examples:</p>
+  <pre><code class="language-console">nettraveler map.local
+nettraveler ftp.connect --address 172.16.123.123
+</code></pre>
+  <h2>WebUI</h2>
+  <p>The <strong>WebUI</strong> is a simple <strong>SPA</strong> (Single Page Application) built from scratch using
+    <strong>HTMX</strong>. The preference for <strong>HTMX</strong> instead of <strong>React</strong> or any other
+    library is due to its simplicity, and the fact that you don’t need to install anything besides
+    <strong>coreutils</strong> and some CLI tools like <strong>nmap</strong>. In the near future, you may find a folder
+    inside <code>data</code> called <code>mod/webui</code>; any file placed in this folder will be included inside the
+    final <strong>SPA</strong>.</p>
+  <p>While creating this framework, sometimes there was a need to fill a form, but directly in the terminal it felt
+    limiting. So the idea came: why not just use an <strong>HTML</strong> form and an <strong>API</strong>? From that
+    thought, and after three attempts, this <strong>WebUI</strong> was created. It’s portable, simple, extensible, and
+    more: it is generated using <code>nettraveler build.web</code>, making it easy to maintain and upgrade through the
+    <strong>extensions system</strong>.</p>
+  <p>The WebUI must run on the same IP address and port as the server. For example, if the WebUI is configured for
+    127.0.0.1:5500, the server must also use this address—otherwise, requests will fail. Additionally, the WebUI and
+    server must share the same token. This token is not for authentication but acts as an owner identifier. Be aware
+    that all communication happens in plain text, so use this setup only in secure environments.</p>
+  <h2>Templates</h2>
+  <h3>What is a Template?</h3>
+  <p>A <strong>template</strong> is a <strong>python variable</strong> containing <strong>HTML</strong> code and
+    <code>@@UPPERCASE</code> placeholders. At the end of the module, you should export (return) only the table.
+    Templates should be <strong>simple</strong>, <strong>small</strong>, and <strong>reusable</strong>. If your code is
+    unique and not general-purpose, you may prefer to build one or more <strong>extensions</strong> instead.</p>
+  <p>Example:</p>
+  <pre><code class="language-python">section_form_select = &quot;&quot;&quot;
+    &lt;div class=&quot;form-text&quot;&gt;
+        &lt;h3 class=&quot;form-title&quot;&gt;@@FTITLE&lt;/h3&gt;
+        &lt;select name=&quot;@@IDFNAME&quot; id=&quot;@@IDFNAME&quot; class=&quot;form-select&quot;&gt;
+            @@FOPTIONS
+        &lt;/select&gt;
+    &lt;/div&gt;
+&quot;&quot;&quot;
+</code></pre>
+  <h2>Extensions</h2>
+  <h3>What is a Extension?</h3>
+  <p><strong>extensions</strong> are a special kind of <strong>component</strong>, but with a very specific structure.
+    These extensions contain a fixed base structure and must follow a pattern like the example below. In short, you will
+    have a <code>&lt;section&gt;</code> tag like
+    <code>&lt;section class=&quot;content-sec&quot; id=&quot;SOMENAME&quot;&gt;</code> and a corresponding button like
+    <code>&lt;button type=&quot;submit&quot; class=&quot;sidebar-submit&quot; onclick=&quot;toggleSection('SOMENAME')&quot;&gt;SOMENAME&lt;/button&gt;</code>.
+    As you can see, <code>SOMENAME</code> has a clear role to identify the section and link it to the
+    <strong>SPA</strong> logic. This name should always be <strong>unique</strong> and <strong>lowercase</strong>.</p>
+  <pre><code class="language-python">haki =&quot;&quot;&quot;
+    &lt;section class=&quot;content-sec&quot; id=&quot;haki&quot;&gt;
+        &lt;div class=&quot;haki&quot;&gt;
+            &lt;div class=&quot;haki-search-ctn&quot;&gt;
+                &lt;input type=&quot;text&quot; class=&quot;haki_search&quot; id=&quot;haki_search&quot; name=&quot;haki_search&quot;
+                    placeholder=&quot;Enter NettravalerEX.v6 script here!&quot;&gt;
+                &lt;input class=&quot;haki_search haki_go&quot; type=&quot;submit&quot; hx-get=&quot;@@GEN_HOST&quot;
+                    hx-include=&quot;#haki_search&quot; hx-target=&quot;#haki_output&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;outputer haki_putter&quot; id=&quot;haki_output&quot;&gt;
+                &lt;p&gt;neko hackers inside &gt;_&lt;&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+&quot;&quot;&quot;
+
+haki = {
+    &quot;section&quot;: haki,
+    &quot;buttom&quot;: '&lt;button type=&quot;submit&quot; class=&quot;sidebar-submit&quot; onclick=&quot;toggleSection(\'haki\')&quot;&gt;㊊ Haki search&lt;/button&gt;'
+}
+</code></pre>
+  <h2>Embedded Server</h2>
+  <p>This server addresses multiple concerns: it is <strong>portable</strong>, <strong>statically linked</strong>, and
+    <strong>free of external dependencies</strong>, consistent with the overall design of the project. It also enables a
+    <strong>web interface to be served easily</strong>, even in <strong>restricted environments</strong> such as
+    <strong>Orange Pi</strong> or <strong>smartphones</strong>.</p>
+  <p>To serve the WebUI using the server, run:</p>
+  <pre><code class="language-console">nettraveler cosmic.server --host 127.0.0.1 --port 5500 --folder webui/
+</code></pre>
+  <p>The server will create a log file named <code>evil_server.log</code> containing all <strong>POST requests</strong>.
+    If the IP address you provide matches the value set in the <code>GEN_HOST</code> global variable within the WebUI,
+    the server will operate as intended and serve the page normally. However, if a different IP or port is configured,
+    the page will still be served, but <strong>command requests will be blocked by default</strong>.</p>
+  <p>To serve a static or malicious page manually, use the following command:</p>
+  <pre><code class="language-console">nettraveler server --host 127.0.0.1 --port 5500 --folder data/evilpages/default
+</code></pre>
+  <p>Let me know if you want the GEN_HOST behavior hardened or fallback logic implemented.</p>
+  <h2>Artificial Inteligency Assistant</h2>
+  <p>It’s the default LLaMA with some tweaks and using an uncensored AI model. To serve the WebUI with the AI assistant,
+    you need at least 12 GB of RAM and must run the full web server with <code>--full yes</code>.</p>
+  <pre><code class="language-console">nettraveler server.yuri --host 127.0.0.1 --port 5500 --folder webui/ --full yes
+</code></pre>
+  <p><strong>or by using the default option</strong></p>
+  <pre><code class="language-console">nettraveler server.default
+</code></pre>
+  <h2>Playbooks and Reports</h2>
+  <p>The <code>cosmic.report</code> module is a <strong>comprehensive feature</strong> for generating manual and
+    autonomous security reports. It was originally designed for <strong>bug bounty operations</strong>, but it is
+    <strong>not limited to vulnerability disclosure</strong>—it can support any structured Red Team or assessment
+    reporting. All generated reports are saved to the path: <code>DATAROOT/reports</code> (typically
+    <code>data/reports/</code>).</p>
+  <p>This module includes two main stages:</p>
+  <ol>
+    <li>A <strong>selection stage</strong>, where it generates a list of vulnerabilities and attacks for a specified
+      language (such as <strong>English</strong> <code>en</code> or <strong>Portuguese</strong> <code>br</code>). These
+      are mapped using OWASP-based lists.</li>
+    <li>A <strong>configuration stage</strong>, where you define a set of parameters to customize how the report is
+      generated.</li>
+  </ol>
+  <p>The following table explains each parameter available for report generation:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Optional</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>title</code></td>
+        <td>No</td>
+        <td>Sets the report title. This also determines the output file name.</td>
+      </tr>
+      <tr>
+        <td><code>lang</code></td>
+        <td>No</td>
+        <td>Sets the report language. Currently supports <code>en</code> (English) and <code>br</code> (Portuguese).
+        </td>
+      </tr>
+      <tr>
+        <td><code>vulns_options</code></td>
+        <td>Yes</td>
+        <td>Lists all mapped OWASP-based vulnerabilities available for selection.</td>
+      </tr>
+      <tr>
+        <td><code>attacks_options</code></td>
+        <td>Yes</td>
+        <td>Lists all mapped OWASP-based attack types available for selection.</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Optional</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>noprint</code></td>
+        <td>Yes</td>
+        <td>If set to <code>yes</code>, the report is not written to disk.</td>
+      </tr>
+      <tr>
+        <td><code>system_type</code></td>
+        <td>Yes</td>
+        <td>Defines the target stack or platform, e.g., <code>web/html</code>, <code>web/api</code>,
+          <code>mobile/apk</code>.</td>
+      </tr>
+      <tr>
+        <td><code>vector</code></td>
+        <td>Yes</td>
+        <td>Specifies the domain, URL, or application name being tested.</td>
+      </tr>
+      <tr>
+        <td><code>stack</code></td>
+        <td>Yes</td>
+        <td>Describes the technologies in use: <code>html</code>, <code>css</code>, <code>js</code>, <code>java</code>,
+          <code>asp</code>, etc.</td>
+      </tr>
+      <tr>
+        <td><code>vulns</code></td>
+        <td>Yes</td>
+        <td>List of vulnerability IDs to include, e.g., <code>1</code>, <code>1,2</code>, or <code>1,44,22</code>.</td>
+      </tr>
+      <tr>
+        <td><code>attacks</code></td>
+        <td>Yes</td>
+        <td>List of attack IDs to include, following the same format as <code>vulns</code>.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Risk Rating System</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Level (0-10)</th>
+        <th>Severity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>10 - Critical</strong></td>
+        <td>Exploitation can cause severe damage (e.g., data breaches, full system compromise).</td>
+      </tr>
+      <tr>
+        <td><strong>7-9 - High</strong></td>
+        <td>Significant vulnerability but may require specific conditions to exploit.</td>
+      </tr>
+      <tr>
+        <td><strong>4-6 - Medium</strong></td>
+        <td>Moderate impact, often exploitable in combination with other flaws.</td>
+      </tr>
+      <tr>
+        <td><strong>1-3 - Low</strong></td>
+        <td>Minimal risk, usually related to suboptimal configurations.</td>
+      </tr>
+      <tr>
+        <td><strong>0 - Negligible</strong></td>
+        <td>No direct security impact, but improvements are possible.</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>Cosmic Guide for Hacking</h2>
+  <h3>Checkout <a href="https://cosmic-zip.github.io/">cosmic wiki</a></h3>
+
+</body>
+
+</html>

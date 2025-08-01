@@ -1,0 +1,243 @@
+:root {
+    --text-color: aliceblue;
+    --ancient: #c607fb;
+    --contrast: black;
+    --dk-ancient: #a40099;
+    --warning: rgba(0, 42, 140, 0.8);
+    --bg: #666666;
+    --error: rgba(108, 0, 0, 0.8);
+    --ok: rgb(0, 116, 128);
+
+
+}
+
+main,
+.sidebar,
+.outputer,
+.form-ctn form {
+    scrollbar-width: thin;
+    scrollbar-color: black;
+
+}
+
+body {
+    background: #124245;
+    background: linear-gradient(207deg, rgba(18, 66, 69, 1) 0%, rgba(125, 89, 27, 1) 39%, rgba(115, 4, 125, 1) 100%);
+    background-image: url(bg2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(123, 120, 120);
+    color: var(--text-color);
+    height: 100vh;
+    overflow-y: hidden;
+    font-family: monospace;
+    margin: 0px;
+    padding: 20px;
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+header {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    height: 20px;
+    background: #000000de;
+}
+
+main {
+    height: calc(100vh - 104px);
+    overflow: hidden;
+    /* background: #000000b0; */
+    /* border-radius: 10px; */
+    /* padding: 10px; */
+    display: grid;
+    grid-template-columns: 300px auto;
+}
+
+.sidebar {
+    width: 250px;
+    border-radius: 10px 0px 0px 10px;
+    padding: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background: #000000b0;
+    border-radius: 10px;
+}
+
+.sidebar-submit {
+    text-align: left;
+    padding-left: 8px;
+    border-radius: 4px;
+    border: solid 2px var(--ancient);
+    color: var(--text-color);
+    background-color: black;
+    width: 250px;
+    margin-bottom: 8px;
+    padding: 2px 2px 2px 16px;
+}
+
+.sidebar-submit:hover {
+    background-color: var(--dk-ancient);
+}
+
+.container {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background: #000000b0;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.content-sec {
+    display: none;
+    width: calc(100vw - 350px) !important;
+}
+
+.outputer {
+    padding: 10px;
+    border: solid 2px var(--ancient);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    height: 40vh;
+    overflow: scroll;
+    width: calc(100vw - 390px);
+    background-color: #15001bb6;
+    font-size: 14px;
+}
+
+.outputer-xl {
+    height: calc(100vh - 230px) !important;
+}
+
+.sec-header {
+    width: calc(100vw - 387px);
+}
+
+.hint {
+    width: calc(100vw - 390px);
+    height: 80px;
+    overflow: scroll;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: var(--warning);
+    color: var(--text-color);
+}
+
+.hint-error {
+    background-color: var(--error);
+}
+
+.btn-downloader {
+    border-radius: 4px;
+    border: solid 2px var(--ancient);
+    color: var(--text-color);
+    background-color: var(--contrast);
+}
+
+.btn-downloader:hover {
+    background-color: var(--ancient);
+}
+
+.form-text {
+    max-width: 300px;
+    background-color: black;
+    margin: 10px 0px 10px;
+    padding: 2px;
+    border-radius: 4px;
+    border: solid 2px var(--ancient);
+}
+
+.form-title {
+    font-weight: bold;
+    margin: 2px;
+}
+
+.form-text-input {
+    width: 280px;
+    border: none;
+    background: var(--bg);
+    padding: 10px;
+    background: var(--dk-ancient);
+    color: var(--text-color);
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.form-text-input:focus {
+    border: none;
+}
+
+.form-text-submit:hover {
+    background-color: var(--ancient);
+}
+
+.form-text-submit {
+    width: 300px;
+    height: 38px;
+    border: none;
+    background: var(--ok);
+    color: var(--text-color);
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.form-select {
+    width: 300px;
+    border: none;
+    background: var(--bg);
+    padding: 10px;
+    border-radius: 2px;
+    background: var(--dk-ancient);
+    color: var(--text-color);
+    font-weight: bold;
+    border-radius: 2px;
+
+}
+
+.form-ctn {
+    width: calc(100vw - 390px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 310px);
+    gap: 10px;
+}
+
+.haki {}
+
+.haki-search-ctn {
+    display: grid;
+    justify-items: center;
+    width: calc(100vw - 400px);
+    grid-gap: 20px;
+    margin-bottom: 30px;
+}
+
+.haki_search {
+    width: calc(100vw - 400px);
+    height: 40px;
+    border-radius: 50px;
+    border: solid 2px var(--dk-ancient);
+    background-color: var(--contrast);
+    padding: 8px 16px 8px 16px;
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.haki_putter {
+    height: calc(100vh - 340px);
+}
+
+.haki_go {
+    width: 180px;
+    height: 60px;
+}
+
+.haki_go:hover {
+    background-color: var(--dk-ancient);
+}

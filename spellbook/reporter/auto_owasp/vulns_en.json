@@ -1,0 +1,508 @@
+{
+    "index": [
+        {
+            "id": 1,
+            "name": "Allowing Domains or Accounts to Expire",
+            "description": "Failing to renew domains or accounts can allow attackers to hijack them for malicious use.",
+            "mitigation": "Set up automated domain renewal and assign responsibility for account maintenance. Use calendar alerts, centralized domain management tools, or registrar APIs to monitor expiration dates.\nEnsure contact emails for domain ownership are monitored.\nImplement domain monitoring services to detect suspicious re-registrations of previously-owned assets.",
+            "severity_score": 9,
+            "severity_level": "High"
+        },
+        {
+            "id": 2,
+            "name": "Buffer Overflow",
+            "description": "Occurs when data exceeds buffer boundaries, potentially allowing arbitrary code execution.",
+            "mitigation": "Use memory-safe languages like Rust or Java when possible. In C/C++, apply bounds checking with functions like `strncpy` instead of `strcpy`, and enable compiler protections such as stack canaries and ASLR.\nTools to help include: AddressSanitizer, Valgrind, and static analyzers.\nRegularly audit and fuzz test input-handling code.",
+            "severity_score": 10,
+            "severity_level": "Critical"
+        },
+        {
+            "id": 3,
+            "name": "Business Logic Vulnerability",
+            "description": "Flaws in application workflows that let users bypass intended rules or restrictions.",
+            "mitigation": "Conduct threat modeling during design to identify risky flows. Implement server-side enforcement of all critical rules—never trust client-side checks.\nPerform security-focused code reviews and logic testing.\nFor example, ensure discount limits can’t be exceeded or approvals aren't bypassed via crafted requests.",
+            "severity_score": 8,
+            "severity_level": "High"
+        },
+        {
+            "id": 4,
+            "name": "CRLF Injection",
+            "description": "Injecting carriage return and line feed characters to manipulate HTTP responses or logs.",
+            "mitigation": "Sanitize all user input that could affect headers or logs. Strip or encode CR (`\r`) and LF (`\n`) characters before output.\nIn web applications, use frameworks that handle headers safely.\nFor example, never allow input like `%0d%0aSet-Cookie:` to pass directly into a response.",
+            "severity_score": 6,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 5,
+            "name": "CSV Injection",
+            "description": "Malicious spreadsheet content exploits formula parsing when files are opened in Excel-like tools.",
+            "mitigation": "Prefix cells that begin with `=`, `+`, `-`, or `@` with a `'` (apostrophe) before exporting to CSV.\nUse libraries that escape formulas automatically.\nFor example, turn `=cmd|' /C calc'!A0` into `'=cmd|' /C calc'!A0` to prevent execution.\nValidate and sanitize fields like names and emails before output.",
+            "severity_score": 7,
+            "severity_level": "High"
+        },
+        {
+            "id": 6,
+            "name": "Catch NullPointerException",
+            "description": "Catching null dereference errors instead of preventing them can hide deeper logic flaws.",
+            "mitigation": "Avoid catching NullPointerException unless part of a broader fault tolerance mechanism. Instead:\n• Use optional types or explicit null checks (e.g., `if (obj != null)`)\n• Apply static analysis to detect null-safety issues\n• In Java, consider `@NonNull` annotations and tools like SpotBugs to flag risky patterns",
+            "severity_score": 2,
+            "severity_level": "Low"
+        },
+        {
+            "id": 7,
+            "name": "Covert Storage Channel",
+            "description": "Using shared resources to secretly transmit information between processes.",
+            "mitigation": "Design systems to isolate sensitive processes using strict resource boundaries. Examples:\n• Use separate memory spaces or containers\n• Avoid shared logs or variables across trust boundaries\n• Implement mandatory access control (e.g., SELinux) to block unauthorized sharing\nReview architecture for side-channel leakage risks.",
+            "severity_score": 1,
+            "severity_level": "Low"
+        },
+        {
+            "id": 8,
+            "name": "Deserialization of Untrusted Data",
+            "description": "Processing untrusted serialized data can lead to remote code execution or logic manipulation.",
+            "mitigation": "Never deserialize input from untrusted sources without strict controls. Use whitelisting to limit allowed classes or switch to safer formats like JSON.\nIn Java, avoid native Java serialization; use Jackson or Gson with custom deserializers.\nApply runtime guards and filters (e.g., Apache Commons ObjectInputFilter).",
+            "severity_score": 10,
+            "severity_level": "Critical"
+        },
+        {
+            "id": 9,
+            "name": "Directory Restriction Error",
+            "description": "Improper checks allow access to restricted directories or unauthorized files.",
+            "mitigation": "Normalize and validate file paths before access. Use secure APIs that prevent directory traversal.\nAvoid using raw user input in file paths; instead, map requests to known, whitelisted directories.\nExample: prevent access to `../../etc/passwd` by rejecting `..` or using canonical path comparison.",
+            "severity_score": 7,
+            "severity_level": "High"
+        },
+        {
+            "id": 10,
+            "name": "Doubly Freeing Memory",
+            "description": "Freeing memory twice can corrupt memory management structures and lead to exploitation.",
+            "mitigation": "Use memory-safe languages or tools that detect double frees. In C/C++, set pointers to `NULL` immediately after freeing.\nExample:\n```c\nfree(ptr);\nptr = NULL;\n```\nUse sanitizers like AddressSanitizer or Valgrind to catch memory misuse during testing.",
+            "severity_score": 9,
+            "severity_level": "High"
+        },
+        {
+            "id": 11,
+            "name": "Empty String Password",
+            "description": "Using an empty string as a password allows unauthorized access due to lack of authentication.",
+            "mitigation": "Implement strict server-side validation rules to prevent account creation or login with empty passwords.\nUse a password policy that enforces minimum length, complexity, and disallows empty strings.\nAudit legacy accounts for weak credentials and enforce password resets where needed.",
+            "severity_score": 5,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 12,
+            "name": "Expression Language Injection",
+            "description": "Malicious input is interpreted as code in expression languages like EL, OGNL, or MVEL, leading to remote code execution.",
+            "mitigation": "Avoid directly embedding user-controlled input into expression contexts.\nUse safe APIs or disable dangerous EL features.\nExample: In Java, avoid exposing EL expressions like `${userInput}` directly in views; sanitize or validate input strictly.",
+            "severity_score": 8,
+            "severity_level": "High"
+        },
+        {
+            "id": 13,
+            "name": "Full Trust CLR Verification issue",
+            "description": "Running untrusted code with Full Trust in .NET bypasses security boundaries, allowing arbitrary execution.",
+            "mitigation": "Restrict Full Trust to only fully verified, signed assemblies.\nUse sandboxing or AppDomains with limited permissions.\nExample: Avoid `LoadFrom` or dynamic loading without verifying publisher and integrity.",
+            "severity_score": 8,
+            "severity_level": "High"
+        },
+        {
+            "id": 14,
+            "name": "Heartbleed Bug",
+            "description": "A flaw in OpenSSL's heartbeat extension allowed attackers to read memory contents from servers.",
+            "mitigation": "Upgrade OpenSSL to 1.0.1g or later.\nReissue all potentially compromised certificates and change private keys.\nConduct post-incident reviews and add automated checks for vulnerable versions.",
+            "severity_score": 10,
+            "severity_level": "Critical"
+        },
+        {
+            "id": 15,
+            "name": "Improper Data Validation",
+            "description": "Failure to enforce data type, format, or range checks can lead to injection and logic issues.",
+            "mitigation": "Apply whitelisting for input validation.\nValidate at all trust boundaries.\nUse schema validation for JSON, XML, and structured input.\nReject unexpected input types or ranges early in processing.",
+            "severity_score": 6,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 16,
+            "name": "Improper Pointer Subtraction",
+            "description": "Incorrect subtraction between pointers can cause out-of-bounds memory access.",
+            "mitigation": "Ensure pointer arithmetic stays within allocated buffer boundaries.\nUse array indexing when possible and enable compiler warnings.\nTools like UBSan can detect these issues at runtime.",
+            "severity_score": 6,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 17,
+            "name": "Information Exposure Through Query Strings",
+            "description": "Putting sensitive data in URLs exposes it to logs, referrers, and browser history.",
+            "mitigation": "Transmit sensitive data in POST bodies, not GET parameters.\nScrub logs to remove sensitive parameters.\nFor example, use form submissions for password resets rather than query links.",
+            "severity_score": 7,
+            "severity_level": "High"
+        },
+        {
+            "id": 18,
+            "name": "Injection Problem",
+            "description": "Untrusted input interpreted as commands or code by an interpreter can lead to full compromise.",
+            "mitigation": "Use parameterized queries, templating engines, and encoding strategies.\nNever concatenate user input into SQL, HTML, or shell commands.\nTools like ORM libraries can help prevent this class of bugs.",
+            "severity_score": 9,
+            "severity_level": "High"
+        },
+        {
+            "id": 19,
+            "name": "Insecure Deserialization",
+            "description": "Unsafe deserialization of data from untrusted sources can result in code execution or privilege escalation.",
+            "mitigation": "Avoid native object deserialization for untrusted data.\nUse formats like JSON or protobuf with strict schemas.\nExample: Disable Java serialization, use Jackson with class whitelists instead.",
+            "severity_score": 10,
+            "severity_level": "Critical"
+        },
+        {
+            "id": 20,
+            "name": "Insecure Compiler Optimization",
+            "description": "Assumptions made during optimization may alter program behavior, potentially skipping safety checks.",
+            "mitigation": "Test under all compiler optimization levels.\nReview compiler flags and avoid unsafe options (e.g., `-fno-stack-protector`).\nUse `volatile` or memory barriers where ordering must be preserved.",
+            "severity_score": 5,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 21,
+            "name": "Insecure Randomness",
+            "description": "Using predictable sources for random numbers can compromise cryptographic operations.",
+            "mitigation": "Use cryptographically secure RNGs (e.g., `/dev/urandom`, `java.security.SecureRandom`).\nAvoid `rand()` or `Math.random()` for security-sensitive tasks.\nSeed RNGs with high-entropy sources.",
+            "severity_score": 9,
+            "severity_level": "High"
+        },
+        {
+            "id": 22,
+            "name": "Insecure Temporary File",
+            "description": "Temporary files created insecurely can be overwritten or read by attackers.",
+            "mitigation": "Use OS-native secure temp file APIs (e.g., `mkstemp`, `tmpfile`).\nSet appropriate permissions (0600) and avoid predictable names.\nClean up temp files on exit to avoid exposure.",
+            "severity_score": 6,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 23,
+            "name": "Insecure Third Party Domain Access",
+            "description": "Unverified third-party scripts or domains may load insecure content or be hijacked.",
+            "mitigation": "Use Subresource Integrity (SRI) for CDN scripts.\nSelf-host critical assets when possible.\nReview CORS and CSP headers to limit domain interaction.\nAvoid embedding scripts from unknown origins.",
+            "severity_score": 7,
+            "severity_level": "High"
+        },
+        {
+            "id": 24,
+            "name": "Insecure Transport",
+            "description": "Data transmitted over unencrypted channels is vulnerable to interception.",
+            "mitigation": "Enforce HTTPS with HSTS.\nDisable weak SSL/TLS protocols.\nUse strong cipher suites and monitor for certificate expiration.\nExample: Enable TLS 1.2+, disable SSLv3.",
+            "severity_score": 9,
+            "severity_level": "High"
+        },
+        {
+            "id": 25,
+            "name": "Insufficient Entropy",
+            "description": "Low entropy in key or token generation allows brute-force attacks.",
+            "mitigation": "Use OS-level secure random functions.\nGenerate at least 128 bits of entropy for session tokens or keys.\nAvoid deterministic algorithms or static seeds.",
+            "severity_score": 8,
+            "severity_level": "High"
+        },
+        {
+            "id": 26,
+            "name": "Insufficient Session ID Length",
+            "description": "Short or predictable session tokens can be guessed by attackers.",
+            "mitigation": "Use long, random session identifiers (128+ bits).\nStore securely and expire them after inactivity.\nExample: Use UUIDv4 or cryptographic random strings.",
+            "severity_score": 8,
+            "severity_level": "High"
+        },
+        {
+            "id": 27,
+            "name": "Least Privilege Violation",
+            "description": "Granting more permissions than necessary increases risk if compromised.",
+            "mitigation": "Apply the principle of least privilege to all users, services, and applications.\nReview permissions regularly.\nExample: Don't run apps as root unless absolutely necessary.",
+            "severity_score": 7,
+            "severity_level": "High"
+        },
+        {
+            "id": 28,
+            "name": "Memory Leak",
+            "description": "Failure to release memory can lead to resource exhaustion and denial of service.",
+            "mitigation": "Use tools like Valgrind, LeakSanitizer, or JVM profilers to monitor memory usage.\nIn garbage-collected languages, break circular references or finalize resources properly.\nExample: Always close streams in Java using try-with-resources.",
+            "severity_score": 5,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 29,
+            "name": "Missing Error Handling",
+            "description": "Uncaught errors can expose stack traces or leave systems in unstable states.",
+            "mitigation": "Implement consistent error handling across all components.\nCatch and log exceptions appropriately without revealing internal details to users.\nUse structured logging to aid incident response.",
+            "severity_score": 4,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 30,
+            "name": "Missing XML Validation",
+            "description": "Unvalidated XML input may lead to XXE, schema violations, or parsing errors.",
+            "mitigation": "Use XML schemas (XSD) to validate input.\nDisable DTDs to prevent XXE.\nUse secure parsers and avoid external entities.\nFor example, in Java, configure SAX parser with `setFeature(\"http://apache.org/xml/features/disallow-doctype-decl\", true)`.",
+            "severity_score": 7,
+            "severity_level": "High"
+        },
+        {
+            "id": 31,
+            "name": "Multiple Admin Levels",
+            "description": "Unclear or overlapping admin roles can lead to privilege escalation or configuration errors.",
+            "mitigation": "Define clear access control roles and enforce role-based access control (RBAC).\nUse the principle of least privilege when assigning administrative permissions.\nFor example, separate super admins, audit-only admins, and content managers with specific permissions.",
+            "severity_score": 6,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 32,
+            "name": "Null Dereference",
+            "description": "Accessing null pointers causes crashes or undefined behavior.",
+            "mitigation": "Use static analysis tools and nullability annotations to catch potential null accesses at compile time.\nIn Java, apply `Optional` types or checks like `if (object != null)`.\nIn C/C++, verify pointer initialization and validate before dereference.",
+            "severity_score": 4,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 33,
+            "name": "OWASP .NET Vulnerability Research",
+            "description": "Security issues specific to .NET frameworks, often related to trust levels, viewstate, or reflection.",
+            "mitigation": "Apply the latest security patches to .NET.\nAvoid using `ViewState` without MAC enabled.\nUse `CodeAccessSecurity` and input validation.\nExample: In ASP.NET, set `ViewStateEncryptionMode` to `Always` for sensitive forms.",
+            "severity_score": 6,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 34,
+            "name": "Overly Permissive Regular Expression",
+            "description": "Loosely defined regex patterns may allow unintended inputs or ReDoS (Regex Denial of Service).",
+            "mitigation": "Use strict regex definitions and avoid nested quantifiers.\nUse input length limits to constrain performance.\nExample: Replace `(a+)+` with a more deterministic alternative or pre-validate with fixed-length filters.",
+            "severity_score": 5,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 35,
+            "name": "PHP File Inclusion",
+            "description": "Dynamic file inclusion in PHP (e.g., `include($_GET['file'])`) can allow remote or local file execution.",
+            "mitigation": "Avoid using dynamic file paths from user input.\nUse whitelisted filenames and `basename()` to validate paths.\nDisable `allow_url_include` and `allow_url_fopen` in `php.ini`.",
+            "severity_score": 9,
+            "severity_level": "High"
+        },
+        {
+            "id": 36,
+            "name": "PHP Object Injection",
+            "description": "Untrusted PHP object deserialization can result in code execution or property manipulation.",
+            "mitigation": "Avoid using `unserialize()` on untrusted input.\nUse JSON or protobuf instead of native PHP serialization.\nAudit classes for magic methods like `__wakeup()` or `__destruct()` that can be abused.",
+            "severity_score": 9,
+            "severity_level": "High"
+        },
+        {
+            "id": 37,
+            "name": "PRNG Seed Error",
+            "description": "Predictable or repeated seeds weaken random number security, impacting cryptographic strength.",
+            "mitigation": "Use OS-level secure PRNGs that automatically manage entropy.\nAvoid manual seeding unless using unpredictable sources.\nInsecure: `srand(time(NULL))`; Secure: `random_bytes()` in PHP 7+.",
+            "severity_score": 7,
+            "severity_level": "High"
+        },
+        {
+            "id": 38,
+            "name": "Password Management Hardcoded Password",
+            "description": "Embedding static passwords in source code allows easy extraction and reuse by attackers.",
+            "mitigation": "Use secret management systems (e.g., Vault, AWS Secrets Manager).\nNever store secrets in source repositories.\nScan codebases for known patterns (e.g., `password = \"`) and rotate any exposed credentials.",
+            "severity_score": 10,
+            "severity_level": "Critical"
+        },
+        {
+            "id": 39,
+            "name": "Password Plaintext Storage",
+            "description": "Storing passwords without hashing exposes all user accounts if compromised.",
+            "mitigation": "Use strong, salted hashing algorithms like bcrypt, scrypt, or Argon2.\nNever store passwords in plaintext—even temporarily.\nExample: Replace MD5 or SHA1 with `bcrypt(password, salt)`.",
+            "severity_score": 10,
+            "severity_level": "Critical"
+        },
+        {
+            "id": 40,
+            "name": "Poor Logging Practice",
+            "description": "Logs that contain sensitive data can leak credentials or PII if improperly handled.",
+            "mitigation": "Redact or hash sensitive fields before logging (e.g., passwords, tokens).\nSet appropriate log retention and access controls.\nUse structured logging and audit logging for security-relevant events only.",
+            "severity_score": 6,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 41,
+            "name": "Portability Flaw",
+            "description": "Platform-dependent code behaves inconsistently across environments, potentially breaking security assumptions.",
+            "mitigation": "Avoid using OS-specific features unless abstracted.\nTest on all supported platforms (e.g., file paths in Windows vs Linux).\nUse cross-platform libraries and define compatibility boundaries explicitly.",
+            "severity_score": 3,
+            "severity_level": "Low"
+        },
+        {
+            "id": 42,
+            "name": "Privacy Violation",
+            "description": "Applications that expose or mishandle user data breach privacy laws and trust.",
+            "mitigation": "Minimize data collection, apply data retention limits, and use encryption for stored and transmitted data.\nReview compliance with regulations (e.g., GDPR, CCPA).\nExample: Avoid exposing PII in URLs or error messages.",
+            "severity_score": 7,
+            "severity_level": "High"
+        },
+        {
+            "id": 43,
+            "name": "Process Control",
+            "description": "Allowing user input to influence system-level process execution may lead to command injection.",
+            "mitigation": "Use safe APIs like `execve` with argument arrays rather than shell commands.\nEscape or validate all command inputs.\nBetter: avoid calling shell commands entirely from web contexts.",
+            "severity_score": 8,
+            "severity_level": "High"
+        },
+        {
+            "id": 44,
+            "name": "Return Inside Finally Block",
+            "description": "Returning from within a `finally` block can mask exceptions and lead to logic bugs.",
+            "mitigation": "Avoid placing `return` statements in `finally` blocks.\nEnsure cleanup logic is isolated from control flow.\nStatic analysis tools can help detect such usage patterns.",
+            "severity_score": 4,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 45,
+            "name": "Session Variable Overloading",
+            "description": "Using session variables inconsistently can result in privilege confusion or data leakage between users.",
+            "mitigation": "Use consistent naming schemes and data types for session keys.\nAvoid storing user-controlled input directly in session.\nInvalidate sessions on logout and regenerate session IDs on privilege changes.",
+            "severity_score": 6,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 46,
+            "name": "String Termination Error",
+            "description": "Improper null termination in strings can cause buffer overreads or leaks.",
+            "mitigation": "Use safe string functions that require buffer sizes, like `strncpy` instead of `strcpy`.\nIn C, always manually null-terminate if the function doesn't.\nUse static analysis to detect unterminated strings.",
+            "severity_score": 5,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 47,
+            "name": "Unchecked Error Condition",
+            "description": "Failing to check return codes or exceptions can lead to unhandled errors and unexpected behavior.",
+            "mitigation": "Always handle return values from I/O, memory allocation, and system calls.\nUse linters or static analyzers to detect unchecked operations.\nIn Go, for example, use `if err != nil` consistently.",
+            "severity_score": 5,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 48,
+            "name": "Unchecked Return Value Missing Check against Null",
+            "description": "Assuming a returned object is always valid without checking for null can cause crashes or logic flaws.",
+            "mitigation": "Always validate return values from functions that may fail.\nUse null-safe operators or explicit checks.\nIn languages like Kotlin, leverage nullable types and safe-call (`?.`) operators.",
+            "severity_score": 4,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 49,
+            "name": "Undefined Behavior",
+            "description": "Code paths that invoke undefined behavior (UB) may produce unpredictable results or security flaws.",
+            "mitigation": "Follow language standards strictly and enable compiler warnings for UB.\nUse fuzzing and sanitizers like UBSan to catch undefined behavior at runtime.\nExample: Avoid signed integer overflow or invalid pointer casts in C/C++.",
+            "severity_score": 6,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 50,
+            "name": "Unreleased Resource",
+            "description": "Failing to close resources like files or sockets leads to leaks and eventual denial of service.",
+            "mitigation": "Use language features like `try-with-resources` (Java), `defer` (Go), or `with` (Python) to ensure cleanup.\nMonitor resource usage and review long-running processes.\nClose unused file descriptors and network handles.",
+            "severity_score": 5,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 51,
+            "name": "Unrestricted File Upload",
+            "description": "Allowing unrestricted file uploads can enable arbitrary code execution or storage abuse.",
+            "mitigation": "Validate file types both client- and server-side.\nRestrict allowed MIME types and extensions (e.g., only `.jpg`, `.png`).\nRename files on upload and store them outside web root.\nExample: avoid allowing `.php` or `.exe` files even if renamed.",
+            "severity_score": 9,
+            "severity_level": "High"
+        },
+        {
+            "id": 52,
+            "name": "Unsafe JNI",
+            "description": "Java Native Interface (JNI) allows low-level system access, making it prone to memory corruption if misused.",
+            "mitigation": "Limit use of native code unless absolutely necessary.\nVerify buffer boundaries and pointer safety.\nUse `SecurityManager` or sandboxing to limit native access.\nExample: avoid passing unchecked user input directly into JNI methods.",
+            "severity_score": 8,
+            "severity_level": "High"
+        },
+        {
+            "id": 53,
+            "name": "Unsafe Mobile Code",
+            "description": "Running unverified mobile code (e.g., JavaScript from untrusted sources) can compromise devices or data.",
+            "mitigation": "Use Content Security Policy (CSP) to restrict script sources.\nAvoid `eval()`, dynamic imports, or inline scripts.\nVerify mobile code integrity using hashes (SRI) or signatures.",
+            "severity_score": 7,
+            "severity_level": "High"
+        },
+        {
+            "id": 54,
+            "name": "Unsafe Function Call from a Signal Handler",
+            "description": "Calling unsafe functions from within signal handlers can corrupt program state.",
+            "mitigation": "Only call async-signal-safe functions within signal handlers.\nAvoid memory allocation, I/O, or lock manipulation inside signals.\nUse `sig_atomic_t` for safe variable access.",
+            "severity_score": 5,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 55,
+            "name": "Unsafe Use of Reflection",
+            "description": "Reflection can bypass access controls and is difficult to statically analyze for safety.",
+            "mitigation": "Avoid dynamic class or method loading from user input.\nUse access checks like `setAccessible(false)` and input validation.\nRestrict reflection use in runtime policies (e.g., Java SecurityManager).",
+            "severity_score": 7,
+            "severity_level": "High"
+        },
+        {
+            "id": 56,
+            "name": "Use of Obsolete Methods",
+            "description": "Deprecated or obsolete APIs may lack security patches or have known vulnerabilities.",
+            "mitigation": "Avoid deprecated methods and libraries; use actively maintained alternatives.\nUse static analysis tools or IDE warnings to identify outdated code.\nFor example, replace `MD5` with `SHA-256` or `bcrypt`.",
+            "severity_score": 4,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 57,
+            "name": "Use of Hard-Coded Password",
+            "description": "Embedding passwords in code makes them easy to extract and reuse.",
+            "mitigation": "Store secrets in environment variables or dedicated secret managers.\nScan source code with tools like TruffleHog or GitLeaks.\nRotate credentials if exposed and avoid default passwords.",
+            "severity_score": 10,
+            "severity_level": "Critical"
+        },
+        {
+            "id": 58,
+            "name": "Using a Broken or Risky Cryptographic Algorithm",
+            "description": "Algorithms like MD5, RC4, or DES are broken and should not be used for encryption or hashing.",
+            "mitigation": "Use modern, vetted cryptographic primitives like AES-GCM, SHA-256, or Argon2.\nRemove legacy crypto support unless explicitly required.\nCheck compliance standards (e.g., NIST, OWASP).",
+            "severity_score": 9,
+            "severity_level": "High"
+        },
+        {
+            "id": 59,
+            "name": "Using Freed Memory",
+            "description": "Accessing memory after it’s freed can corrupt data or execute malicious code.",
+            "mitigation": "Set pointers to NULL after freeing.\nUse sanitizers (e.g., ASan, Valgrind) to detect use-after-free.\nUse smart pointers in modern C++ to manage lifetime automatically.",
+            "severity_score": 9,
+            "severity_level": "High"
+        },
+        {
+            "id": 60,
+            "name": "Vulnerability Scanning Tools",
+            "description": "Leaving scanning tools or their reports exposed can give attackers a map of known weaknesses.",
+            "mitigation": "Secure scan reports and restrict scanner access to trusted IPs.\nRotate default credentials and change default ports.\nExample: Don’t expose Nessus or OpenVAS web interfaces publicly.",
+            "severity_score": 5,
+            "severity_level": "Medium"
+        },
+        {
+            "id": 61,
+            "name": "Vulnerability Template",
+            "description": "Incomplete placeholder or template code can create security holes if left in production.",
+            "mitigation": "Review and clean up template code before deployment.\nFlag TODOs or test code during CI/CD checks.\nExample: Replace all `<script>alert('test')</script>` examples before go-live.",
+            "severity_score": 2,
+            "severity_level": "Low"
+        },
+        {
+            "id": 62,
+            "name": "XML External Entity (XXE) Processing",
+            "description": "Improper XML parsers can allow XXE attacks, exposing files or SSRF.",
+            "mitigation": "Disable DTD processing in XML parsers.\nUse secure libraries like lxml or javax with XXE features disabled.\nValidate and sanitize XML inputs.\nExample: `factory.setFeature(\"http://apache.org/xml/features/disallow-doctype-decl\", true)` in Java.",
+            "severity_score": 9,
+            "severity_level": "High"
+        },
+        {
+            "id": 63,
+            "name": "The Follina Vulnerability - A Critical Threat to Microsoft Office",
+            "description": "Exploits a flaw in Office’s MSDT invocation allowing code execution from malicious documents.",
+            "mitigation": "Disable MSDT protocol handlers via Group Policy.\nApply Microsoft security updates.\nRestrict macro and script execution in Office documents.\nUse application whitelisting tools like AppLocker.",
+            "severity_score": 10,
+            "severity_level": "Critical"
+        }
+    ]
+}

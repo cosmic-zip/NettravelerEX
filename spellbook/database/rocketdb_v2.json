@@ -1,0 +1,1344 @@
+{
+    "index": [
+        {
+            "arguments": {
+                "value": {
+                    "description": "Dummy example"
+                }
+            },
+            "command": "echo @@value",
+            "description": "Random summy bind for testing",
+            "extends": {},
+            "name": "test.dummy",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "interface": {
+                    "description": "Physical or virtual network device, e.g., wlan0"
+                }
+            },
+            "command": "macchanger -r @@interface",
+            "description": "Change to a Random MAC Address",
+            "extends": {},
+            "name": "mac.spoff",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "interface": {
+                    "description": "Physical or virtual network device, e.g., wlan0"
+                }
+            },
+            "command": "macchanger -p @@interface",
+            "description": "Reset to the Original MAC Address",
+            "extends": {},
+            "name": "mac.reset",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "interface": {
+                    "description": "Physical or virtual network device, e.g., wlan0"
+                },
+                "mac": {
+                    "description": "Specify the MAC address to assign"
+                }
+            },
+            "command": "macchanger -m @@mac @@interface",
+            "description": "Change to a Random MAC Address",
+            "extends": {},
+            "name": "mac.define",
+            "type": "shell"
+        },
+        {
+            "command": "sudo hciconfig hci0 up > /dev/null 2>&1 && sudo hciconfig hci0 > /dev/null 2>&1 && sudo rfkill unblock bluetooth > /dev/null 2>&1 && echo done",
+            "description": "Enables Bluetooth functionality by bringing up the hci0 interface, unblocking Bluetooth, and printing done.",
+            "extends": {},
+            "name": "blue.enable",
+            "type": "shell"
+        },
+        {
+            "command": "rfkill list",
+            "description": "Lists Bluetooth devices and their status.",
+            "extends": {},
+            "name": "blue.list",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "interface": {
+                    "description": "Physical or virtual network device, e.g., wlan0"
+                }
+            },
+            "command": "tcpdump -i @@interface -w capture.pcap",
+            "description": "Capture all packets on a specified network interface.",
+            "extends": {},
+            "name": "capture.all",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "interface": {
+                    "description": "Physical or virtual network device, e.g., wlan0"
+                },
+                "ip": {
+                    "description": "Refers to an IPv4 or IPv6 address"
+                }
+            },
+            "command": "tcpdump -i @@interface host @@ip -w capture.pcap",
+            "description": "Capture all packets from/to a specified IP address on a specified network interface.",
+            "extends": {},
+            "name": "capture.all.from_ip",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "interface": {
+                    "description": "Physical or virtual network device, e.g., wlan0"
+                }
+            },
+            "command": "tcpdump -i @@interface -c 1 -w capture.pcap",
+            "description": "Capture only one packet on a specified network interface.",
+            "extends": {},
+            "name": "capture.one",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "interface": {
+                    "description": "Physical or virtual network device, e.g., wlan0"
+                },
+                "ip": {
+                    "description": "Refers to an IPv4 or IPv6 address"
+                }
+            },
+            "command": "tcpdump -i @@interface host @@ip -c 1 -w capture.pcap",
+            "description": "Capture only one packet from/to a specified IP address on a specified network interface.",
+            "extends": {},
+            "name": "capture.one.from_ip",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                },
+                "wordlist": {
+                    "description": "Path to wordlist file"
+                }
+            },
+            "command": "hashcat -m 13400 -a 0 @@file @@wordlist",
+            "description": "Crack KeePass database encryption using Hashcat",
+            "extends": {},
+            "name": "crack.keepass",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                },
+                "wordlist": {
+                    "description": "Path to wordlist file"
+                }
+            },
+            "command": "hashcat -m 14600 -a 0 @@file @@wordlist",
+            "description": "Crack LUKS1 disk image encryption using Hashcat",
+            "extends": {},
+            "name": "crack.luks1",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                },
+                "wordlist": {
+                    "description": "Path to wordlist file"
+                }
+            },
+            "command": "hashcat -m 29600 -a 0 @@file @@wordlist",
+            "description": "Crack LUKS2 disk image encryption using Hashcat",
+            "extends": {},
+            "name": "crack.luks2",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                },
+                "wordlist": {
+                    "description": "Path to wordlist file"
+                }
+            },
+            "command": "hcxpcapngtool -o hash.hc22000 @@file && hashcat -m 22000 -a 0 hash.hc22000 @@wordlist",
+            "description": "Crack WPA/WPA2 encryption in PCAP files using Hashcat",
+            "extends": {},
+            "name": "crack.pcap",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                },
+                "wordlist": {
+                    "description": "Path to wordlist file"
+                }
+            },
+            "command": "hashcat -m 13600 -a 0 @@file @@wordlist",
+            "description": "Crack ZIP file encryption using Hashcat",
+            "extends": {},
+            "name": "crack.zip",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "device": {
+                    "description": "Virtual or physical device like a HDD, SSD, Virtual disk"
+                },
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                }
+            },
+            "command": "dd if=@@device of=@@file bs=4M",
+            "description": "Create a disk dump from a specified input device to an output file.",
+            "extends": {},
+            "name": "disk.dump",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "folder": {
+                    "description": "Path to a folder"
+                },
+                "image": {
+                    "description": "Path to a disk image file location"
+                }
+            },
+            "command": "foremost -i @@image -o @@folder",
+            "description": "Carve files from a specified disk image using foremost.",
+            "extends": {},
+            "name": "disk.recover",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "domain": {
+                    "description": "Domain name"
+                },
+                "size": {
+                    "description": "Specify size (not previously defined - consider adding description)"
+                },
+                "times": {
+                    "description": "Number of execution repeats"
+                }
+            },
+            "command": "dos.longpw @@domain @@times @@size",
+            "description": "Send and X number of get requests without data",
+            "extends": {},
+            "name": "dos.longpw",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                },
+                "secret": {
+                    "description": "An file (data) to be hidden"
+                }
+            },
+            "command": "steghide embed -cf @@file -ef @@secret",
+            "description": "Hides a file within a cover image or audio file using Steghide.",
+            "extends": {},
+            "name": "fhide.embed",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                }
+            },
+            "command": "steghide extract -sf @@file",
+            "description": "Extracts hidden data from a cover image or audio file using Steghide.",
+            "extends": {},
+            "name": "fhide.extract",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                }
+            },
+            "command": "steghide info @@file",
+            "description": "Displays information about a cover file, including any hidden data, using Steghide.",
+            "extends": {},
+            "name": "fhide.info",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                }
+            },
+            "command": "file @@file",
+            "description": "Utility used to determine the type of a file.",
+            "extends": {},
+            "name": "file",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                }
+            },
+            "command": "xxd -b @@file",
+            "description": "Switch to bits (binary digits) dump, rather than hex dump.",
+            "extends": {},
+            "name": "file.bin",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                }
+            },
+            "command": "lsof @@file",
+            "description": "lsof alias",
+            "extends": {},
+            "name": "file.by",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                }
+            },
+            "command": "exiftool -all= @@file",
+            "description": "Removes all metadata from an image to protect privacy",
+            "extends": {},
+            "name": "file.clean.meta",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                }
+            },
+            "command": "xxd -d @@file",
+            "description": "Takes a hexadecimal dump and converts it back into binary format.",
+            "extends": {},
+            "name": "file.dec",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                }
+            },
+            "command": "xxd -ps @@file",
+            "description": "Output in PostScript continuous hex dump style. Also known as plain hex dump style.",
+            "extends": {},
+            "name": "file.dump",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                }
+            },
+            "command": "xxd @@file",
+            "description": "creates  a hex dump of a given file or standard input.",
+            "extends": {},
+            "name": "file.hex",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                }
+            },
+            "command": "xxd -i @@file",
+            "description": "Create a C header file from a binary file. This header file contains a C array definition representing the binary data in hexadecimal format.",
+            "extends": {},
+            "name": "file.list",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                }
+            },
+            "command": "exiftool @@file",
+            "description": "Extracts and displays all metadata from an image file using exiftool.",
+            "extends": {},
+            "name": "file.meta",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                }
+            },
+            "command": "strings @@file",
+            "description": "Strings alias",
+            "extends": {},
+            "name": "file.lmao",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "port": {
+                    "description": "Network service port number"
+                }
+            },
+            "command": "iptables -A OUTPUT -p tcp --dport @@port: -j DROP && iptables -A OUTPUT -p udp --dport @@port: -j DROP && ip6tables -A OUTPUT -p tcp --dport @@port: -j DROP &&    ip6tables -A OUTPUT -p udp --dport @@port: -j DROP",
+            "description": "Drop all outcome port bigger than expecified port",
+            "extends": {},
+            "name": "firewall.drop.bigger",
+            "type": "shell"
+        },
+        {
+            "command": "iptables -A INPUT -p tcp -j DROP && iptables -A INPUT -p udp -j DROP && ip6tables -A INPUT -p tcp -j DROP && ip6tables -A INPUT -p udp -j DROP",
+            "description": "Drop all incomme connections",
+            "extends": {},
+            "name": "firewall.drop.in.all",
+            "type": "shell"
+        },
+        {
+            "command": "iptables -A OUTPUT -p tcp -j DROP && iptables -A OUTPUT -p udp -j DROP && ip6tables -A OUTPUT -p tcp -j DROP && ip6tables -A OUTPUT -p udp -j DROP",
+            "description": "Derop all outcome connections",
+            "extends": {},
+            "name": "firewall.drop.out.all",
+            "type": "shell"
+        },
+        {
+            "command": "ip6tables -F && iptables -F",
+            "description": "Remove all firewall rules non-resible",
+            "extends": {},
+            "name": "firewall.flush",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "address": {
+                    "description": "Refers to an IPv4 or IPv6v4 or IPv4 or IPv6v6 or domain name"
+                }
+            },
+            "command": "ftp @@address",
+            "description": "Connects to an FTP server at the specified address.",
+            "extends": {},
+            "name": "ftp.connect",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "domain": {
+                    "description": "Domain name"
+                },
+                "output": {
+                    "description": "Output file"
+                },
+                "wordlist": {
+                    "description": "Path to wordlist file"
+                }
+            },
+            "command": "dirb @@domain -w @@wordlist -o @@output",
+            "description": "scans a domain for directories with a specified wordlist, and saves the results to an output file.",
+            "extends": {},
+            "name": "map.dns.dirs",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "domain": {
+                    "description": "Domain name"
+                },
+                "output": {
+                    "description": "Output file"
+                },
+                "wordlist": {
+                    "description": "Path to wordlist file"
+                }
+            },
+            "command": "dnsenum --enum @@domain -t 15 --threads 4 -f @@wordlist -o @@output",
+            "description": "It scans a domain for subdomains using the specified wordlist and saves the results to an output file.",
+            "extends": {},
+            "name": "map.dns.subdomain",
+            "type": "shell"
+        },
+        {
+            "command": "ss -tupran",
+            "description": "Scan local open connections",
+            "extends": {},
+            "name": "map.local",
+            "type": "shell"
+        },
+        {
+            "command": "curl ip.me",
+            "description": "Show the current ip address",
+            "extends": {},
+            "name": "map.myip",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "File location: like /some/path/file.txt"
+                }
+            },
+            "command": "shred -u -z -n 7 @@file",
+            "description": "Securely overwrites and deletes a file seven times, then removes it from the filesystem to prevent data recovery.",
+            "extends": {},
+            "name": "nuke.file",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "device": {
+                    "description": "Virtual or physical device like a HDD, SSD, Virtual disk"
+                }
+            },
+            "command": "shred -vzn 7 @@device",
+            "description": "Securely overwrites and deletes the contents of a device seven times",
+            "extends": {},
+            "name": "nuke.hd",
+            "type": "shell"
+        },
+        {
+            "command": "sudo find /var/log -type f -exec shred -u {} ;",
+            "description": "Securely overwrites and deletes the /var/logs",
+            "extends": {},
+            "name": "nuke.logs",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "folder": {
+                    "description": "Path to a folder"
+                },
+                "ip": {
+                    "description": "Refers to an IPv4 or IPv6 address"
+                },
+                "port": {
+                    "description": "Network service port number"
+                }
+            },
+            "command": "mkdir out && scp -P @@port @@folder/* hostuser@@@ip:./out/",
+            "description": "Creates a directory named 'out' and copies files from a specified folder to a remote host via SCP.",
+            "extends": {},
+            "name": "scp.copy",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "address": {
+                    "description": "Refers to an IPv4 or IPv6 or domain name"
+                },
+                "share": {
+                    "description": "Refers to a shared resource like a folder, file, or printer"
+                }
+            },
+            "command": "smbclient \\@@address\\@@share",
+            "description": "Accesses a specific share on the specified address.",
+            "extends": {},
+            "name": "smbclient.access",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "address": {
+                    "description": "Refers to an IPv4 or IPv6 or domain name"
+                }
+            },
+            "command": "smbclient -L @@address",
+            "description": "Lists available shares on the specified address.",
+            "extends": {},
+            "name": "smbclient.list",
+            "type": "shell"
+        },
+        {
+            "command": "find /var/log -type f -name '*.log' -exec tail -n 10000 {} ;",
+            "description": "Applogs typically refer to logs generated by specific applications or software. They contain information about the operation, performance, and errors of the application.",
+            "extends": {},
+            "name": "view.applogs",
+            "type": "shell"
+        },
+        {
+            "command": "tail -n 10000 /var/log/audit/audit.log",
+            "description": "auditlog: Audit messages, tracking system events for security auditing.",
+            "extends": {},
+            "name": "view.auditlog",
+            "type": "shell"
+        },
+        {
+            "command": "tail -n 10000 /var/log/auth.log",
+            "description": "authlog: Authentication-related messages.",
+            "extends": {},
+            "name": "view.authlog",
+            "type": "shell"
+        },
+        {
+            "command": "lastb -n 10000",
+            "description": "btmp: Records failed login attempts.",
+            "extends": {},
+            "name": "view.btmp",
+            "type": "shell"
+        },
+        {
+            "command": "tail -n 10000 /var/log/kern.log",
+            "description": "kernlog: Kernel-related messages.",
+            "extends": {},
+            "name": "view.kernlog",
+            "type": "shell"
+        },
+        {
+            "command": "tail -n 10000 /var/log/lastlog",
+            "description": "lastlog: Records last login information for all users.",
+            "extends": {},
+            "name": "view.lastlog",
+            "type": "shell"
+        },
+        {
+            "command": "tail -n 10000 /var/log/messages",
+            "description": "messages: System messages, including kernel and service messages.",
+            "extends": {},
+            "name": "view.messages",
+            "type": "shell"
+        },
+        {
+            "command": "tail -n 10000 /var/log/secure",
+            "description": "secure: Security-related messages, including authentication and authorization events.",
+            "extends": {},
+            "name": "view.secure",
+            "type": "shell"
+        },
+        {
+            "command": "tail -n 10000 /var/log/syslog",
+            "description": "syslog: General system messages.",
+            "extends": {},
+            "name": "view.syslog",
+            "type": "shell"
+        },
+        {
+            "command": "last -n 1000",
+            "description": "wtmp: Records all user logins and logouts.",
+            "extends": {},
+            "name": "view.wtmp",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                },
+                "wait": {
+                    "description": "Delay duration in seconds"
+                }
+            },
+            "command": "wget --recursive -U 'Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0' --page-requisites --html-extension --convert-links --restrict-file-names=windows --random-wait --wait=@@wait --limit-rate=200k --tries=inf --no-parent @@url",
+            "description": "Full website downloader",
+            "extends": {},
+            "name": "web.download",
+            "type": "shell"
+        },
+        {
+            "command": "sudo apt install -y ngrep htop git kakoune ruby lua5.4 ruby virt-manager qemu-kvm tree lsof nmap whois dirb dnsenum libc-bin iproute2 xxd iptables coreutils dnsutils traceroute openssl openssh-server xattr libimage-exiftool-perl tor foremost pkg-config libssl-dev steghide curl wget file libxdo-dev 7zip librsvg2-dev > /dev/null",
+            "description": "Self install all deps",
+            "extends": {},
+            "name": "self.install",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "domain": {
+                    "description": "Domain name"
+                }
+            },
+            "command": "scan.dns @@domain",
+            "description": "Perform DNS scanning",
+            "extends": {},
+            "name": "native.scan.dns",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "ip": {
+                    "description": "Refers to an IPv4 or IPv6 address"
+                }
+            },
+            "command": "scan.ip @@ip",
+            "description": "Perform IP scanning",
+            "extends": {},
+            "name": "native.scan.ip",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "scripts": {
+                    "description": "Setup one of nmap default scripts",
+                    "options": [
+                        "auth",
+                        "broadcast",
+                        "brute",
+                        "default",
+                        "discovery",
+                        "dos",
+                        "exploit",
+                        "external",
+                        "fuzzer",
+                        "intrusive",
+                        "malware",
+                        "safe",
+                        "version",
+                        "vuln",
+                        "traveler"
+                    ]
+                },
+                "target": {
+                    "description": "Refers to an IPv4 or IPv6 or domain name"
+                }
+            },
+            "command": "scan.nmapper @@target @@scripts",
+            "description": "Perform NMAP scanning",
+            "name": "native.scanner.nmapper"
+        },
+        {
+            "arguments": {
+                "path": {
+                    "description": "Path to a file or folder"
+                },
+                "scantype": {
+                    "description": "Type of scan to perform",
+                    "options": [
+                        "file",
+                        "folder"
+                    ]
+                }
+            },
+            "command": "scan.malware @@path @@scantype",
+            "description": "Perform malware scanning",
+            "extends": {},
+            "name": "native.scan.malware",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "path": {
+                    "description": "Path to scan"
+                }
+            },
+            "command": "scan.rootkit @@path",
+            "description": "Perform rootkit scanning",
+            "extends": {},
+            "name": "native.scan.rootkit",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "expression": {
+                    "description": "Search expression or keyword"
+                },
+                "verbosity": {
+                    "description": "Level of verbosity/detail"
+                }
+            },
+            "command": "scan.socialnet @@expression @@verbosity",
+            "description": "Perform social network scanning",
+            "extends": {},
+            "name": "native.scan.socialnet",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "attacks": {
+                    "description": "List of attacks"
+                },
+                "attacksoptions": {
+                    "description": "Attack options"
+                },
+                "lang": {
+                    "description": "Language code",
+                    "options": [
+                        "br",
+                        "en"
+                    ]
+                },
+                "noprint": {
+                    "description": "Flag to suppress printing"
+                },
+                "stack": {
+                    "description": "Stack information"
+                },
+                "systemtype": {
+                    "description": "Type of system"
+                },
+                "title": {
+                    "description": "Report title"
+                },
+                "vector": {
+                    "description": "Attack vector"
+                },
+                "vulns": {
+                    "description": "List of vulnerabilities"
+                },
+                "vulnsoptions": {
+                    "description": "Vulnerabilities options"
+                }
+            },
+            "command": "cosmic.report @@title @@lang @@vulnsoptions @@attacksoptions @@noprint @@systemtype @@vector @@stack @@vulns @@attacks",
+            "description": "Generate vulnerability reports",
+            "extends": {},
+            "name": "native.cosmic.report",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "delay": {
+                    "description": "Delay between executions (s)"
+                },
+                "executable": {
+                    "description": "Path to executable or command"
+                },
+                "name": {
+                    "description": "Name of the scheduled task"
+                },
+                "times": {
+                    "description": "Number of execution repeats"
+                }
+            },
+            "command": "cosmic.scheduler @@executable @@times @@delay @@name",
+            "description": "Schedule command execution",
+            "extends": {},
+            "name": "native.cosmic.scheduler",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "authorization": {
+                    "description": "Authorization header or token"
+                },
+                "body": {
+                    "description": "Request body type",
+                    "options": [
+                        "none",
+                        "form-data",
+                        "x-www-urlencoded",
+                        "raw",
+                        "binary"
+                    ]
+                },
+                "bodydata": {
+                    "description": "Data to send in the body"
+                },
+                "method": {
+                    "description": "HTTP method",
+                    "options": [
+                        "get",
+                        "post",
+                        "put",
+                        "delete",
+                        "patch"
+                    ]
+                },
+                "protocol": {
+                    "description": "Communication protocol",
+                    "options": [
+                        "http",
+                        "https"
+                    ]
+                },
+                "saveoutput": {
+                    "description": "Flag to save the output"
+                },
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "cosmic.requests @@url @@method @@protocol @@authorization @@body @@bodydata @@saveoutput",
+            "description": "Make HTTP requests",
+            "extends": {},
+            "name": "native.cosmic.requests",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "mode": {
+                    "description": "Browser mode"
+                },
+                "url": {
+                    "description": "Target URL"
+                },
+                "windowsize": {
+                    "description": "Window size dimensions"
+                }
+            },
+            "command": "cosmic.chrome @@url @@mode @@windowsize",
+            "description": "Chrome browser operations",
+            "extends": {},
+            "name": "native.cosmic.chrome",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "folder": {
+                    "description": "Path to a folder"
+                },
+                "host": {
+                    "description": "Host name or IPv4 or IPv6 address"
+                },
+                "port": {
+                    "description": "Network service port number"
+                },
+                "ztoken": {
+                    "description": "NettravelerEX WebUI token"
+                }
+            },
+            "command": "cosmic.server @@host @@port @@folder @@ztoken",
+            "description": "Simple web server for NettravelerEX webui operations",
+            "extends": {},
+            "name": "native.cosmic.server",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "disk_path": {
+                    "description": "Path for the VM disk image, e.g., /home/user/vm.qcow2"
+                },
+                "disk_size": {
+                    "description": "Size of the disk image, e.g., 20G"
+                }
+            },
+            "command": "qemu-img create -f qcow2 @@disk_path @@disk_size",
+            "description": "Create a QCOW2 disk image for the VM",
+            "extends": {},
+            "name": "vm.create_disk",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "cpu_cores": {
+                    "description": "Number of CPU cores to assign"
+                },
+                "disk_path": {
+                    "description": "Path for the VM disk image"
+                },
+                "iso_path": {
+                    "description": "Path to the installation ISO file"
+                },
+                "ram_size": {
+                    "description": "Amount of RAM for the VM, e.g., 4G"
+                },
+                "vm_name": {
+                    "description": "Name of the virtual machine"
+                }
+            },
+            "command": "qemu-system-x86_64 -drive file=@@disk_path,format=qcow2 -cdrom @@iso_path -m @@ram_size -smp @@cpu_cores -boot d -net nic -net user -enable-kvm -name @@vm_name",
+            "description": "Run the VM with specified disk, ISO, RAM, CPU cores, and basic network",
+            "extends": {},
+            "name": "vm.run",
+            "type": "shell"
+        },
+        {
+            "command": "docker stop $(docker ps -q)",
+            "description": "Shutdown all running Docker containers.",
+            "extends": {},
+            "name": "docker.stop.all",
+            "type": "shell"
+        },
+        {
+            "command": "docker rm $(docker ps -a -q)",
+            "description": "Remove all Docker containers.",
+            "extends": {},
+            "name": "docker.remove.all.containers",
+            "type": "shell"
+        },
+        {
+            "command": "docker rmi -f $(docker images -q)",
+            "description": "Force remove all Docker images.",
+            "extends": {},
+            "name": "docker.remove.all.images",
+            "type": "shell"
+        },
+        {
+            "command": "docker network prune -f",
+            "description": "Prune all unused Docker networks.",
+            "extends": {},
+            "name": "docker.reset.networks",
+            "type": "shell"
+        },
+        {
+            "command": "curl -fsSL https://get.docker.com | sudo sh",
+            "description": "Run Docker's official installation script with root permissions.",
+            "extends": {},
+            "name": "docker.install.script",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "username": {
+                    "description": "Username to be added to the docker group"
+                }
+            },
+            "command": "sudo usermod -aG docker @@username",
+            "description": "Add a user to the Docker group to allow non-root Docker usage.",
+            "extends": {},
+            "name": "docker.user.addgroup",
+            "type": "shell"
+        },
+        {
+            "command": "newgrp docker",
+            "description": "Start a new shell with updated group permissions after adding to Docker group.",
+            "extends": {},
+            "name": "docker.newgrp.refresh",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "port": {
+                    "description": "Port number to run the server on (e.g., 8080)"
+                }
+            },
+            "command": "llama-server -m DATAROOT/models/Llama-3.2-3B-Instruct-uncensored-Q4_K_S.gguf --port @@port",
+            "description": "Run a LLaMA server using a fixed GGUF model and a custom port.",
+            "extends": {},
+            "name": "server.llama",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "path": {
+                    "description": "Path to file or directory to scan"
+                }
+            },
+            "command": "clamscan @@path",
+            "description": "Run ClamAV on-demand scanner to scan files or directories.",
+            "extends": {},
+            "name": "clamav.clamscan",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "path": {
+                    "description": "Path to file or directory to scan"
+                }
+            },
+            "command": "clamdscan @@path",
+            "description": "Submit file or directory to clamd for scanning.",
+            "extends": {},
+            "name": "clamav.clamdscan",
+            "type": "shell"
+        },
+        {
+            "command": "freshclam",
+            "description": "Update the virus definitions using freshclam.",
+            "extends": {},
+            "name": "clamav.freshclam",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "Path to a .ndb or .ldb signature file"
+                }
+            },
+            "command": "sigtool --info @@file",
+            "description": "Print information about a signature file.",
+            "extends": {},
+            "name": "clamav.sigtool.info",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file": {
+                    "description": "Path to file for hex dump"
+                }
+            },
+            "command": "sigtool --hex-dump @@file",
+            "description": "Print hex dump of a file.",
+            "extends": {},
+            "name": "clamav.sigtool.hex",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "archive": {
+                    "description": "Path to .cvd or .cld archive file"
+                }
+            },
+            "command": "sigtool --unpack @@archive",
+            "description": "Unpack a ClamAV database archive (.cvd or .cld).",
+            "extends": {},
+            "name": "clamav.sigtool.unpack",
+            "type": "shell"
+        },
+        {
+            "command": "clamconf",
+            "description": "Show the ClamAV configuration summary.",
+            "extends": {},
+            "name": "clamav.clamconf",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "curl @@url",
+            "description": "Send a simple HTTP GET request to a specified URL.",
+            "extends": {},
+            "name": "curl.get.simple",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "header": {
+                    "description": "Custom header in the format 'Key: Value'"
+                },
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "curl -H \"@@header\" @@url",
+            "description": "Send a GET request with a custom HTTP header.",
+            "extends": {},
+            "name": "curl.get.with_header",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "output_file": {
+                    "description": "Path to save the response body"
+                },
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "curl -o @@output_file @@url",
+            "description": "Send a GET request and save the response to a file.",
+            "extends": {},
+            "name": "curl.get.to_file",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "body": {
+                    "description": "Raw data string to send as body"
+                },
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "curl -X POST -d \"@@body\" @@url",
+            "description": "Send a POST request with raw data body.",
+            "extends": {},
+            "name": "curl.post.raw",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "body": {
+                    "description": "Raw data string to send as body"
+                },
+                "content_type": {
+                    "description": "Content-Type header value, e.g. application/json"
+                },
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "curl -X POST -H \"Content-Type: @@content_type\" -d \"@@body\" @@url",
+            "description": "Send a POST request with custom Content-Type header and body.",
+            "extends": {},
+            "name": "curl.post.content_type",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "file_path": {
+                    "description": "Path to file to send as request body"
+                },
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "curl -X POST --data-binary \"@@file_path\" @@url",
+            "description": "Send a POST request with a file as the body.",
+            "extends": {},
+            "name": "curl.post.file",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "field_key": {
+                    "description": "Form field name"
+                },
+                "field_value": {
+                    "description": "Form field value"
+                },
+                "file_field": {
+                    "description": "Form file field name"
+                },
+                "file_path": {
+                    "description": "Path to file to upload"
+                },
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "curl -X POST -F \"@@field_key=@@field_value\" -F \"@@file_field=@@@file_path\" @@url",
+            "description": "Send a POST multipart/form-data request with field and file.",
+            "extends": {},
+            "name": "curl.post.multipart",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "body": {
+                    "description": "Raw data string to send as body"
+                },
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "curl -X PUT -d \"@@body\" @@url",
+            "description": "Send a PUT request with raw data body.",
+            "extends": {},
+            "name": "curl.put.raw",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "curl -X DELETE @@url",
+            "description": "Send a DELETE request to the specified URL.",
+            "extends": {},
+            "name": "curl.delete.simple",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "json": {
+                    "description": "JSON string to send as body"
+                },
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "curl -X PATCH -H \"Content-Type: application/json\" -d \"@@json\" @@url",
+            "description": "Send a PATCH request with JSON body.",
+            "extends": {},
+            "name": "curl.patch.json",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "password": {
+                    "description": "Basic auth password"
+                },
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                },
+                "username": {
+                    "description": "Basic auth username"
+                }
+            },
+            "command": "curl -u @@username:@@password @@url",
+            "description": "Send a GET request with basic authentication.",
+            "extends": {},
+            "name": "curl.auth.basic",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "token": {
+                    "description": "Bearer token string"
+                },
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "curl -H \"Authorization: Bearer @@token\" @@url",
+            "description": "Send a GET request with Bearer token authorization.",
+            "extends": {},
+            "name": "curl.auth.bearer",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "curl -I @@url",
+            "description": "Send a HEAD request to the specified URL.",
+            "extends": {},
+            "name": "curl.head.simple",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "bin": {
+                    "description": "The chromium or any chromium like browser binary name or path. eg: \"bin/chromium\" or \"chromium\""
+                },
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "@@bin --enable-unsafe-swiftshader --headless=new --disable-gpu --dump-dom @@url",
+            "description": "Send a HEAD request to the specified URL.",
+            "extends": {},
+            "name": "chrome.headless.html",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "bin": {
+                    "description": "The chromium or any chromium like browser binary name or path. eg: \"bin/chromium\" or \"chromium\""
+                },
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "@@bin --enable-unsafe-swiftshader --headless=new --disable-gpu --print-to-pdf @@url",
+            "description": "Send a HEAD request to the specified URL.",
+            "extends": {},
+            "name": "chrome.headless.pdf",
+            "type": "shell"
+        },
+        {
+            "arguments": {
+                "bin": {
+                    "description": "The chromium or any chromium like browser binary name or path. eg: \"bin/chromium\" or \"chromium\""
+                },
+                "url": {
+                    "description": "Target complete URL path with http/https"
+                }
+            },
+            "command": "@@bin --enable-unsafe-swiftshader --headless=new --disable-gpu --screenshot @@url",
+            "description": "Send a HEAD request to the specified URL.",
+            "extends": {},
+            "name": "chrome.headless.screenshot",
+            "type": "shell"
+        }        
+    ]
+}

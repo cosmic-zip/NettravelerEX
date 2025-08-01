@@ -1,0 +1,63 @@
+Allowing Domains or Accounts to Expire
+Buffer Overflow
+Business logic vulnerability
+CRLF Injection
+CSV Injection by Timo Goosen, Albinowax
+Catch NullPointerException
+Covert storage channel
+Deserialization of untrusted data
+Directory Restriction Error
+Doubly freeing memory
+Empty String Password
+Expression Language Injection
+Full Trust CLR Verification issue Exploiting Passing Reference Types by Reference
+Heartbleed Bug
+Improper Data Validation
+Improper pointer subtraction
+Information exposure through query strings in url by Robert Gilbert (amroot)
+Injection problem
+Insecure Deserialization by Vaibhav Malik
+Insecure Compiler Optimization
+Insecure Randomness
+Insecure Temporary File
+Insecure Third Party Domain Access
+Insecure Transport
+Insufficient Entropy
+Insufficient Session ID Length by Jake Karnes
+Least Privilege Violation
+Memory leak
+Missing Error Handling
+Missing XML Validation
+Multiple admin levels
+Null Dereference
+OWASP .NET Vulnerability Research
+Overly Permissive Regular Expression
+PHP File Inclusion
+PHP Object Injection by Egidio Romano
+PRNG Seed Error
+Password Management Hardcoded Password
+Password Plaintext Storage
+Poor Logging Practice by Weilin Zhong
+Portability Flaw
+Privacy Violation
+Process Control
+Return Inside Finally Block
+Session Variable Overloading
+String Termination Error
+Unchecked Error Condition
+Unchecked Return Value Missing Check against Null
+Undefined Behavior
+Unreleased Resource
+Unrestricted File Upload
+Unsafe JNI
+Unsafe Mobile Code
+Unsafe function call from a signal handler
+Unsafe use of Reflection
+Use of Obsolete Methods
+Use of hard-coded password
+Using a broken or risky cryptographic algorithm
+Using freed memory
+Vulnerability Scanning Tools
+Vulnerability template
+XML External Entity (XXE) Processing
+The Follina Vulnerability - A Critical Threat to Microsoft Office by Tholkappiar

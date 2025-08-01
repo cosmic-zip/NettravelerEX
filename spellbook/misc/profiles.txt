@@ -1,0 +1,171 @@
+Recon & Scanning
+
+    OSINT
+
+        Social Media Profiling
+
+        Domain & WHOIS Lookup
+
+        Data Scraping & Analysis
+
+        Metadata Analysis
+
+        DNS Interrogation
+
+        Public Database Mining
+
+    Web Scanning
+
+        Input Field Analysis
+
+        Cross-Site Scripting (XSS) Detection
+
+        SQL Injection Detection
+
+        Authentication Bypass Testing
+
+        Insecure Cookie Flags
+
+        Server and Client-Side Misconfigurations
+
+    Vulnerability Scanning
+
+        Automated Vulnerability Detection
+
+        Patch Management Auditing
+
+        Outdated Software Detection
+
+        Weak Password Policies
+
+        Network Segmentation Weaknesses
+
+        Misconfigured Access Controls
+
+Exploitation
+
+    Wi-Fi Hacking
+
+        WPA/WPA2 Cracking
+
+        Rogue Access Point Creation
+
+        Man-in-the-Middle (MITM) Attacks
+
+        Eavesdropping & Packet Sniffing
+
+        WPS Pin Brute Force
+
+    SQL Injection
+
+        Error-Based SQL Injection
+
+        Union-Based SQL Injection
+
+        Blind SQL Injection
+
+        Time-Based Blind SQL Injection
+
+        Second-Order SQL Injection
+
+    Reverse Shells
+
+        Netcat-Based Reverse Shells
+
+        PowerShell Reverse Shells
+
+        Web Shells
+
+        Reverse Shell Payloads for Firewalls
+
+        Remote Command Execution Over Reverse Shells
+
+    Remote Code Execution Agents
+
+        Exploit Development for RCE
+
+        Privilege Escalation Post-RCE
+
+        Web Shells for Persistent RCE
+
+        RCE via File Upload Vulnerabilities
+
+        Exploiting Vulnerabilities in IoT Devices
+
+Malware Development & Management
+
+    Custom Malware Building
+
+        Remote Access Trojans (RATs)
+
+        Keyloggers and Spyware
+
+        Rootkits and Kernel-level Malware
+
+        Fileless Malware
+
+        Polymorphic Malware
+
+    Backdoor & Ransomware Management
+
+        Developing Ransomware Payloads
+
+        Evasion Techniques for Anti-Virus
+
+        Encrypted Ransomware Communications
+
+        Backdoor Installation Techniques
+
+        Post-Exploitation with Backdoors
+
+Defensive Operations
+
+    Forensics
+
+        Incident Response Procedures
+
+        Evidence Collection and Preservation
+
+        Log Analysis and Correlation
+
+        Forensic Imaging and Data Recovery
+
+        Digital Evidence Analysis (Memory, Disk, etc.)
+
+    Backup Management
+
+        Backup Encryption and Integrity Checks
+
+        Disaster Recovery Planning
+
+        Cloud Backup Security
+
+        Backup Frequency and Testing
+
+        Automated Backup Systems
+
+Reporting & Automation
+
+    RBR (Reports)
+
+        Vulnerability Reporting
+
+        Risk Assessment Documentation
+
+        Compliance Reports (GDPR, PCI-DSS, etc.)
+
+        Incident Reports
+
+        Post-Engagement Reports
+
+    RBP (Playbooks)
+
+        Incident Response Playbooks
+
+        Phishing Attack Response Playbook
+
+        Malware Containment Playbook
+
+        Privilege Escalation Response
+
+        Exploit Mitigation Playbooks

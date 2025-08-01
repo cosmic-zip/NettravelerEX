@@ -1,0 +1,508 @@
+{
+    "index": [
+        {
+            "id": 1,
+            "name": "Permitindo que Domínios ou Contas Expirem",
+            "description": "A não renovação de domínios (sites) ou contas pode permitir que invasores sequestrem-os para uso malicioso.",
+            "mitigation": "Configure a renovação automatizada de domínios e atribua a responsabilidade pela manutenção da conta. Use alertas de calendário, ferramentas centralizadas de gerenciamento de domínios ou APIs de registradores (como o NIC.br e registro.br) para monitorar as datas de expiração.\nGaranta que os e-mails de contato dos proprietários de domínios sejam monitorados.\nImplementar serviços de monitoramento de domínios para detectar novos registros suspeitos de ativos de propriedade anterior.\nProcurar ativamente por dominios com nome similar para evitar typosquatting",
+            "severity_score": 9,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 2,
+            "name": "Buffer Overflow",
+            "description": "Ocorre quando os dados excedem os limites do buffer, potencialmente permitindo a execução arbitrária de código.",
+            "mitigation": "Use linguagens com segurança de memória, como Rust ou Java, quando possível. Em C/C++, Aplique a verificação de limites com funções como `strncpy` em vez de `strcpy` e habilite proteções do compilador, como canários de pilha e ASLR. Ferramentas que ajudam incluem: AddressSanitizer, Valgrind e analisadores estáticos. Audite e teste fuzz regularmente o código de manipulação de entrada.",
+            "severity_score": 10,
+            "severity_level": "Crítico"
+        },
+        {
+            "id": 3,
+            "name": "Vulnerabilidade de lógica de negócios",
+            "description": "Falhas em fluxos de trabalho de aplicativos que permitem que os usuários ignorem regras ou restrições pretendidas.",
+            "mitigation": "Realize a modelagem de ameaças durante o design para identificar fluxos de risco. Implemente a aplicação de todas as regras críticas no lado do servidor — nunca confie em verificações do lado do cliente. Realize revisões de código e testes de lógica com foco em segurança. Por exemplo, garanta que os limites de desconto não sejam excedidos ou que as aprovações não sejam ignoradas por meio de solicitações elaboradas.",
+            "severity_score": 8,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 4,
+            "name": "Injeção de CRLF",
+            "description": "Injeção de caracteres de retorno de carro e quebra de linha para manipular respostas ou logs HTTP.",
+            "mitigation": "Saneie todas as entradas do usuário que possam afetar cabeçalhos ou logs. Retire ou codifique os caracteres CR (`\r`) e LF (`\n`) antes da saída. Em aplicativos web, use frameworks que tratem cabeçalhos com segurança. Por exemplo, nunca permita que entradas como `%0d%0aSet-Cookie:` sejam passadas diretamente para uma resposta.",
+            "severity_score": 6,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 5,
+            "name": "Injeção de CSV",
+            "description": "Conteúdo malicioso de planilha explora a análise de fórmulas quando os arquivos são abertos em ferramentas semelhantes ao Excel.",
+            "mitigation": "Prefixe as células que começam com `=`, `+`, `-` ou `@` com `'` (apóstrofo) antes de exportar para CSV. Use bibliotecas que escapem fórmulas automaticamente. Por exemplo, transforme `=cmd|' /C calc'!A0` em `'=cmd|' /C calc'!A0` para impedir a execução.\nValide e limpe campos como nomes e e-mails antes da saída.",
+            "severity_score": 7,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 6,
+            "name": "Capturar NullPointerException",
+            "description": "Capturar erros de desreferência nula em vez de preveni-los pode esconder falhas lógicas mais profundas.",
+            "mitigation": "Evite capturar NullPointerException, a menos que faça parte de um mecanismo de tolerância a falhas mais amplo. Em vez disso:\n• Use tipos opcionais ou verificações explícitas de nulos (por exemplo, `if (obj != null)`)\n• Aplique análise estática para detectar problemas de segurança de nulos\n• Em Java, considere anotações `@NonNull` e ferramentas como SpotBugs para sinalizar padrões de risco",
+            "severity_score": 2,
+            "severity_level": "Baixo"
+        },
+        {
+            "id": 7,
+            "name": "Canal de Armazenamento Oculto",
+            "description": "Usando recursos compartilhados para transmitir secretamente informações entre processos.",
+            "mitigation": "Projete sistemas para isolar processos sensíveis usando limites rígidos de recursos. Exemplos:\n• Use espaços de memória ou contêineres separados\n• Evite logs ou variáveis compartilhados entre limites de confiança\n• Implemente controle de acesso obrigatório (por exemplo, SELinux) para bloquear compartilhamento não autorizado\nRevise a arquitetura para riscos de vazamento de canal lateral.",
+            "severity_score": 1,
+            "severity_level": "Baixo"
+        },
+        {
+            "id": 8,
+            "name": "Desserialização de Dados Não Confiáveis",
+            "description": "O processamento de dados serializados não confiáveis pode levar à execução remota de código ou manipulação lógica.",
+            "mitigation": "Nunca desserialize entradas de fontes não confiáveis sem controles rigorosos. Use listas de permissões para limitar classes permitidas ou mude para formatos mais seguros, como JSON.\nEm Java, evite a serialização nativa Java; Use Jackson ou Gson com desserializadores personalizados.\nAplique filtros e proteções de tempo de execução (por exemplo, Apache Commons ObjectInputFilter).",
+            "severity_score": 10,
+            "severity_level": "Crítico"
+        },
+        {
+            "id": 9,
+            "name": "Erro de Restrição de Diretório",
+            "description": "Verificações inadequadas permitem acesso a diretórios restritos ou arquivos não autorizados.",
+            "mitigation": "Normalize e valide os caminhos dos arquivos antes do acesso. Use APIs seguras que impeçam a travessia de diretórios. Evite usar entradas brutas do usuário nos caminhos dos arquivos; em vez disso, mapeie as solicitações para diretórios conhecidos e permitidos.\nExemplo: impeça o acesso a `../../etc/passwd` rejeitando `..` ou usando comparação de caminho canônico.",
+            "severity_score": 7,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 10,
+            "name": "Liberando Memória Duplamente",
+            "description": "Liberar memória duas vezes pode corromper as estruturas de gerenciamento de memória e levar à exploração.",
+            "mitigation": "Use linguagens ou ferramentas que sejam seguras para a memória e detectem liberações duplas. Em C/C++, defina ponteiros como `NULL` imediatamente após a liberação.\nExemplo:\n```c\nfree(ptr);\nptr = NULL;\n```\nUse sanitizadores como AddressSanitizer ou Valgrind para detectar o uso indevido de memória durante os testes.",
+            "severity_score": 9,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 11,
+            "name": "Senha de String Vazia",
+            "description": "Usar uma string vazia como senha permite acesso não autorizado devido à falta de autenticação.",
+            "mitigation": "Implemente regras rígidas de validação do lado do servidor para impedir a criação de contas ou login com senhas vazias.\nUse uma política de senhas que imponha comprimento e complexidade mínimos e proíba strings vazias.\nAudite contas legadas em busca de credenciais fracas e imponha redefinições de senha quando necessário.",
+            "severity_score": 5,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 12,
+            "name": "Injeção de Linguagem de Expressão",
+            "description": "Entradas maliciosas são interpretadas como código em linguagens de expressão como EL, OGNL ou MVEL, levando à execução remota de código.",
+            "mitigation": "Evite incorporar diretamente entradas controladas pelo usuário em contextos de expressão.\nUse APIs seguras ou desabilite recursos EL perigosos.\nExemplo: Em Java, evite expor expressões EL como `${userInput}` diretamente em visualizações; sanitize ou valide a entrada rigorosamente.",
+            "severity_score": 8,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 13,
+            "name": "Problema de verificação de CLR com Confiança Total",
+            "description": "Executar código não confiável com Confiança Total no .NET ignora os limites de segurança, permitindo execução arbitrária.",
+            "mitigation": "Restrinja a Confiança Total apenas a assemblies totalmente verificados e assinados.\nUse sandbox ou AppDomains com permissões limitadas.\nExemplo: Evite `LoadFrom` ou carregamento dinâmico sem verificar o publicador e a integridade.",
+            "severity_score": 8,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 14,
+            "name": "Bug Heartbleed",
+            "description": "Uma falha na extensão heartbeat do OpenSSL permitiu que invasores lessem o conteúdo da memória dos servidores.",
+            "mitigation": "Atualize o OpenSSL para 1.0.1g ou posterior.\nReemita todos os certificados potencialmente comprometidos e altere as chaves privadas.\nConduza revisões pós-incidente e adicione verificações automatizadas para versões vulneráveis.",
+            "severity_score": 10,
+            "severity_level": "Crítico"
+        },
+        {
+            "id": 15,
+            "name": "Validação de Dados Incorreta",
+            "description": "A falha em aplicar verificações de tipo, formato ou intervalo de dados pode levar a problemas de injeção e lógica.",
+            "mitigation": "Aplique lista de permissões para validação de entrada.\nValide em todos os limites de confiança.\nUse validação de esquema para JSON, XML e entrada estruturada.\nRejeite tipos ou intervalos de entrada inesperados no início do processamento.",
+            "severity_score": 6,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 16,
+            "name": "Subtração Incorreta de Ponteiros",
+            "description": "A subtração incorreta entre ponteiros pode causar acesso à memória fora dos limites.",
+            "mitigation": "Garanta que a aritmética de ponteiros permaneça dentro dos limites do buffer alocado. Use indexação de arrays sempre que possível e ative os avisos do compilador. Ferramentas como o UBSan podem detectar esses problemas em tempo de execução.",
+            "severity_score": 6,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 17,
+            "name": "Exposição de Informações por meio de Strings de Consulta",
+            "description": "Inserir dados sensíveis em URLs os expõe a logs, referenciadores e histórico do navegador.",
+            "mitigation": "Transmita dados sensíveis em corpos POST, não em parâmetros GET. Limpe logs para remover parâmetros sensíveis. Por exemplo, use envios de formulário para redefinições de senha em vez de links de consulta.",
+            "severity_score": 7,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 18,
+            "name": "EmProblema de Injeção",
+            "description": "Entradas não confiáveis interpretadas como comandos ou código por um interpretador podem levar ao comprometimento total.",
+            "mitigation": "Use consultas parametrizadas, mecanismos de template e estratégias de codificação.\nNunca concatene a entrada do usuário em comandos SQL, HTML ou shell.\nFerramentas como bibliotecas ORM podem ajudar a prevenir esse tipo de bug.",
+            "severity_score": 9,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 19,
+            "name": "Desserialização Insegura",
+            "description": "A deserialização insegura de dados de fontes não confiáveis pode resultar na execução de código ou na escalada de privilégios.",
+            "mitigation": "Evite a desserialização de objetos nativos para dados não confiáveis.\nUse formatos como JSON ou protobuf com esquemas estritos.\nExemplo: Desative a serialização Java, use Jackson com listas de permissões de classe.",
+            "severity_score": 10,
+            "severity_level": "Crítico"
+        },
+        {
+            "id": 20,
+            "name": "Otimização Insegura do Compilador",
+            "description": "Suposições feitas durante a otimização podem alterar o comportamento do programa, potencialmente ignorando verificações de segurança.",
+            "mitigation": "Teste em todos os níveis de otimização do compilador.\nRevise as flags do compilador e evite opções inseguras (por exemplo, `-fno-stack-protector`).\nUse `volatile` ou barreiras de memória onde a ordenação deve ser preservada.",
+            "severity_score": 5,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 21,
+            "name": "Aleatoriedade Insegura",
+            "description": "Usar fontes previsíveis para números aleatórios pode comprometer operações criptográficas.",
+            "mitigation": "Use criptografia segura RNGs (ex.: `/dev/urandom`, `java.security.SecureRandom`).\nEvite `rand()` ou `Math.random()` para tarefas sensíveis à segurança.\nSemeie RNGs com fontes de alta entropia.",
+            "severity_score": 9,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 22,
+            "name": "Arquivo Temporário Inseguro",
+            "description": "Arquivos temporários criados de forma insegura podem ser sobrescritos ou lidos por invasores.",
+            "mitigation": "Use APIs de arquivos temporários seguros nativos do sistema operacional (ex.: `mkstemp`, `tmpfile`).\nDefina as permissões apropriadas (0600) e evite nomes previsíveis.\nLimpe os arquivos temporários ao sair para evitar exposição.",
+            "severity_score": 6,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 23,
+            "name": "Acesso inseguro a domínios de terceiros",
+            "description": "Scripts ou domínios de terceiros não verificados podem carregar conteúdo inseguro ou ser sequestrados.",
+            "mitigation": "Use Integridade de Subrecursos (SRI) para scripts de CDN.\nHospede ativos críticos por conta própria quando possível.\nRevise os cabeçalhos CORS e CSP para limitar a interação com o domínio.\nEvite incorporar scripts de origens desconhecidas.",
+            "severity_score": 7,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 24,
+            "name": "Transporte inseguro",
+            "description": "Dados transmitidos por canais não criptografados são vulneráveis à interceptação.",
+            "mitigation": "Imponha HTTPS com HSTS.\nDesative protocolos SSL/TLS fracos.\nUse conjuntos de criptografia fortes e Monitorar a expiração do certificado.\nExemplo: Habilite TLS 1.2+, desabilite SSLv3.",
+            "severity_score": 9,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 25,
+            "name": "Entropia insuficiente",
+            "description": "Baixa entropia na geração de chaves ou tokens permite ataques de força bruta.",
+            "mitigation": "Use funções aleatórias seguras em nível de sistema operacional.\nGere pelo menos 128 bits de entropia para tokens ou chaves de sessão.\nEvite algoritmos determinísticos ou sementes estáticas.",
+            "severity_score": 8,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 26,
+            "name": "Tamanho insuficiente do ID de sessão",
+            "description": "Tokens de sessão curtos ou previsíveis podem ser adivinhados por invasores.",
+            "mitigation": "Use identificadores de sessão longos e aleatórios (128+ bits).\nArmazene-os com segurança e expire-os após inatividade.\nExemplo: Use UUIDv4 ou strings criptográficas aleatórias.",
+            "severity_score": 8,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 27,
+            "name": "Violação de Privilégio Mínimo",
+            "description": "Conceder mais permissões do que o necessário aumenta o risco de comprometimento.",
+            "mitigation": "Aplique o princípio do privilégio mínimo a todos os usuários, serviços e aplicativos.\nRevise as permissões regularmente.\nExemplo: Não execute aplicativos como root, a menos que seja absolutamente necessário.",
+            "severity_score": 7,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 28,
+            "name": "Vazamento de Memória",
+            "description": "A falha na liberação de memória pode levar ao esgotamento de recursos e à negação de serviço.",
+            "mitigation": "Use ferramentas comoUse Valgrind, LeakSanitizer ou profilers JVM para monitorar o uso de memória. Em linguagens com coleta de lixo, interrompa referências circulares ou finalize recursos corretamente. Exemplo: Sempre feche fluxos em Java usando try-with-resources.",
+            "severity_score": 5,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 29,
+            "name": "Tratamento de Erros Ausente",
+            "description": "Erros não detectados podem expor rastreamentos de pilha ou deixar os sistemas em estados instáveis.",
+            "mitigation": "Implemente um tratamento de erros consistente em todos os componentes. Capture e registre exceções adequadamente sem revelar detalhes internos aos usuários. Use logs estruturados para auxiliar na resposta a incidentes.",
+            "severity_score": 4,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 30,
+            "name": "XML Ausente Validação",
+            "description": "Entradas XML não validadas podem levar a XXE, violações de esquema ou erros de análise.",
+            "mitigation": "Use esquemas XML (XSD) para validar a entrada.\nDesabilite DTDs para evitar XXE.\nUse analisadores seguros e evite entidades externas.\nPor exemplo, em Java, configure o analisador SAX com `setFeature(\"http://apache.org/xml/features/disallow-doctype-decl\", true)`.",
+            "severity_score": 7,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 31,
+            "name": "Vários Níveis de Administração",
+            "description": "Funções de administração pouco claras ou sobrepostas podem levar a escalonamento de privilégios ou erros de configuração.",
+            "mitigation": "Defina funções de controle de acesso claras e imponha o controle de acesso baseado em funções (RBAC).\nUse o princípio do menor privilégio ao atribuir privilégios administrativos Permissões.\nPor exemplo, separe superadministradores, administradores somente de auditoria e gerentes de conteúdo com permissões específicas.",
+            "severity_score": 6,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 32,
+            "name": "Desreferência Nula",
+            "description": "Acessar ponteiros nulos causa travamentos ou comportamento indefinido.",
+            "mitigation": "Use ferramentas de análise estática e anotações de nulidade para detectar possíveis acessos nulos em tempo de compilação.\nEm Java, aplique tipos `Opcionais` ou verificações como `if (objeto != nulo)`.\nEm C/C++, verifique a inicialização do ponteiro e valide antes da desreferência.",
+            "severity_score": 4,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 33,
+            "name": "Pesquisa de Vulnerabilidades OWASP .NET",
+            "description": "Problemas de segurança específicos de frameworks .NET, frequentemente relacionados a níveis de confiança, viewstate ou reflexão.",
+            "mitigation": "Aplique os patches de segurança mais recentes ao .NET.\nEvite usar `ViewState` sem o MAC habilitado.\nUse `CodeAccessSecurity` e validação de entrada.\nExemplo: No ASP.NET, defina `ViewStateEncryptionMode` como `Always` para formulários sensíveis.",
+            "severity_score": 6,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 34,
+            "name": "Expressão Regular Excessivamente Permissiva",
+            "description": "Padrões de expressões regulares mal definidos podem permitir entradas não intencionais ou ReDoS (Negação de Serviço de Expressões Regulares).",
+            "mitigation": "Use definições de expressões regulares estritas e evite quantificadores aninhados.\nUse limites de comprimento de entrada para restringir o desempenho.\nExemplo: Substituir `(a+)+` com uma alternativa mais determinística ou pré-validar com filtros de comprimento fixo.",
+            "severity_score": 5,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 35,
+            "name": "Inclusão de Arquivo PHP",
+            "description": "A inclusão dinâmica de arquivos em PHP (por exemplo, `include($_GET['file'])`) pode permitir a execução remota ou local de arquivos.",
+            "mitigation": "Evite usar caminhos de arquivo dinâmicos a partir da entrada do usuário.\nUse nomes de arquivo permitidos e `basename()` para validar caminhos.\nDesabilite `allow_url_include` e `allow_url_fopen` em `php.ini`.",
+            "severity_score": 9,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 36,
+            "name": "Injeção de Objetos PHP",
+            "description": "A desserialização de objetos PHP não confiáveis pode resultar na execução de código ou na manipulação de propriedades.",
+            "mitigation": "Evite usar `unserialize()` em entradas não confiáveis. Use JSON ou protobuf em vez da serialização nativa do PHP. Audite classes em busca de métodos mágicos como `__wakeup()` ou `__destruct()` que podem ser usados indevidamente.",
+            "severity_score": 9,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 37,
+            "name": "Erro de Semente PRNG",
+            "description": "Sementes previsíveis ou repetidas enfraquecem a segurança dos números aleatórios, impactando a força criptográfica.",
+            "mitigation": "Use PRNGs seguros em nível de sistema operacional que gerenciem a entropia automaticamente. Evite a semeadura manual, a menos que use fontes imprevisíveis. Inseguro: `srand(time(NULL))`; Seguro: `random_bytes()` no PHP 7+.",
+            "severity_score": 7,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 38,
+            "name": "Gerenciamento de Senhas - Senha Codificada",
+            "description": "Incorporar senhas estáticas no código-fonte permite fácil extração e reutilização por invasores.",
+            "mitigation": "Use sistemas de gerenciamento de segredos (por exemplo, Vault, AWS Secrets Manager).\nNunca armazene segredos em repositórios de origem.\nExamine as bases de código em busca de padrões conhecidos (por exemplo, `password = \"`) e rotacione quaisquer credenciais expostas.",
+            "severity_score": 10,
+            "severity_level": "Crítico"
+        },
+        {
+            "id": 39,
+            "name": "Armazenamento de Senhas em Texto Simples",
+            "description": "Armazenar senhas sem hash expõe todas as contas de usuário, se comprometidas.",
+            "mitigation": "Use algoritmos de hash fortes e com sal, como bcrypt, scrypt ou Argon2.\nNunca armazene senhas em texto simples, mesmo temporariamente.\nExemplo: Substitua MD5 ou SHA1 por `bcrypt(password, salt)`.",
+            "severity_score": 10,
+            "severity_level": "Crítico"
+        },
+        {
+            "id": 40,
+            "name": "Prática de Registro Inadequada",
+            "description": "Registros que contêm dados confidenciais podem vazar credenciais ou PII se forem tratados incorretamente.",
+            "mitigation": "Reduza ou faça hash de campos confidenciais antes do registro (por exemplo, senhas, tokens).\nDefina controles de acesso e retenção de registro apropriados.\nUse registro estruturado e registro de auditoria apenas para eventos relevantes para a segurança.",
+            "severity_score": 6,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 41,
+            "name": "Falha de Portabilidade",
+            "description": "Código dependente de plataforma se comporta de forma inconsistente em diferentes ambientes, potencialmente violando premissas de segurança.",
+            "mitigation": "Evite usar recursos específicos do sistema operacional, a menos que sejam abstraídos.\nTeste em todas as plataformas suportadas (por exemplo, caminhos de arquivo no Windows vs. Linux).\nUse bibliotecas multiplataforma e defina limites de compatibilidade explicitamente.",
+            "severity_score": 3,
+            "severity_level": "Baixo"
+        },
+        {
+            "id": 42,
+            "name": "Violação de Privacidade",
+            "description": "Aplicativos que expõem ou manipulam incorretamente os dados do usuário violam as leis de privacidade e a confiança.",
+            "mitigation": "Minimize a coleta de dados, aplique limites de retenção de dados e use criptografia para dados armazenados e transmitidos.\nRevise a conformidade com as regulamentações (por exemplo, GDPR, CCPA).\nExemplo: Evite expor PII em URLs ou mensagens de erro.",
+            "severity_score": 7,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 43,
+            "name": "Controle de Processo",
+            "description": "Permitir que a entrada do usuário influencie a execução de processos em nível de sistema pode levar à injeção de comandos.",
+            "mitigation": "Use APIs seguras como `execve` com matrizes de argumentos em vez de comandos de shell.\nEscape ou valide todas as entradas de comando.\nMelhor: evite chamar comandos de shell inteiramente de contextos web.",
+            "severity_score": 8,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 44,
+            "name": "return dentro do bloco Finally",
+            "description": "Retornar de dentro de um bloco `finally` pode mascarar exceções e levar a bugs de lógica.",
+            "mitigation": "Evite colocar instruções `return` em blocos `finally`.\nGarantir que a lógica de limpeza esteja isolada do fluxo de controle.\nFerramentas de análise estática podem ajudar a detectar esse uso padrões.",
+            "severity_score": 4,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 45,
+            "name": "Sobrecarga de Variáveis de Sessão",
+            "description": "Usar variáveis de sessão de forma inconsistente pode resultar em confusão de privilégios ou vazamento de dados entre usuários.",
+            "mitigation": "Use esquemas de nomenclatura e tipos de dados consistentes para chaves de sessão.\nEvite armazenar entradas controladas pelo usuário diretamente na sessão.\nInvalide sessões ao sair e gere novamente os IDs de sessão em alterações de privilégio.",
+            "severity_score": 6,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 46,
+            "name": "Erro de Término de String",
+            "description": "Término de nulo incorreto em strings pode causar leituras excessivas ou vazamentos de buffer.",
+            "mitigation": "Use funções de string seguras que exijam tamanhos de buffer, como `strncpy` em vez de `strcpy`.\nEm C, sempre termine manualmente com nulo se a função não terminar.\nUse análise estática para detectar strings não terminadas.",
+            "severity_score": 5,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 47,
+            "name": "Condição de erro não verificada",
+            "description": "A falha na verificação de códigos de retorno ou exceções pode levar a erros não tratados e comportamento inesperado.",
+            "mitigation": "Sempre trate valores de retorno de E/S, alocação de memória e chamadas de sistema.\nUse linters ou analisadores estáticos para detectar operações não verificadas.\nEm Go, por exemplo, nóse `if err != nil` consistentemente.",
+            "severity_score": 5,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 48,
+            "name": "Valor de retorno não verificado sem verificação de nulo",
+            "description": "Assumir que um objeto retornado é sempre válido sem verificar se é nulo pode causar travamentos ou falhas de lógica.",
+            "mitigation": "Sempre valide valores de retorno de funções que podem falhar.\nUse operadores seguros para nulos ou verificações explícitas.\nEm linguagens como Kotlin, utilize tipos anuláveis e operadores de chamada segura (`?.`).",
+            "severity_score": 4,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 49,
+            "name": "Comportamento indefinido",
+            "description": "Caminhos de código que invocam comportamento indefinido (UB) podem produzir resultados imprevisíveis ou falhas de segurança.",
+            "mitigation": "Siga rigorosamente os padrões da linguagem e habilite avisos do compilador para UB.\nUse fuzzing e sanitizadores como o UBSan para detectar comportamentos indefinidos em tempo de execução.\nExemplo: Evite estouro de inteiros com sinal ou conversões de ponteiros inválidas em C/C++.",
+            "severity_score": 6,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 50,
+            "name": "Recurso não lançado",
+            "description": "Deixar de fechar recursos como arquivos ou soquetes leva a vazamentos e eventual negação de serviço.",
+            "mitigation": "Use recursos da linguagem como `try-with-resources` (Java), `defer` (Go) ou `with` (Python) para garantir a limpeza.\nMonitore o uso de recursos e revise processos de longa execução.\nFeche descritores de arquivo e identificadores de rede não utilizados.",
+            "severity_score": 5,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 51,
+            "name": "Upload de Arquivos Irrestrito",
+            "description": "Permitir uploads de arquivos irrestritos pode permitir a execução arbitrária de código ou abuso de armazenamento.",
+            "mitigation": "Valide os tipos de arquivo tanto do lado do cliente quanto do servidor.\nRestrinja os tipos e extensões MIME permitidos (por exemplo, apenas `.jpg`, `.png`).\nRenomeie os arquivos no upload e armazene-os fora da raiz da web.\nExemplo: evite permitir arquivos `.php` ou `.exe` mesmo se renomeados.",
+            "severity_score": 9,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 52,
+            "name": "JNI Inseguro",
+            "description": "A Interface Nativa Java (JNI) permite acesso de baixo nível ao sistema, tornando-a propensa à corrupção de memória se usada incorretamente.",
+            "mitigation": "Limite o uso de código nativo, a menos que seja absolutamente necessário.\nVerifique os limites do buffer e a segurança do ponteiro.\nUse `SecurityManager` ou sandbox para limitar o acesso nativo.\nExemplo: evite passar entradas de usuário não verificadas diretamente para métodos JNI.",
+            "severity_score": 8,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 53,
+            "name": "Código De Celular Inseguro",
+            "description": "Executar código mobile não verificado (por exemplo, JavaScript de fontes não confiáveis) pode comprometer dispositivos ou dados.",
+            "mitigation": "Use a Política de Segurança de Conteúdo (CSP) para restringir fontes de script.\nEvite `eval()`, importações dinâmicas ou scripts em linha.\nVerifique a integridade do código mobile usando hashes (SRI) ou assinaturas.",
+            "severity_score": 7,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 54,
+            "name": "Chamada de Função Insegura de um Signal Handler",
+            "description": "Chamar funções inseguras de dentro de manipuladores de sinais pode corromper o estado do programa.",
+            "mitigation": "Chame apenas funções seguras para sinais assíncronos dentro de manipuladores de sinais.\nEvite alocação de memória, E/S ou manipulação de bloqueios dentro de sinais.\nUse `sig_atomic_t` para acesso seguro a variáveis.",
+            "severity_score": 5,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 55,
+            "name": "Uso Inseguro de Reflection",
+            "description": "A reflexão pode ignorar os controles de acesso e é difícil de analisar estaticamente quanto à segurança.",
+            "mitigation": "Evite o carregamento dinâmico de classes ou métodos a partir da entrada do usuário.\nUse verificações de acesso como `setAccessible(false)` e validação de entrada.\nRestrinja o uso de reflexão em políticas de tempo de execução (por exemplo, Java SecurityManager).",
+            "severity_score": 7,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 56,
+            "name": "Uso de Métodos Obsoletos",
+            "description": "APIs obsoletas ou obsoletas podem não ter patches de segurança ou apresentar vulnerabilidades conhecidas.",
+            "mitigation": "Evite métodos e bibliotecas obsoletos; use alternativas mantidas ativamente.\nUse ferramentas de análise estática ou avisos do IDE para identificar código desatualizado.\nPor exemplo, substitua `MD5` e `SHA1` por `SHA-256` ou `bcrypt`.",
+            "severity_score": 4,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 57,
+            "name": "Uso de Senhas Codificadas",
+            "description": "Incorporar senhas no código facilita aExtrair e reutilizar.",
+            "mitigation": "Armazene segredos em variáveis de ambiente ou gerenciadores de segredos dedicados.\nVerifique o código-fonte com ferramentas como TruffleHog ou GitLeaks.\nAlterne as credenciais se expostas e evite senhas padrão.",
+            "severity_score": 10,
+            "severity_level": "Crítico"
+        },
+        {
+            "id": 58,
+            "name": "Usando um Algoritmo Criptográfico Quebrado ou Arriscado",
+            "description": "Algoritmos como MD5, RC4 ou DES são quebrados e não devem ser usados para criptografia ou hashing.",
+            "mitigation": "Use primitivas criptográficas modernas e verificadas, como AES-GCM, SHA-256 ou Argon2.\nRemova o suporte a criptografia legado, a menos que seja explicitamente necessário.\nVerifique os padrões de conformidade (por exemplo, NIST, OWASP).",
+            "severity_score": 9,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 59,
+            "name": "Usando Memória Liberada",
+            "description": "Acessar a memória após ela ser liberada pode corromper dados ou executar código malicioso.",
+            "mitigation": "Defina ponteiros como NULL após a liberação.\nUse sanitizadores (por exemplo, ASan, Valgrind) para detectar o uso após a liberação.\nUse ponteiros inteligentes em C++ moderno para gerenciar o tempo de vida automaticamente.",
+            "severity_score": 9,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 60,
+            "name": "Ferramentas de Verificação de Vulnerabilidades",
+            "description": "Deixar ferramentas de verificação ou seus relatórios expostos pode fornecer aos invasores um mapa de fraquezas conhecidas.",
+            "mitigation": "Proteja os relatórios de verificação e restrinja o acesso do scanner a IPs confiáveis.\nAltere as credenciais padrão e altere Portas padrão.\nExemplo: Não exponha as interfaces web do Nessus ou do OpenVAS publicamente.",
+            "severity_score": 5,
+            "severity_level": "Médio"
+        },
+        {
+            "id": 61,
+            "name": "Modelo de Vulnerabilidade",
+            "description": "Código de espaço reservado ou modelo incompleto pode criar brechas de segurança se deixado em produção.",
+            "mitigation": "Revise e limpe o código do modelo antes da implantação.\nMarque TODOs ou teste o código durante as verificações de CI/CD.\nExemplo: Substitua todos os exemplos `<script>alert('test')</script>` antes da ativação.",
+            "severity_score": 2,
+            "severity_level": "Baixo"
+        },
+        {
+            "id": 62,
+            "name": "Processamento de Entidade Externa XML (XXE)",
+            "description": "Parsers XML incorretos podem permitir XXE ataques, exposição de arquivos ou SSRF.",
+            "mitigation": "Desabilite o processamento de DTD em analisadores XML.\nUse bibliotecas seguras como lxml ou javax com os recursos XXE desabilitados.\nValide e limpe as entradas XML.\nExemplo: `factory.setFeature(\"http://apache.org/xml/features/disallow-doctype-decl\", true)` em Java.",
+            "severity_score": 9,
+            "severity_level": "Alto"
+        },
+        {
+            "id": 63,
+            "name": "A Vulnerabilidade Follina - Uma Ameaça Crítica ao Microsoft Office",
+            "description": "Explora uma falha na invocação MSDT do Office, permitindo a execução de código a partir de documentos maliciosos.",
+            "mitigation": "Desabilite os manipuladores do protocolo MSDT via Política de Grupo.\nAplique as atualizações de segurança da Microsoft.\nRestrinja a execução de macros e scripts em documentos do Office.\nUse ferramentas de lista de permissões de aplicativos como o AppLocker.",
+            "severity_score": 10,
+            "severity_level": "Crítico"
+        }
+    ]
+}

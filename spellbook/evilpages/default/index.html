@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Honey Pot Login</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: #f4f4f4;
+                font-family: Arial, sans-serif;
+            }
+
+            .login-container {
+                background-color: #fff;
+                padding: 30px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                width: 300px;
+            }
+
+            .login-container h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .form-control {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            .btn {
+                background-color: #007bff;
+                color: white;
+                border: none;
+                padding: 12px;
+                width: 100%;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+
+            .checkbox-wrap {
+                display: flex;
+                align-items: center;
+            }
+
+            .checkbox-wrap input[type="checkbox"] {
+                margin-right: 10px;
+            }
+
+            .checkbox-wrap label {
+                margin-left: 5px;
+            }
+
+            .forgot-password {
+                display: block;
+                text-align: right;
+                color: #007bff;
+                text-decoration: none;
+                margin-top: 10px;
+            }
+
+            .forgot-password:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="login-container">
+            <h2>Login to Honey Pot</h2>
+            <form action="index.html" method="POST">
+                <div class="form-group">
+                    <input
+                        id="username"
+                        type="text"
+                        class="form-control"
+                        placeholder="Username"
+                        name="username"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <input
+                        id="password-field"
+                        type="password"
+                        class="form-control"
+                        placeholder="Password"
+                        name="password"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn">Sign In</button>
+                </div>
+                <div class="checkbox-wrap">
+                    <input type="checkbox" name="remember" value="on" checked />
+                    <label>Remember Me</label>
+                </div>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+            </form>
+        </div>
+    </body>
+</html>

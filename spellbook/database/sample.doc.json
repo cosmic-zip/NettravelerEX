@@ -1,0 +1,36 @@
+{
+  "index": [
+    {
+      "command": "example-command --option @@arg1 @@arg2",
+      "description": "This is an example command with two arguments.",
+      "name": "example.command",
+      "type": "shell",
+      "extends": {},
+      "arguments": {
+        "arg1": {
+          "description": "First argument, describing its purpose."
+        },
+        "arg2": {
+          "description": "Second argument, describing its use.",
+          "options": [
+            "option1",
+            "option2",
+            "option3"
+          ]
+        }
+      }
+    },
+    {
+      "command": "another-command @@param",
+      "description": "Another example command with a single parameter.",
+      "name": "example.another",
+      "type": "shell",
+      "extends": {},
+      "arguments": {
+        "param": {
+          "description": "A single parameter for this command."
+        }
+      }
+    }
+  ]
+}

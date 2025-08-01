@@ -1,0 +1,605 @@
+{
+	"index": [
+		{
+			"error": [
+				{
+					"query": "SQL syntax.*?MySQL"
+				},
+				{
+					"query": "Warning.*?\\Wmysqli?_"
+				},
+				{
+					"query": "MySQLSyntaxErrorException"
+				},
+				{
+					"query": "valid MySQL result"
+				},
+				{
+					"query": "check the manual that (corresponds to|fits) your MySQL server version"
+				},
+				{
+					"query": "check the manual that (corresponds to|fits) your MariaDB server version",
+					"hint": "MariaDB"
+				},
+				{
+					"query": "check the manual that (corresponds to|fits) your Drizzle server version",
+					"hint": "Drizzle"
+				},
+				{
+					"query": "Unknown column '[^ ]+' in 'field list'"
+				},
+				{
+					"query": "MySqlClient\\."
+				},
+				{
+					"query": "com\\.mysql\\.jdbc"
+				},
+				{
+					"query": "Zend_Db_(Adapter|Statement)_Mysqli_Exception"
+				},
+				{
+					"query": "Pdo[./_\\\\]Mysql"
+				},
+				{
+					"query": "MySqlException"
+				},
+				{
+					"query": "SQLSTATE\\[\\d+\\]: Syntax error or access violation"
+				},
+				{
+					"query": "MemSQL does not support this type of query",
+					"hint": "MemSQL"
+				},
+				{
+					"query": "is not supported by MemSQL",
+					"hint": "MemSQL"
+				},
+				{
+					"query": "unsupported nested scalar subselect",
+					"hint": "MemSQL"
+				}
+			],
+			"value": "MySQL"
+		},
+		{
+			"error": [
+				{
+					"query": "PostgreSQL.*?ERROR"
+				},
+				{
+					"query": "Warning.*?\\Wpg_"
+				},
+				{
+					"query": "valid PostgreSQL result"
+				},
+				{
+					"query": "Npgsql\\."
+				},
+				{
+					"query": "PG::SyntaxError:"
+				},
+				{
+					"query": "org\\.postgresql\\.util\\.PSQLException"
+				},
+				{
+					"query": "ERROR:\\s\\ssyntax error at or near"
+				},
+				{
+					"query": "ERROR: parser: parse error at or near"
+				},
+				{
+					"query": "PostgreSQL query failed"
+				},
+				{
+					"query": "org\\.postgresql\\.jdbc"
+				},
+				{
+					"query": "Pdo[./_\\\\]Pgsql"
+				},
+				{
+					"query": "PSQLException"
+				}
+			],
+			"value": "PostgreSQL"
+		},
+		{
+			"error": [
+				{
+					"query": "Driver.*? SQL[\\-\\_\\ ]*Server"
+				},
+				{
+					"query": "OLE DB.*? SQL Server"
+				},
+				{
+					"query": "\\bSQL Server[^<\"]+Driver"
+				},
+				{
+					"query": "Warning.*?\\W(mssql|sqlsrv)_"
+				},
+				{
+					"query": "\\bSQL Server[^<\"]+[0-9a-fA-F]{8}"
+				},
+				{
+					"query": "System\\.Data\\.SqlClient\\.(SqlException|SqlConnection\\.OnError)"
+				},
+				{
+					"query": "(?s)Exception.*?\\bRoadhouse\\.Cms\\."
+				},
+				{
+					"query": "Microsoft SQL Native Client error '[0-9a-fA-F]{8}"
+				},
+				{
+					"query": "\\[SQL Server\\]"
+				},
+				{
+					"query": "ODBC SQL Server Driver"
+				},
+				{
+					"query": "ODBC Driver \\d+ for SQL Server"
+				},
+				{
+					"query": "SQLServer JDBC Driver"
+				},
+				{
+					"query": "com\\.jnetdirect\\.jsql"
+				},
+				{
+					"query": "macromedia\\.jdbc\\.sqlserver"
+				},
+				{
+					"query": "Zend_Db_(Adapter|Statement)_Sqlsrv_Exception"
+				},
+				{
+					"query": "com\\.microsoft\\.sqlserver\\.jdbc"
+				},
+				{
+					"query": "Pdo[./_\\\\](Mssql|SqlSrv)"
+				},
+				{
+					"query": "SQL(Srv|Server)Exception"
+				},
+				{
+					"query": "Unclosed quotation mark after the character string"
+				}
+			],
+			"value": "Microsoft SQL Server"
+		},
+		{
+			"error": [
+				{
+					"query": "Microsoft Access (\\d+ )?Driver"
+				},
+				{
+					"query": "JET Database Engine"
+				},
+				{
+					"query": "Access Database Engine"
+				},
+				{
+					"query": "ODBC Microsoft Access"
+				},
+				{
+					"query": "Syntax error \\(missing operator\\) in query expression"
+				}
+			],
+			"value": "Microsoft Access"
+		},
+		{
+			"error": [
+				{
+					"query": "\\bORA-\\d{5}"
+				},
+				{
+					"query": "Oracle error"
+				},
+				{
+					"query": "Oracle.*?Driver"
+				},
+				{
+					"query": "Warning.*?\\W(oci|ora)_"
+				},
+				{
+					"query": "quoted string not properly terminated"
+				},
+				{
+					"query": "SQL command not properly ended"
+				},
+				{
+					"query": "macromedia\\.jdbc\\.oracle"
+				},
+				{
+					"query": "oracle\\.jdbc"
+				},
+				{
+					"query": "Zend_Db_(Adapter|Statement)_Oracle_Exception"
+				},
+				{
+					"query": "Pdo[./_\\\\](Oracle|OCI)"
+				},
+				{
+					"query": "OracleException"
+				}
+			],
+			"value": "Oracle"
+		},
+		{
+			"error": [
+				{
+					"query": "CLI Driver.*?DB2"
+				},
+				{
+					"query": "DB2 SQL error"
+				},
+				{
+					"query": "\\bdb2_\\w+\\("
+				},
+				{
+					"query": "SQLCODE[=:\\d, -]+SQLSTATE"
+				},
+				{
+					"query": "com\\.ibm\\.db2\\.jcc"
+				},
+				{
+					"query": "Zend_Db_(Adapter|Statement)_Db2_Exception"
+				},
+				{
+					"query": "Pdo[./_\\\\]Ibm"
+				},
+				{
+					"query": "DB2Exception"
+				},
+				{
+					"query": "ibm_db_dbi\\.ProgrammingError"
+				}
+			],
+			"value": "IBM DB2"
+		},
+		{
+			"error": [
+				{
+					"query": "Warning.*?\\Wifx_"
+				},
+				{
+					"query": "Exception.*?Informix"
+				},
+				{
+					"query": "Informix ODBC Driver"
+				},
+				{
+					"query": "ODBC Informix driver"
+				},
+				{
+					"query": "com\\.informix\\.jdbc"
+				},
+				{
+					"query": "weblogic\\.jdbc\\.informix"
+				},
+				{
+					"query": "Pdo[./_\\\\]Informix"
+				},
+				{
+					"query": "IfxException"
+				}
+			],
+			"value": "Informix"
+		},
+		{
+			"error": [
+				{
+					"query": "Dynamic SQL Error"
+				},
+				{
+					"query": "Warning.*?\\Wibase_"
+				},
+				{
+					"query": "org\\.firebirdsql\\.jdbc"
+				},
+				{
+					"query": "Pdo[./_\\\\]Firebird"
+				}
+			],
+			"value": "Firebird"
+		},
+		{
+			"error": [
+				{
+					"query": "SQLite/JDBCDriver"
+				},
+				{
+					"query": "SQLite\\.Exception"
+				},
+				{
+					"query": "(Microsoft|System)\\.Data\\.SQLite\\.SQLiteException"
+				},
+				{
+					"query": "Warning.*?\\W(sqlite_|SQLite3::)"
+				},
+				{
+					"query": "\\[SQLITE_ERROR\\]"
+				},
+				{
+					"query": "SQLite error \\d+:"
+				},
+				{
+					"query": "sqlite3.OperationalError:"
+				},
+				{
+					"query": "SQLite3::SQLException"
+				},
+				{
+					"query": "org\\.sqlite\\.JDBC"
+				},
+				{
+					"query": "Pdo[./_\\\\]Sqlite"
+				},
+				{
+					"query": "SQLiteException"
+				}
+			],
+			"value": "SQLite"
+		},
+		{
+			"error": [
+				{
+					"query": "SQL error.*?POS([0-9]+)"
+				},
+				{
+					"query": "Warning.*?\\Wmaxdb_"
+				},
+				{
+					"query": "DriverSapDB"
+				},
+				{
+					"query": "-3014.*?Invalid end of SQL statement"
+				},
+				{
+					"query": "com\\.sap\\.dbtech\\.jdbc"
+				},
+				{
+					"query": "\\[-3008\\].*?: Invalid keyword or missing delimiter"
+				}
+			],
+			"value": "SAP MaxDB"
+		},
+		{
+			"error": [
+				{
+					"query": "Warning.*?\\Wsybase_"
+				},
+				{
+					"query": "Sybase message"
+				},
+				{
+					"query": "Sybase.*?Server message"
+				},
+				{
+					"query": "SybSQLException"
+				},
+				{
+					"query": "Sybase\\.Data\\.AseClient"
+				},
+				{
+					"query": "com\\.sybase\\.jdbc"
+				}
+			],
+			"value": "Sybase"
+		},
+		{
+			"error": [
+				{
+					"query": "Warning.*?\\Wingres_"
+				},
+				{
+					"query": "Ingres SQLSTATE"
+				},
+				{
+					"query": "Ingres\\W.*?Driver"
+				},
+				{
+					"query": "com\\.ingres\\.gcf\\.jdbc"
+				}
+			],
+			"value": "Ingres"
+		},
+		{
+			"error": [
+				{
+					"query": "Exception (condition )?\\d+\\. Transaction rollback"
+				},
+				{
+					"query": "com\\.frontbase\\.jdbc"
+				},
+				{
+					"query": "Syntax error 1. Missing"
+				},
+				{
+					"query": "(Semantic|Syntax) error [1-4]\\d{2}\\."
+				}
+			],
+			"value": "FrontBase"
+		},
+		{
+			"error": [
+				{
+					"query": "Unexpected end of command in statement \\["
+				},
+				{
+					"query": "Unexpected token.*?in statement \\["
+				},
+				{
+					"query": "org\\.hsqldb\\.jdbc"
+				}
+			],
+			"value": "HSQLDB"
+		},
+		{
+			"error": [
+				{
+					"query": "org\\.h2\\.jdbc"
+				},
+				{
+					"query": "\\[42000-192\\]"
+				}
+			],
+			"value": "H2"
+		},
+		{
+			"error": [
+				{
+					"query": "![0-9]{5}![^\\n]+(failed|unexpected|error|syntax|expected|violation|exception)"
+				},
+				{
+					"query": "\\[MonetDB\\]\\[ODBC Driver"
+				},
+				{
+					"query": "nl\\.cwi\\.monetdb\\.jdbc"
+				}
+			],
+			"value": "MonetDB"
+		},
+		{
+			"error": [
+				{
+					"query": "Syntax error: Encountered"
+				},
+				{
+					"query": "org\\.apache\\.derby"
+				},
+				{
+					"query": "ERROR 42X01"
+				}
+			],
+			"value": "Apache Derby"
+		},
+		{
+			"error": [
+				{
+					"query": ", Sqlstate: (3F|42).{3}, (Routine|Hint|Position):"
+				},
+				{
+					"query": "/vertica/Parser/scan"
+				},
+				{
+					"query": "com\\.vertica\\.jdbc"
+				},
+				{
+					"query": "org\\.jkiss\\.dbeaver\\.ext\\.vertica"
+				},
+				{
+					"query": "com\\.vertica\\.dsi\\.dataengine"
+				}
+			],
+			"value": "Vertica"
+		},
+		{
+			"error": [
+				{
+					"query": "com\\.mckoi\\.JDBCDriver"
+				},
+				{
+					"query": "com\\.mckoi\\.database\\.jdbc"
+				},
+				{
+					"query": "<REGEX_LITERAL>"
+				}
+			],
+			"value": "Mckoi"
+		},
+		{
+			"error": [
+				{
+					"query": "com\\.facebook\\.presto\\.jdbc"
+				},
+				{
+					"query": "io\\.prestosql\\.jdbc"
+				},
+				{
+					"query": "com\\.simba\\.presto\\.jdbc"
+				},
+				{
+					"query": "UNION query has different number of fields: \\d+, \\d+"
+				},
+				{
+					"query": "line \\d+:\\d+: mismatched input '[^']+'. Expecting:"
+				}
+			],
+			"value": "Presto"
+		},
+		{
+			"error": {
+				"query": "Altibase\\.jdbc\\.driver"
+			},
+			"value": "Altibase"
+		},
+		{
+			"error": [
+				{
+					"query": "com\\.mimer\\.jdbc"
+				},
+				{
+					"query": "Syntax error,[^\\n]+assumed to mean"
+				}
+			],
+			"value": "MimerSQL"
+		},
+		{
+			"error": [
+				{
+					"query": "Code: \\d+. DB::Exception:"
+				},
+				{
+					"query": "Syntax error: failed at position \\d+"
+				}
+			],
+			"value": "ClickHouse"
+		},
+		{
+			"error": {
+				"query": "io\\.crate\\.client\\.jdbc"
+			},
+			"value": "CrateDB"
+		},
+		{
+			"error": [
+				{
+					"query": "encountered after end of query"
+				},
+				{
+					"query": "A comparison operator is required here"
+				}
+			],
+			"value": "Cache"
+		},
+		{
+			"error": [
+				{
+					"query": "-10048: Syntax error"
+				},
+				{
+					"query": "rdmStmtPrepare\\(.+?\\) returned"
+				}
+			],
+			"value": "Raima Database Manager"
+		},
+		{
+			"error": [
+				{
+					"query": "SQ074: Line \\d+:"
+				},
+				{
+					"query": "SR185: Undefined procedure"
+				},
+				{
+					"query": "SQ200: No table "
+				},
+				{
+					"query": "Virtuoso S0002 Error"
+				},
+				{
+					"query": "\\[(Virtuoso Driver|Virtuoso iODBC Driver)\\]\\[Virtuoso Server\\]"
+				}
+			],
+			"value": "Virtuoso"
+		}
+	]
+}

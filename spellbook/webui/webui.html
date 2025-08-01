@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="assets/ui.js"></script>
+    <title>NettravalerEX</title>
+    <link rel="stylesheet" href="assets/ui.css">
+    <script>
+        function toggleSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+
+            sections.forEach(section => {
+                if (section.id === sectionId) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <span><em>いらっしゃい</em></span>
+    </header>
+    <main>
+
+        <div class="sidebar">
+            <div>
+                <h3>title</h3>
+                <button type="submit" class="sidebar-submit" onclick="toggleSection('default')">㊊ SOME</button>
+                <button type="submit" class="sidebar-submit" onclick="toggleSection('haki')">㊊ haki</button>
+
+                <h3>title</h3>
+                <button type="submit" class="sidebar-submit" onclick="toggleSection('some1')">㊊ SOME</button>
+                <button type="submit" class="sidebar-submit" onclick="toggleSection('some2')">㊊ SOME</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <section class="content-sec" id="default">
+
+                <style>
+                    .settings-wallpaper {
+                        display: grid;
+                        justify-content: center;
+                        grid-template-columns: repeat(auto-fit, 320px);
+                        gap: 40px;
+                    }
+
+                    .settings-wallpaper-ctn {
+                        background-color: var(--dk-ancient);
+                        border-radius: 10px;
+                        text-align: center;
+
+                    }
+
+                    .wallpaper-selector {
+                        border-radius: 10px;
+                        border: none;
+                        background: var(--warning);
+                        background-size: cover;
+                        width: 320px;
+                        height: 180px;
+                    }
+
+
+                    .bg-1 {
+                        background-image: url(assets/bg1.jpg);
+                    }
+
+                    .bg-2 {
+                        background-image: url(assets/bg2.jpg);
+                    }
+
+                    .bg-3 {
+                        background-image: url(assets/bg3.jpg);
+                    }
+
+                    .bg-4 {
+                        background-image: url(assets/bg4.jpg);
+                    }
+                </style>
+                <div class="settings-container">
+
+                    <div class="settings-wallpaper">
+                        <div class="settings-wallpaper-ctn">
+                            <button class="wallpaper-selector bg-1" hx-on:click="
+                                document.body.style.backgroundImage = 'url(assets/bg1.jpg)';
+                                document.documentElement.style.setProperty('--text-color', 'aliceblue');
+                                document.documentElement.style.setProperty('--ancient', '#b9921e');
+                                document.documentElement.style.setProperty('--contrast', 'black');
+                                document.documentElement.style.setProperty('--dk-ancient', '#5b4f0e');
+                                document.documentElement.style.setProperty('--bg', '#666666');
+                                document.documentElement.style.setProperty('--warning', 'rgba(0, 0, 0, 0.8)');
+                                document.documentElement.style.setProperty('--error', 'rgba(108, 0, 0, 0.8)');
+                                document.documentElement.style.setProperty('--ok', 'rgb(0, 116, 128)');
+                                ">
+                            </button>
+                            <h3>Edgerunners at embers</h3>
+                        </div>
+
+                        <div class="settings-wallpaper-ctn">
+                            <button class="wallpaper-selector bg-1" hx-on:click="
+                                document.body.style.backgroundImage = 'url(assets/bg1.jpg)';
+                                document.documentElement.style.setProperty('--text-color', 'aliceblue');
+                                document.documentElement.style.setProperty('--ancient', '#8f1eb9');
+                                document.documentElement.style.setProperty('--contrast', 'black');
+                                document.documentElement.style.setProperty('--dk-ancient', '#460e5b');
+                                document.documentElement.style.setProperty('--bg', '#666666');
+                                document.documentElement.style.setProperty('--warning', 'rgba(58, 0, 74, 0.8)');
+                                document.documentElement.style.setProperty('--error', 'rgba(108, 0, 0, 0.8)');
+                                document.documentElement.style.setProperty('--ok', 'rgb(0, 116, 128)');
+                                ">
+                            </button>
+                            <h3>Lucy</h3>
+                        </div>
+
+                        <div class="settings-wallpaper-ctn">
+                            <button class="wallpaper-selector bg-2" hx-on:click="
+                                document.body.style.backgroundImage = 'url(assets/bg2.jpg)';
+                                document.documentElement.style.setProperty('--ancient', '#626262');
+                                document.documentElement.style.setProperty('--contrast', 'black');
+                                document.documentElement.style.setProperty('--dk-ancient', '#131313');
+                                document.documentElement.style.setProperty('--warning', 'rgba(0, 0, 0, 0.8)');
+                                ">
+                            </button>
+                            <h3>Cyberpunk 2077</h3>
+                        </div>
+
+                        <div class="settings-wallpaper-ctn">
+                            <button class="wallpaper-selector bg-3" hx-on:click="document.body.style.backgroundImage = 'url(assets/bg3.jpg)';
+                                document.documentElement.style.setProperty('--ancient', '#c607fb');
+                                document.documentElement.style.setProperty('--contrast', 'black');
+                                document.documentElement.style.setProperty('--dk-ancient', '#a40099');
+                                document.documentElement.style.setProperty('--warning', 'rgba(0, 42, 140, 0.8)');">
+                            </button>
+                            <h3>Neko girl</h3>
+                        </div>
+
+                        <div class="settings-wallpaper-ctn">
+                            <button class="wallpaper-selector bg-4" hx-on:click="document.body.style.backgroundImage = 'url(assets/bg4.jpg)';
+                                document.documentElement.style.setProperty('--ancient', '#31b91e');
+                                document.documentElement.style.setProperty('--contrast', 'black');
+                                document.documentElement.style.setProperty('--dk-ancient', '#2b4a51');
+                                document.documentElement.style.setProperty('--warning', 'rgba(9, 74, 0, 0.8)');">
+                            </button>
+                            <h3>Green dreams</h3>
+                        </div>
+
+
+
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <section class="content-sec" id="haki">
+
+                <div class="haki">
+                    <div class="haki-search-ctn">
+                        <input type="text" class="haki_search" id="haki_search"
+                            placeholder="Enter NettravalerEX.v6 script here!">
+                        <input class="haki_search haki_go" type="submit" value="Haki!" hx-get="http://127.0.0.1:5500"
+                            hx-include="#haki_search" hx-target="#haki_output">
+                    </div>
+                    <div class="outputer haki_putter" id="haki_output">
+                        @@CONTENT
+                    </div>
+                </div>
+
+
+            </section>
+
+            <section class="content-sec" id="some1">
+                <header class="sec-header">
+                    <span><em>@@TITLE</em></span>
+                </header>
+                <div class="outputer">
+                    <pre id="sec_name_result_container">
+
+                    </pre>
+                </div>
+
+                <div class="hint" id="hint_session">
+                    @@HINT
+                </div>
+
+                <div class="hint hint-error" id="error_session">
+                    @@ERROR
+                </div>
+
+                <form class="form-ctn" method="get">
+
+                    <div class="form-text">
+                        <h3 class="form-title">title</h3>
+                        <input type="text" class="form-text-input" name="sec_input_text" id="sec_input_text">
+                    </div>
+
+
+
+                    <div class="form-text">
+                        <h3 class="form-title">title</h3>
+                        <select name="sec_selection" id="sec_selection" class="form-select">
+                            <option value="1">Some OPT 1</option>
+                            <option value="2">Some OPT 2</option>
+                            <option value="3">Some OPT 3</option>
+                        </select>
+                    </div>
+
+
+
+                </form>
+
+                <div class="form-text">
+                    <h3 class="form-title">title</h3>
+                    <input type="submit" class="form-text-submit" hx-get="http://127.0.0.1:5500"
+                        hx-include="#sec_input_text, #sec_selection" hx-target="#sec_name_result_container">
+                </div>
+
+
+            </section>
+
+            <section class="content-sec" id="some2">
+
+                <div class="toolbar">
+                    NettravelerEX
+                </div>
+                <iframe src="docs.html" class="outputer outputer-xl" frameborder="0"></iframe>
+
+            </section>
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>

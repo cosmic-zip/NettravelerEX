@@ -1,0 +1,373 @@
+{
+    "index": [
+        {
+            "url": "https://www.google.com/search?q=@@expression",
+            "category": "general.search engine",
+            "global_rank": 1,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.bing.com/search?q=@@expression",
+            "category": "general.search engine",
+            "global_rank": 2,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://search.yahoo.com/search?p=@@expression",
+            "category": "general.search engine",
+            "global_rank": 3,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://duckduckgo.com/?q=@@expression",
+            "category": "privacy.search engine",
+            "global_rank": 4,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.baidu.com/s?wd=@@expression",
+            "category": "general.search engine",
+            "global_rank": 5,
+            "country": "china",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://yandex.com/search/?text=@@expression",
+            "category": "general.search engine",
+            "global_rank": 6,
+            "country": "russia",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.youtube.com/results?search_query=@@expression",
+            "category": "media.video",
+            "global_rank": 7,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.ecosia.org/search?q=@@expression",
+            "category": "eco.search engine",
+            "global_rank": 8,
+            "country": "germany",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.ask.com/web?q=@@expression",
+            "category": "general.search engine",
+            "global_rank": 9,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://search.aol.com/aol/search?q=@@expression",
+            "category": "general.search engine",
+            "global_rank": 10,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.naver.com/search/search.naver?query=@@expression",
+            "category": "general.search engine",
+            "global_rank": 11,
+            "country": "south korea",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.qwant.com/?q=@@expression",
+            "category": "privacy.search engine",
+            "global_rank": 12,
+            "country": "france",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.startpage.com/sp/search?q=@@expression",
+            "category": "privacy.search engine",
+            "global_rank": 13,
+            "country": "netherlands",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://searx.me/?q=@@expression",
+            "category": "privacy.search engine",
+            "global_rank": 14,
+            "country": "global",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.searchencrypt.com/search?query=@@expression",
+            "category": "privacy.search engine",
+            "global_rank": 15,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.wolframalpha.com/input/?i=@@expression",
+            "category": "specialized.computational",
+            "global_rank": 16,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://boardreader.com/search?q=@@expression",
+            "category": "specialized.forums",
+            "global_rank": 17,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.dogpile.com/serp?q=@@expression",
+            "category": "metasearch.search engine",
+            "global_rank": 18,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.webcrawler.com/serp?q=@@expression",
+            "category": "metasearch.search engine",
+            "global_rank": 19,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.metacrawler.com/metasearch?q=@@expression",
+            "category": "metasearch.search engine",
+            "global_rank": 20,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.sogou.com/web?query=@@expression",
+            "category": "general.search engine",
+            "global_rank": 21,
+            "country": "china",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.so.com/s?q=@@expression",
+            "category": "general.search engine",
+            "global_rank": 22,
+            "country": "china",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://m.sm.cn/s?q=@@expression",
+            "category": "general.search engine",
+            "global_rank": 23,
+            "country": "china",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.gigablast.com/search?q=@@expression",
+            "category": "general.search engine",
+            "global_rank": 24,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://yippy.com/search?query=@@expression",
+            "category": "metasearch.search engine",
+            "global_rank": 25,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.seva-search.com/search?q=@@expression",
+            "category": "general.search engine",
+            "global_rank": 26,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.swisscows.com/web?query=@@expression",
+            "category": "privacy.search engine",
+            "global_rank": 27,
+            "country": "switzerland",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.mojeek.com/search?q=@@expression",
+            "category": "privacy.search engine",
+            "global_rank": 28,
+            "country": "united kingdom",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.kagi.com/search?q=@@expression",
+            "category": "privacy.search engine",
+            "global_rank": 29,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.presearch.com/search?q=@@expression",
+            "category": "decentralized.search engine",
+            "global_rank": 30,
+            "country": "canada",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.perplexity.ai/search?q=@@expression",
+            "category": "ai.search engine",
+            "global_rank": 31,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.brave.com/search?q=@@expression",
+            "category": "privacy.search engine",
+            "global_rank": 32,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.luxxle.com/search?q=@@expression",
+            "category": "general.search engine",
+            "global_rank": 33,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.metager.org/meta/meta.ger3?eingabe=@@expression",
+            "category": "metasearch.search engine",
+            "global_rank": 34,
+            "country": "germany",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.gibiru.com/results.html?q=@@expression",
+            "category": "privacy.search engine",
+            "global_rank": 35,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.onesearch.com/web?q=@@expression",
+            "category": "privacy.search engine",
+            "global_rank": 36,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.openverse.org/search/?q=@@expression",
+            "category": "specialized.creative commons",
+            "global_rank": 37,
+            "country": "global",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.yep.com/web?q=@@expression",
+            "category": "general.search engine",
+            "global_rank": 38,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://www.you.com/search?q=@@expression",
+            "category": "ai.search engine",
+            "global_rank": 39,
+            "country": "united states",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://ccsearch.creativecommons.org/search?q=@@expression",
+            "category": "specialized.creative commons",
+            "global_rank": 40,
+            "country": "global",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        },
+        {
+            "url": "https://wiki.com/?q=@@expression",
+            "category": "specialized.wiki",
+            "global_rank": 41,
+            "country": "global",
+            "nsfw": "false",
+            "match_positive": [ ],
+            "match_negative": [ ]
+        }
+    ] 
+}
