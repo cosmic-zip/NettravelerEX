@@ -68,3 +68,4 @@ geoloc.csv
 malwaredb.csv
 *.gguf
 temp/*
+proxy.csv
