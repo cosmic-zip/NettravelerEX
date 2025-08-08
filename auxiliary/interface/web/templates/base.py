@@ -13,7 +13,19 @@ base_html = """
     </head>
 
     <body>
-        <header><span><em>いらっしゃい</em></span></header>
+        <header class="main-header">
+            <span><em>いらっしゃい</em></span>
+            <button type="submit" class="chat-w-act" hx-on:click="
+                if (document.getElementById('ia_chatbot_win').style.display === 'none' || document.getElementById('ia_chatbot_win').style.display === '') {
+                document.querySelector('main').style.gridTemplateColumns = '300px 2fr 1fr';
+                document.getElementById('ia_chatbot_win').style.display = 'block';
+                } else {
+                document.querySelector('main').style.gridTemplateColumns = '300px auto';
+                document.getElementById('ia_chatbot_win').style.display = 'none';
+                }">
+                    ✨ AI
+            </button>
+        </header>
         <main>
             <div class="sidebar">
                 <div>@@SIDEBAR</div>
@@ -22,6 +34,21 @@ base_html = """
                 <section class="content-sec" id="default"></section>
                 @@EXTENDS
                 @@CONTAINER
+            </div>
+            <div class="container chat" id="ia_chatbot_win">
+                <div class="chat-toolbar">
+                    <button class="chat-btn">M</button>
+                    <button class="chat-btn" hx-on:click="
+                        if (document.getElementById('ia_chatbot_win').style.display === 'none' || document.getElementById('ia_chatbot_win').style.display === '') {
+                        document.querySelector('main').style.gridTemplateColumns = '300px 2fr 1fr';
+                        document.getElementById('ia_chatbot_win').style.display = 'block';
+                        } else {
+                        document.querySelector('main').style.gridTemplateColumns = '300px auto';
+                        document.getElementById('ia_chatbot_win').style.display = 'none';
+                        }
+                    ">X</button>
+                </div>
+                <iframe src="http://localhost:5599" frameborder="0" class="outputer chat-iframe"></iframe>
             </div>
         </main>
     </body>

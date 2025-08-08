@@ -49,6 +49,10 @@ settings_sec = """
         .bg-5 {
             background-image: url(assets/bg5.png);
         }
+
+        .bg-6 {
+            background-image: url(assets/bg6.jpg);
+        }
     </style>
     <div class="settings-container">
 
@@ -57,6 +61,18 @@ settings_sec = """
         </header>
 
         <div class="settings-wallpaper">
+
+            <div class="settings-wallpaper-ctn" style="background-color: #c607fb;">
+                <button class="wallpaper-selector bg-6" hx-on:click="document.body.style.backgroundImage = 'url(assets/bg6.jpg)';
+                                document.documentElement.style.setProperty('--ancient', '#c607fb');
+                                document.documentElement.style.setProperty('--contrast', 'black');
+                                document.documentElement.style.setProperty('--dk-ancient', '#a40099');
+                                document.documentElement.style.setProperty('--warning', 'rgba(0, 42, 140, 0.8)');">
+                </button>
+                <h3>Default</h3>
+            </div>
+
+
             <div class="settings-wallpaper-ctn" style="background-color: #b9921e;">
                 <button class="wallpaper-selector bg-5" hx-on:click="
                                 document.body.style.backgroundImage = 'url(assets/bg5.png)';
