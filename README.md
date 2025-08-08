@@ -158,7 +158,7 @@ To define predefined options:
 }
 ```
 
-Now, `@@optio` tells the parser that `foo` and `bar` are valid predefined options for the `option` argument. Execution would look like this:
+Now, `@@option` tells the parser that `foo` and `bar` are valid predefined options for the `option` argument. Execution would look like this:
 
 ```console
 nettraveler scanner.myapp --address 172.16.123.123 --option foo
@@ -247,7 +247,7 @@ haki ="""
 
 haki = {
     "section": haki,
-    "buttom": '<button type="submit" class="sidebar-submit" onclick="toggleSection(\'haki\')">㊊ Haki search</button>'
+    "button": '<button type="submit" class="sidebar-submit" onclick="toggleSection(\'haki\')">㊊ Haki search</button>'
 }
 ```
 
@@ -311,7 +311,7 @@ The following table explains each parameter available for report generation:
 | `stack`       | Yes      | Describes the technologies in use: `html`, `css`, `js`, `java`, `asp`, etc.      |
 | `vulns`       | Yes      | List of vulnerability IDs to include, e.g., `1`, `1,2`, or `1,44,22`.            |
 | `attacks`     | Yes      | List of attack IDs to include, following the same format as `vulns`.             |
-
+wdwdwdnada?
 **Risk Rating System**
 
 | Level (0-10)       | Severity                                                                            |

@@ -955,7 +955,7 @@
             "type": "shell"
         },
         {
-            "command": "docker stop $(docker ps -q)",
+            "command": "docker stop $(docker ps -a -q)",
             "description": "Shutdown all running Docker containers.",
             "extends": {},
             "name": "docker.stop.all",

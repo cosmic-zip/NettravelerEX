@@ -3,7 +3,7 @@
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░#
 #                                                                                                                               #
 #       Netlib is a library for the NettravalerEX orginaly written in Lua, the main parts of the code base has been             #
-#       rewritten in python for the convinience of find new contributor and employes for the comsic Sec&Dev company.            #
+#       rewritten in python for the convenience of find new contributor and employes for the comsic Sec&Dev company.            #
 #                                                                                                                               #
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░#
 import sys, os, json, subprocess
@@ -15,7 +15,7 @@ ENABLE_LOGGER = False
 ENABLE_ARBITRARY_SHELL = True
 SESSION = "default"
 COSMIC_SIGKEY = "b7a5f1f46944d5cc438646c547e20b177257608b5dfff41d7c5f063a6ea092fe"
-GEN_HOST = "http://127.0.0.1:5500"
+GEN_HOST = "http://localhost:5500"
 GEN_TITLE = "⛩️ NettravalerEX"
 HEADLESS_BROWSER_BIN = "chromium"
 
@@ -41,7 +41,7 @@ ARBITRARY                        Run a arbitrary command if a bind, native funct
 MODES
  
 SHELL                            Run like a shell command
-INTERACTIVE                      Run with a friendly assistent (BETA)
+INTERACTIVE                      Run with a friendly assistant (BETA)
  
 HELP                             Run: nettraveler help or manual 
  
@@ -155,21 +155,21 @@ def net_logger(text, color="white", style="normal", newline=False, save=False):
         palette = COLORS_HTML
 
     context = str(text).split("\n")
-    save_contex = ""
+    save_context = ""
     for item in context:
         base = palette[color].replace("@@", item)
         base = palette[style].replace("@@", base)
         write_stdout(base + "\n")
 
         if save:
-            save_contex = save_contex + base
+            save_context = save_context + base
 
     if newline:
         write_stdout("\n\n")
 
     if save:
         with open("net.log", "w") as file:
-            file.write(save_contex)
+            file.write(save_context)
             file.close()
 
 

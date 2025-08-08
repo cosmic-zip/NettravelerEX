@@ -7,8 +7,6 @@
     --bg: #666666;
     --error: rgba(108, 0, 0, 0.8);
     --ok: rgb(0, 116, 128);
-
-
 }
 
 main,
@@ -17,13 +15,15 @@ main,
 .form-ctn form {
     scrollbar-width: thin;
     scrollbar-color: black;
-
 }
 
 body {
     background: #124245;
-    background: linear-gradient(207deg, rgba(18, 66, 69, 1) 0%, rgba(125, 89, 27, 1) 39%, rgba(115, 4, 125, 1) 100%);
-    background-image: url(bg2.jpg);
+    background: linear-gradient(207deg,
+            rgba(18, 66, 69, 1) 0%,
+            rgba(125, 89, 27, 1) 39%,
+            rgba(115, 4, 125, 1) 100%);
+    background-image: url(bg6.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -49,14 +49,17 @@ header {
     background: #000000de;
 }
 
+.main-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 main {
     height: calc(100vh - 104px);
     overflow: hidden;
-    /* background: #000000b0; */
-    /* border-radius: 10px; */
-    /* padding: 10px; */
     display: grid;
-    grid-template-columns: 300px auto;
+    /* grid-template-columns: 300px auto; */
+    grid-template-columns: 300px 2fr 1fr;
 }
 
 .sidebar {
@@ -95,7 +98,7 @@ main {
 
 .content-sec {
     display: none;
-    width: calc(100vw - 350px) !important;
+    /* width: calc(100vw - 350px) !important; */
 }
 
 .outputer {
@@ -105,13 +108,14 @@ main {
     margin-bottom: 20px;
     height: 40vh;
     overflow: scroll;
-    width: calc(100vw - 390px);
+    /* width: calc(100vw - 390px); */
     background-color: #15001bb6;
     font-size: 14px;
 }
 
 .outputer-xl {
     height: calc(100vh - 230px) !important;
+    width: calc(100% - 25px);
 }
 
 .sec-header {
@@ -197,7 +201,6 @@ main {
     color: var(--text-color);
     font-weight: bold;
     border-radius: 2px;
-
 }
 
 .form-ctn {
@@ -240,4 +243,40 @@ main {
 
 .haki_go:hover {
     background-color: var(--dk-ancient);
+}
+
+.chat {
+    margin-left: 20px;
+    display: block;
+}
+
+.chat-iframe {
+    width: 94%;
+    height: calc(100% - 70px);
+    margin: auto;
+}
+
+.chat-btn {
+    background: var(--contrast);
+    color: var(--text-color);
+    border-radius: 100%;
+    border: solid 2px var(--ancient);
+}
+
+.chat-w-act {
+    background: var(--contrast);
+    color: var(--text-color);
+    border-radius: 5px;
+    border: solid 1px var(--ancient);
+}
+
+.chat-btn:hover,
+.chat-w-act:hover {
+    background-color: var(--dk-ancient);
+}
+
+.chat-toolbar {
+    height: 40px;
+    display: flex;
+    align-items: center;
 }
