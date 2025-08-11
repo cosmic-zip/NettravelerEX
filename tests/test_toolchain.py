@@ -26,3 +26,18 @@ def test_netex_output(args, expected):
         f"Expected '{expected}' in output, but got:\n{result.stdout}"
     )
 
+def test_netex_with_random_argument():
+    random_arg = "�{�{�{$8`|`|`|�8880hhhDDS�td8880P�tdPiPiPi��Q�tdR�td�{�{�"  # generates a random string
+    cmd = [sys.executable, "nettraveler.py", random_arg]
+    result = subprocess.run(
+        cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True
+    )
+
+    assert result.returncode != 0, "Expected non-zero exit code for invalid argument."
+
+    assert '' in result.stdout.lower(), (
+        f"Expected default message:\n{result.stdout}"
+    )
