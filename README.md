@@ -2,6 +2,11 @@
 
 ![banner](spellbook/webui/assets/lineBar.png)
 
+![NettravelerEX](https://img.shields.io/github/actions/workflow/status/cosmic-zip/NettravelerEX/netex.yml)
+![GitHub issues](https://img.shields.io/github/issues/cosmic-zip/NettravelerEX)
+![GitHub License](https://img.shields.io/github/license/cosmic-zip/NettravelerEX)
+![GitHub top language](https://img.shields.io/github/languages/top/cosmic-zip/NettravelerEX)
+
 ## NettravelerEX
 
 NettravelerEX is an offensive security toolkit that aggregates tools, serializes functions, and provides a standardized interaction interface for various tasks including Wi-Fi hacking, web scanning, vulnerability scanning, OSINT, forensics, backup management, SQL injection, backdoor and ransomware management, custom malware building, reverse shells, RCE agents, generation of reports (RBR), and playbooks (RBP) based on rules.
@@ -366,4 +371,4 @@ wdwdwdnada?
 
 ## LICENSE
 
-This project is licensed under the GNU General Public License v3.0. WITCHCRAFT includes IP2Proxy® LITE and cinsscore® databases.
+This project is licensed under the GNU General Public License v3.0. NettravelerEX includes IP2Proxy® LITE and cinsscore® databases.
