@@ -8,7 +8,7 @@
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░#
 import sys, os, json, subprocess
 
-VERSION = "NetTraveler BETA2025.666 by COSMIC ZIP 11-APR-2025"
+VERSION = "NetTraveler BETA2025.777 by COSMIC ZIP 11-APR-2025"
 DATAROOT = "spellbook/"
 SETUP_COLORS = "color"  # none color html
 ENABLE_LOGGER = False
@@ -21,7 +21,7 @@ HEADLESS_BROWSER_BIN = "chromium"
 
 BANNER = """
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-                            NetTravelerEX Minimal BETA2025.666 by COSMIC ZIP 11-APR-2025
+                            NetTravelerEX Minimal BETA2025.777 by COSMIC ZIP 11-APR-2025
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
  
                 ███╗   ██╗███████╗████████╗████████╗██████╗  █████╗ ██╗   ██╗███████╗██╗     ███████╗██████╗ 
