@@ -146,7 +146,7 @@ def write_stdout(text: str):
     sys.stdout.flush()
 
 
-def net_logger(text, color="white", style="normal", newline=False, save=False):
+def net_logger(text, color="white", style="normal", newline=False):
     if SETUP_COLORS == "none":
         write_stdout(text)
 
@@ -167,8 +167,10 @@ def net_logger(text, color="white", style="normal", newline=False, save=False):
     if newline:
         write_stdout("\n\n")
 
-    if save:
-        with open("net.log", "w") as file:
+    if ENABLE_LOGGER:
+        path = f"{DATAROOT}logs/net.log"
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "a") as file:
             file.write(save_context)
             file.close()
 
