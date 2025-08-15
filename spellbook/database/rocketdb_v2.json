@@ -670,10 +670,10 @@
                     "description": "Domain name"
                 }
             },
-            "command": "scan.dns @@domain",
+            "command": "scanner.dns @@domain",
             "description": "Perform DNS scanning",
             "extends": {},
-            "name": "native.scan.dns",
+            "name": "scanner.dns",
             "type": "shell"
         },
         {
@@ -682,10 +682,10 @@
                     "description": "Refers to an IPv4 or IPv6 address"
                 }
             },
-            "command": "scan.ip @@ip",
+            "command": "scanner.ip @@ip",
             "description": "Perform IP scanning",
             "extends": {},
-            "name": "native.scan.ip",
+            "name": "scanner.ip",
             "type": "shell"
         },
         {
@@ -714,40 +714,9 @@
                     "description": "Refers to an IPv4 or IPv6 or domain name"
                 }
             },
-            "command": "scan.nmapper @@target @@scripts",
+            "command": "scanner.nmapper @@target @@scripts",
             "description": "Perform NMAP scanning",
-            "name": "native.scanner.nmapper"
-        },
-        {
-            "arguments": {
-                "path": {
-                    "description": "Path to a file or folder"
-                },
-                "scantype": {
-                    "description": "Type of scan to perform",
-                    "options": [
-                        "file",
-                        "folder"
-                    ]
-                }
-            },
-            "command": "scan.malware @@path @@scantype",
-            "description": "Perform malware scanning",
-            "extends": {},
-            "name": "native.scan.malware",
-            "type": "shell"
-        },
-        {
-            "arguments": {
-                "path": {
-                    "description": "Path to scan"
-                }
-            },
-            "command": "scan.rootkit @@path",
-            "description": "Perform rootkit scanning",
-            "extends": {},
-            "name": "native.scan.rootkit",
-            "type": "shell"
+            "name": "scanner.nmapper"
         },
         {
             "arguments": {
@@ -758,10 +727,10 @@
                     "description": "Level of verbosity/detail"
                 }
             },
-            "command": "scan.socialnet @@expression @@verbosity",
+            "command": "scanner.keyword @@expression @@verbosity",
             "description": "Perform social network scanning",
             "extends": {},
-            "name": "native.scan.socialnet",
+            "name": "scanner.keyword",
             "type": "shell"
         },
         {
@@ -805,27 +774,6 @@
             "description": "Generate vulnerability reports",
             "extends": {},
             "name": "native.cosmic.report",
-            "type": "shell"
-        },
-        {
-            "arguments": {
-                "delay": {
-                    "description": "Delay between executions (s)"
-                },
-                "executable": {
-                    "description": "Path to executable or command"
-                },
-                "name": {
-                    "description": "Name of the scheduled task"
-                },
-                "times": {
-                    "description": "Number of execution repeats"
-                }
-            },
-            "command": "cosmic.scheduler @@executable @@times @@delay @@name",
-            "description": "Schedule command execution",
-            "extends": {},
-            "name": "native.cosmic.scheduler",
             "type": "shell"
         },
         {

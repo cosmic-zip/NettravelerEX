@@ -30,6 +30,10 @@ settings_sec = """
         }
 
 
+        .bg-0 {
+            background-image: url(assets/bg0.jpg);
+        }
+        
         .bg-1 {
             background-image: url(assets/bg1.jpg);
         }
@@ -62,8 +66,20 @@ settings_sec = """
 
         <div class="settings-wallpaper">
 
+            <div class="settings-wallpaper-ctn" style="background-color: #1fff00;">
+                <button class="wallpaper-selector bg-4" hx-on:click="document.body.style.backgroundImage = 'url(assets/bg4.jpg)';
+                                document.documentElement.style.setProperty('--ancient', '#1fff00');
+                                document.documentElement.style.setProperty('--contrast', 'black');
+                                document.documentElement.style.setProperty('--dk-ancient', '#39512b');
+                                document.documentElement.style.setProperty('--warning', 'rgba(55, 55, 55, 0.8)');
+                                document.documentElement.style.setProperty('--error', 'rgba(34, 34, 34, 0.8)');
+                                document.documentElement.style.setProperty('--ok', 'black');">
+                </button>
+                <h3>Nettraveler</h3>
+            </div>
+
             <div class="settings-wallpaper-ctn" style="background-color: #c607fb;">
-                <button class="wallpaper-selector bg-6" hx-on:click="document.body.style.backgroundImage = 'url(assets/bg6.jpg)';
+                <button class="wallpaper-selector bg-0" hx-on:click="document.body.style.backgroundImage = 'url(assets/bg0.jpg)';
                                 document.documentElement.style.setProperty('--ancient', '#c607fb');
                                 document.documentElement.style.setProperty('--contrast', 'black');
                                 document.documentElement.style.setProperty('--dk-ancient', '#a40099');
@@ -126,19 +142,6 @@ settings_sec = """
                 </button>
                 <h3>Neko girl</h3>
             </div>
-
-            <div class="settings-wallpaper-ctn" style="background-color: #31b91e;">
-                <button class="wallpaper-selector bg-4" hx-on:click="document.body.style.backgroundImage = 'url(assets/bg4.jpg)';
-                                document.documentElement.style.setProperty('--ancient', '#31b91e');
-                                document.documentElement.style.setProperty('--contrast', 'black');
-                                document.documentElement.style.setProperty('--dk-ancient', '#2b4a51');
-                                document.documentElement.style.setProperty('--warning', 'rgba(9, 74, 0, 0.8)');">
-                </button>
-                <h3>Green dreams</h3>
-            </div>
-
-
-
 
         </div>
 

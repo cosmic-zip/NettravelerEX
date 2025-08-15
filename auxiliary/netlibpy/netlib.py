@@ -8,7 +8,7 @@
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░#
 import sys, os, json, subprocess
 
-VERSION = "NetTraveler BETA2025.666 by COSMIC ZIP 11-APR-2025"
+VERSION = "NetTraveler BETA2025.777 by COSMIC ZIP 11-APR-2025"
 DATAROOT = "spellbook/"
 SETUP_COLORS = "color"  # none color html
 ENABLE_LOGGER = False
@@ -21,7 +21,7 @@ HEADLESS_BROWSER_BIN = "chromium"
 
 BANNER = """
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-                            NetTravelerEX Minimal BETA2025.666 by COSMIC ZIP 11-APR-2025
+                            NetTravelerEX Minimal BETA2025.777 by COSMIC ZIP 11-APR-2025
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
  
                 ███╗   ██╗███████╗████████╗████████╗██████╗  █████╗ ██╗   ██╗███████╗██╗     ███████╗██████╗ 
@@ -146,7 +146,7 @@ def write_stdout(text: str):
     sys.stdout.flush()
 
 
-def net_logger(text, color="white", style="normal", newline=False, save=False):
+def net_logger(text, color="white", style="normal", newline=False):
     if SETUP_COLORS == "none":
         write_stdout(text)
 
@@ -161,14 +161,16 @@ def net_logger(text, color="white", style="normal", newline=False, save=False):
         base = palette[style].replace("@@", base)
         write_stdout(base + "\n")
 
-        if save:
+        if ENABLE_LOGGER:
             save_context = save_context + base
 
     if newline:
         write_stdout("\n\n")
 
-    if save:
-        with open("net.log", "w") as file:
+    if ENABLE_LOGGER:
+        path = f"{DATAROOT}logs/net.log"
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "a") as file:
             file.write(save_context)
             file.close()
 

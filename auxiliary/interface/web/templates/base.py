@@ -8,6 +8,7 @@ base_html = """
         <link rel="stylesheet" href="assets/ui.css">
         <script src="assets/ui.js"></script>
         <title>@@PAGETITLE</title>
+        <script src="assets/oneko.js"></script>
         <script>function toggleSection(sectionId) { const sections = document.querySelectorAll('section'); sections.forEach(section => { if (section.id === sectionId) { section.style.display = 'block' } else { section.style.display = 'none' } }) }</script>
         <script>function downloadDivAsTxt(divId, filename) { const div = document.getElementById(divId); if (!div) { console.error('Div not found:', divId); return } const text = div.textContent || ''; const blob = new Blob([text], { type: 'text/plain' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = filename || 'download.txt'; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url) }</script>
     </head>

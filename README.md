@@ -2,6 +2,11 @@
 
 ![banner](spellbook/webui/assets/lineBar.png)
 
+![NettravelerEX](https://img.shields.io/github/actions/workflow/status/cosmic-zip/NettravelerEX/netex.yml)
+![GitHub issues](https://img.shields.io/github/issues/cosmic-zip/NettravelerEX)
+![GitHub License](https://img.shields.io/github/license/cosmic-zip/NettravelerEX)
+![GitHub top language](https://img.shields.io/github/languages/top/cosmic-zip/NettravelerEX)
+
 ## NettravelerEX
 
 NettravelerEX is an offensive security toolkit that aggregates tools, serializes functions, and provides a standardized interaction interface for various tasks including Wi-Fi hacking, web scanning, vulnerability scanning, OSINT, forensics, backup management, SQL injection, backdoor and ransomware management, custom malware building, reverse shells, RCE agents, generation of reports (RBR), and playbooks (RBP) based on rules.
@@ -69,11 +74,49 @@ Example:
 ./nettraveler version --output_mode_html
 ```
 
-## How to read the manual
+## Read the Manual!
 
 ```console
 ./nettraveler manual
 ```
+
+# FLAGS SCLF
+
+Standard Command-Line Flags (SCLF) include:
+
+- `account` : Arguments for account info or token.
+- `address` : IPv4/IPv6 or domain name.
+- `ip` : IPv4/IPv6 address.
+- `device` : Virtual/physical device (e.g., HDD, SSD).
+- `dns/domain` : Domain name.
+- `database_name` : Name of the database.
+- `data` : Input data (e.g., "some data here!").
+- `file` : File location.
+- `folder` : Path to a folder.
+- `host` : Hostname or IP address.
+- `image` : Image file location.
+- `interface` : Network device.
+- `keyspace_name` : Cassandra keyspace name.
+- `message` : Message string.
+- `output` : Output file path.
+- `overwrite` : Overwrite existing files.
+- `password` : Plaintext password.
+- `path` : File path.
+- `port` : Port number.
+- `protocol` : Communication protocol.
+- `recursive` : Enable recursive mode.
+- `secret` : File (data) to be hidden.
+- `share` : Shared resource (e.g., folder, file, printer).
+- `snapshot_name` : Name of the snapshot.
+- `table_name` : Database table name.
+- `target` : IPv4/IPv6 or domain name.
+- `timeout` : Timeout duration.
+- `url` : Full URL path with http/https.
+- `username` : Username setup.
+- `wait` : Delay duration in seconds.
+- `verbose` : Enable verbose mode.
+- `wordlist` : Path to a wordlist.
+
 
 ## How to create plugins
 
@@ -325,3 +368,7 @@ wdwdwdnada?
 ## Cosmic Guide for Hacking
 
 ### Checkout [cosmic wiki](https://cosmic-zip.github.io/)
+
+## LICENSE
+
+This project is licensed under the GNU General Public License v3.0. NettravelerEX includes IP2Proxy® LITE and cinsscore® databases.
