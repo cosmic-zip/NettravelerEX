@@ -161,7 +161,7 @@ def net_logger(text, color="white", style="normal", newline=False):
         base = palette[style].replace("@@", base)
         write_stdout(base + "\n")
 
-        if save:
+        if ENABLE_LOGGER:
             save_context = save_context + base
 
     if newline:
