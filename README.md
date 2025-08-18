@@ -301,7 +301,7 @@ This server addresses multiple concerns: it is **portable**, **statically linked
 To serve the WebUI using the server, run:
 
 ```console
-nettraveler cosmic.server --host 127.0.0.1 --port 5500 --folder webui/
+nettraveler server --host 127.0.0.1 --port 5500 --folder webui/
 ```
 
 The server will create a log file named `evil_server.log` containing all **POST requests**. If the IP address you provide matches the value set in the `GEN_HOST` global variable within the WebUI, the server will operate as intended and serve the page normally. However, if a different IP or port is configured, the page will still be served, but **command requests will be blocked by default**.
