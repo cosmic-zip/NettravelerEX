@@ -2,6 +2,7 @@
 
 ![banner](spellbook/webui/assets/lineBar.png)
 
+[![nettraveler](https://snapcraft.io/nettraveler/badge.svg)](https://snapcraft.io/nettraveler)
 ![NettravelerEX](https://img.shields.io/github/actions/workflow/status/cosmic-zip/NettravelerEX/netex.yml)
 ![GitHub issues](https://img.shields.io/github/issues/cosmic-zip/NettravelerEX)
 ![GitHub top language](https://img.shields.io/github/languages/top/cosmic-zip/NettravelerEX)
@@ -31,6 +32,10 @@ NettravelerEX does not rely on third-party libraries. It uses only code develope
 * `NT_DATAROOT` - Sets the full path location for the spellbook directory (e.g., `/opt/nettraveler/spellbook`)
 
 ## Installation
+
+### Snapstore
+
+[![Get it from the Snap Store](https://snapcraft.io/en/dark/install.svg)](https://snapcraft.io/nettraveler)
 
 ### Distribution Packages
 
