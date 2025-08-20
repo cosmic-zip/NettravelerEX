@@ -649,10 +649,16 @@
                 },
                 "wait": {
                     "description": "Delay duration in seconds"
+                },
+                "rate": {
+                    "description": "Add a limit rate like: 0 (disabled) or 20 (bytes if no suffix is given) or 20K (~19.5 KiB/s) or 200M (Mib/s)"
+                },
+                "path": {
+                    "description": "Set the output path"
                 }
             },
-            "command": "wget --recursive -U 'Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0' --page-requisites --html-extension --convert-links --restrict-file-names=windows --wait=@@wait --tries=inf --show-progress --progress=bar -nc  --no-parent @@url",
-            "description": "Full website downloader",
+            "command": "wget --recursive -U 'Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0' --page-requisites --html-extension --convert-links --restrict-file-names=windows --wait=@@wait --random-wait --tries=30 --no-clobber --limit-rate=@@rate --no-parent @@url -P @@path",
+            "description": "Downloads a full webpage or open directory recursively, including all necessary resources (images, CSS, JS) for offline viewing. It only downloads content at and below the specified URL, without mirroring the entire site. Supports polite scraping with adjustable wait times, optional rate limits, and retries while preserving existing files.",
             "extends": {},
             "name": "web.download",
             "type": "shell"
