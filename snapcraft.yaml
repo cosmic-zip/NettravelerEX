@@ -12,22 +12,26 @@ type: app
 license: AGPL-3.0
 source-code: https://github.com/cosmic-zip/nettravelerex
 
+lint:
+  ignore:
+    - classic
+    - library
+
 environment:
-  NT_DATAROOT: $SNAP/archive/ 
+  NT_DATAROOT: $SNAP/spellbook/
 
 parts:
   spellbook:
     source: spellbook
     plugin: dump
     organize:
-      "*": spellbook/
+      "spellbook": spellbook/
 
   nettraveler:
-    after: [spellbook]
-    plugin: python
+    plugin: dump
     source: .
     organize:
-      nettraveler.py: bin/nettraveler
+      nettraveler: bin/nettraveler
     stage-packages:
       - python3
       - python3-pip 
