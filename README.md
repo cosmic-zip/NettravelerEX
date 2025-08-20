@@ -57,14 +57,6 @@ NettravelerEX comes in two variants:
 
 **Recommendation**: Use the full version for complete functionality.
 
-### Quick Installation
-
-Use the automated installation script:
-
-```bash
-  curl -fsSL https://example.com/install.sh | bash
-```
-
 ## How to use:
 
 ```console
