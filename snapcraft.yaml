@@ -3,7 +3,7 @@ description: |
   NettravelerEX is an offensive security toolkit that aggregates tools, serializes functions, and provides a 
   standardized interaction interface for various tasks including Wi-Fi hacking, web scanning, vulnerability 
   scanning, OSINT, forensics, backup management, SQL injection, backdoor, ransomware management and more.
-version: "0.0.99"
+version: "0.1.0"
 summary: NettravelerEX - The offensive security toolkit.
 grade: stable
 confinement: strict

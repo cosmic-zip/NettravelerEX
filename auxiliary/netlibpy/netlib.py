@@ -8,7 +8,7 @@
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░#
 import sys, os, json, subprocess
 
-VERSION = "NetTravelerEX Minimal v0.0.99 by COSMIC ZIP 11-APR-2025"
+VERSION = "NetTravelerEX Minimal v0.1.0 by COSMIC ZIP 11-APR-2025"
 DATAROOT = os.getenv("NT_DATAROOT", "spellbook/") 
 SETUP_COLORS = "color"  # none color html
 ENABLE_LOGGER = False
