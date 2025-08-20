@@ -72,3 +72,4 @@ proxy.csv
 
 #Dist builds
 *.snap
+dist/*
