@@ -25,18 +25,45 @@ The user (you) interacts only with the interfaces, which provide a standardized 
 
 NettravelerEX does not rely on third-party libraries. It uses only code developed directly in Python, making it highly portable, durable, and easy to install. Wherever a GNU/coreutils or coreutils-compatible system exists, NettravelerEX will run.
 
-## Installation:
 
-todo 
+## Environment Variables
 
-env variables: 
+* `NT_DATAROOT` - Sets the full path location for the spellbook directory (e.g., `/opt/nettraveler/spellbook`)
 
-* NT_DATAROOT → Set the spellbook location
+## Installation
+
+### Distribution Packages
+
+For convenience, we provide pre-compiled versions built with Nuitka. If you don't trust pre-compiled binaries, please compile from source instead.
+
+**Note**: These packages include compiled versions of:
+- llama.cpp
+- The web server (Build with GO)
+- BusyBox (optional)
+
+### Available Versions
+
+NettravelerEX comes in two variants:
+
+| Version | Size | Description |
+|---------|------|-------------|
+| `nettraveler_lite.tar.gz` | 93 MB | Lightweight version without LLM models |
+| `nettraveler_full.tar.gz` | 2.5 GB | Full version including Llama 3B uncensored model |
+
+**Recommendation**: Use the full version for complete functionality.
+
+### Quick Installation
+
+Use the automated installation script:
+
+```bash
+  curl -fsSL https://example.com/install.sh | bash
+```
 
 ## How to use:
 
 ```console
-nettraveler [submodule] --arg1 value --arg2 option --arg3 123
+  nettraveler [submodule] --arg1 value --arg2 option --arg3 123
 ```
 
 Whenever executing any function in NettravelerEX, you always start by defining which submodule to use, followed by arguments written with `--`. The argument names are not standardized anymore, but they meaning can be found in the rocketdb.json
