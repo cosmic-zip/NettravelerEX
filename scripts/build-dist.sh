@@ -1,5 +1,4 @@
 #! /bin/bash
-cd ..
 echo "[x] Setup Build"
 nuitka --onefile \
        --static-libpython=yes \
@@ -23,3 +22,4 @@ mv dist/spellbook/ ./
 rm -r temp/
 mv nettraveler_lite.tar.gz dist/
 mv nettraveler_full.tar.gz dist/
+mv dist/nettraveler ./
