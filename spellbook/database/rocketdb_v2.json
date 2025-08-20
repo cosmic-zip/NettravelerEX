@@ -651,7 +651,7 @@
                     "description": "Delay duration in seconds"
                 }
             },
-            "command": "wget --recursive -U 'Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0' --page-requisites --html-extension --convert-links --restrict-file-names=windows --random-wait --wait=@@wait --limit-rate=200k --tries=inf --no-parent @@url",
+            "command": "wget --recursive -U 'Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0' --page-requisites --html-extension --convert-links --restrict-file-names=windows --wait=@@wait --tries=inf --show-progress --progress=bar -nc  --no-parent @@url",
             "description": "Full website downloader",
             "extends": {},
             "name": "web.download",

@@ -4,8 +4,8 @@
 
 ![NettravelerEX](https://img.shields.io/github/actions/workflow/status/cosmic-zip/NettravelerEX/netex.yml)
 ![GitHub issues](https://img.shields.io/github/issues/cosmic-zip/NettravelerEX)
-![GitHub License](https://img.shields.io/github/license/cosmic-zip/NettravelerEX)
 ![GitHub top language](https://img.shields.io/github/languages/top/cosmic-zip/NettravelerEX)
+ [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 ## NettravelerEX
 
@@ -24,6 +24,14 @@ From the genesis file, a parser combined with a template engine (built from scra
 The user (you) interacts only with the interfaces, which provide a standardized way to engage with all submodules, extensions, plugins, and native functions.
 
 NettravelerEX does not rely on third-party libraries. It uses only code developed directly in Python, making it highly portable, durable, and easy to install. Wherever a GNU/coreutils or coreutils-compatible system exists, NettravelerEX will run.
+
+## Installation:
+
+todo 
+
+env variables: 
+
+* NT_DATAROOT → Set the spellbook location
 
 ## How to use:
 
