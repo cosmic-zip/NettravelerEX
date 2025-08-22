@@ -6,8 +6,8 @@ def llama_api_server(host: str, port: int) -> int:
     command = (
         f"cd {DATAROOT}/bin/llama/ && "
         f"./llama-server --port {port} "
-        # f"-m ../../models/Llama-3.2-3B-Instruct-uncensored-Q4_K_S.gguf"
-        f"-m ../../models/gpt-oss-20b-Q4_0.gguf"    
+        f"-m ../../models/Llama-3.2-3B-Instruct-uncensored-Q4_K_S.gguf"
+        # f"-m ../../models/gpt-oss-20b-Q4_0.gguf"    
     )
     net_logger("llama server is running!", color="yellow", style="bold", newline=True)
 

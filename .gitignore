@@ -69,3 +69,7 @@ malwaredb.csv
 *.gguf
 temp/*
 proxy.csv
+
+#Dist builds
+*.snap
+dist/*

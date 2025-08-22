@@ -1,0 +1,91 @@
+name: nettraveler
+description: |
+  NettravelerEX is an offensive security toolkit that aggregates tools, serializes functions, and provides a 
+  standardized interaction interface for various tasks including Wi-Fi hacking, web scanning, vulnerability 
+  scanning, OSINT, forensics, backup management, SQL injection, backdoor, ransomware management and more.
+version: "0.1.0"
+summary: NettravelerEX - The offensive security toolkit.
+grade: stable
+confinement: strict
+base: core24
+type: app
+license: AGPL-3.0
+source-code: https://github.com/cosmic-zip/nettravelerex
+
+lint:
+  ignore:
+    - classic
+    - library
+
+environment:
+  NT_DATAROOT: $SNAP/spellbook/
+
+parts:
+  spellbook:
+    source: spellbook
+    plugin: dump
+    organize:
+      "spellbook": spellbook/
+
+  nettraveler:
+    plugin: dump
+    source: .
+    organize:
+      nettraveler: bin/nettraveler
+    stage-packages:
+      - python3
+      - python3-pip 
+      - 7zip
+      - build-essential
+      - chromium
+      - coreutils
+      - curl
+      - dirb
+      - dnsenum
+      - dnsutils
+      - file
+      - foremost
+      - freeglut3-dev
+      - git
+      - htop
+      - iproute2
+      - iptables
+      - kakoune
+      - libc-bin
+      - libatm1t64
+      - libatomic1
+      - libayatana-appindicator3-dev
+      - libclang-dev
+      - libclang1-18
+      - libglu1-mesa
+      - libimage-exiftool-perl
+      - libllvm15
+      - liboss4-salsa-asound2
+      - libssl-dev
+      - libwebkit2gtk-4.1-dev
+      - libxdo-dev
+      - librsvg2-dev
+      - lsof
+      - lua5.4
+      - ngrep
+      - nmap
+      - openssh-server
+      - openssl
+      - pkg-config
+      - qemu-kvm
+      - ruby
+      - steghide
+      - tor
+      - traceroute
+      - tree
+      - virt-manager
+      - wget
+      - whois
+      - xattr
+      - xxd
+      - bash
+
+apps:
+  nettraveler:
+    command: bin/nettraveler
+    plugs: [home, network, network-bind, removable-media]

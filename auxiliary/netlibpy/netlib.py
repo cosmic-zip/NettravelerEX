@@ -8,8 +8,8 @@
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░#
 import sys, os, json, subprocess
 
-VERSION = "NetTraveler BETA2025.777 by COSMIC ZIP 11-APR-2025"
-DATAROOT = "spellbook/"
+VERSION = "NetTravelerEX Minimal v0.1.0 by COSMIC ZIP 11-APR-2025"
+DATAROOT = os.getenv("NT_DATAROOT", "spellbook/") 
 SETUP_COLORS = "color"  # none color html
 ENABLE_LOGGER = False
 ENABLE_ARBITRARY_SHELL = True
@@ -21,7 +21,7 @@ HEADLESS_BROWSER_BIN = "chromium"
 
 BANNER = """
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-                            NetTravelerEX Minimal BETA2025.777 by COSMIC ZIP 11-APR-2025
+                            NetTravelerEX Minimal v0.0.99 by COSMIC ZIP 11-APR-2025
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
  
                 ███╗   ██╗███████╗████████╗████████╗██████╗  █████╗ ██╗   ██╗███████╗██╗     ███████╗██████╗ 
@@ -233,7 +233,7 @@ def search_arg(args: list, keyword: str, enforce_keyword=True):
         "bold",
         True,
     )
-    sys.exit(1)(128)
+    sys.exit(128)
 
 
 def dynamic_manual(args_v, man_page=False):
@@ -424,21 +424,21 @@ def net_shell_router(fn_registry = {}):
 
     if len(args_v) == 0:
         net_logger(BANNER, "magenta", "bold", True)
-        exit(0)
+        sys.exit(0)
 
     name = args_v[0]
 
     if name == "version":
         net_logger(VERSION, "green", "bold", True)
-        exit(0)
+        sys.exit(0)
 
     if name == "help":
         dynamic_manual(args_v)
-        exit(0)
+        sys.exit(0)
 
     if name == "manual":
         dynamic_manual(args_v, True)
-        exit(0)
+        sys.exit(0)
 
     if fn_registry != {}:
         fn_name = args_v[0]
